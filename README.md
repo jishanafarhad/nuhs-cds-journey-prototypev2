@@ -1,1 +1,2275 @@
-# nuhs-cds-journey-prototypev2
+[index.html](https://github.com/user-attachments/files/26977093/index.html)
+# nuhs-cds-journey-prototypev2<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behind the Alert — NUHS CDS Journey</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  --navy: #1B3A6B;
+  --navy-light: #234d8a;
+  --navy-dark: #112240;
+  --orange: #F7941D;
+  --orange-light: #ffa73a;
+  --orange-dark: #d97c0a;
+  --white: #FFFFFF;
+  --grey-light: #F4F6FA;
+  --grey-mid: #E2E8F4;
+  --grey-text: #6B7A99;
+  --danger: #D93025;
+  --success: #1A7F4B;
+  --warning: #E8A000;
+  --text: #0F1C33;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy-dark);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.screen { display:none; min-height:100vh; }
+.screen.active { display:flex; flex-direction:column; }
+.stage { display:none; flex:1; flex-direction:column; }
+.stage.active { display:flex; }
+.scroll-content { overflow-y:auto; flex:1; }
+
+/* ─── HOME ─── */
+#home { background:var(--navy-dark); position:relative; overflow:hidden; }
+#home::before {
+  content:''; position:absolute; top:-200px; right:-200px;
+  width:600px; height:600px;
+  background:radial-gradient(circle,rgba(247,148,29,0.1) 0%,transparent 70%);
+  pointer-events:none;
+}
+#home::after {
+  content:''; position:absolute; bottom:-150px; left:-150px;
+  width:500px; height:500px;
+  background:radial-gradient(circle,rgba(27,58,107,0.5) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.home-header {
+  padding:1.8rem 3rem 0.5rem;
+  display:flex; align-items:center; justify-content:space-between;
+  position:relative; z-index:2;
+}
+.nuhs-badge {
+  background:var(--orange); color:white;
+  font-size:11px; font-weight:700; letter-spacing:0.12em;
+  padding:6px 14px; border-radius:20px; text-transform:uppercase;
+}
+.conf-label { font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:0.08em; text-transform:uppercase; }
+
+.home-hero {
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:1rem 3rem; position:relative; z-index:2; text-align:center;
+}
+.home-eyebrow {
+  font-size:11px; font-weight:700; letter-spacing:0.18em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:0.8rem;
+}
+.home-title {
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  color:white; line-height:1.2; margin-bottom:0.4rem;
+}
+.home-title em { color:var(--orange); font-style:italic; }
+.home-subtitle-small {
+  font-size:0.85rem; color:rgba(255,255,255,0.4);
+  margin-bottom:0.5rem; letter-spacing:0.03em;
+}
+.pick-label {
+  font-size:11px; font-weight:700; letter-spacing:0.18em;
+  text-transform:uppercase; color:rgba(255,255,255,0.3);
+  margin-bottom:1rem;
+}
+
+/* ─── FLIP CARDS ─── */
+.card-deck {
+  display:flex; gap:0.9rem; width:100%; max-width:1080px;
+}
+.flip-card { flex:1; height:210px; cursor:pointer; perspective:1000px; }
+.flip-card-inner {
+  position:relative; width:100%; height:100%;
+  transition:transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  transform-style:preserve-3d;
+}
+.flip-card:hover .flip-card-inner { transform:rotateY(180deg); }
+.flip-card-front, .flip-card-back {
+  position:absolute; width:100%; height:100%;
+  border-radius:18px; backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  display:flex; flex-direction:column; padding:1.3rem; overflow:hidden;
+}
+.flip-card-front {
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.09);
+  justify-content:space-between;
+}
+.flip-card-front::after {
+  content:''; position:absolute; bottom:0; left:0; right:0;
+  height:3px; background:var(--orange); border-radius:0 0 18px 18px; opacity:0.5;
+}
+.flip-card-back {
+  background:var(--orange); transform:rotateY(180deg);
+  align-items:center; justify-content:center; text-align:center;
+}
+.flip-card-back::before {
+  content:''; position:absolute; top:-30px; right:-30px;
+  width:100px; height:100px; background:rgba(255,255,255,0.08); border-radius:50%;
+}
+.card-num { font-size:10px; font-weight:700; letter-spacing:0.12em; color:var(--orange); text-transform:uppercase; }
+.card-icon-front { font-size:1.8rem; margin:0.4rem 0; display:block; }
+.card-phrase { font-family:'DM Serif Display',serif; font-size:0.92rem; color:white; line-height:1.4; font-style:italic; }
+.card-hint { font-size:10px; color:rgba(255,255,255,0.25); margin-top:0.4rem; }
+.card-back-eyebrow { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:0.5rem; }
+.card-back-title { font-family:'DM Serif Display',serif; font-size:1.05rem; color:white; line-height:1.3; margin-bottom:1rem; }
+.card-enter-btn {
+  background:white; color:var(--orange-dark); border:none;
+  padding:7px 18px; border-radius:20px;
+  font-family:'DM Sans',sans-serif; font-size:12px; font-weight:700;
+  cursor:pointer; transition:transform 0.2s; position:relative; z-index:1;
+}
+.card-enter-btn:hover { transform:scale(1.05); }
+
+.home-footer {
+  padding:1rem 3rem; display:flex; align-items:center; justify-content:center;
+  border-top:1px solid rgba(255,255,255,0.06); position:relative; z-index:2;
+}
+.home-footer p { font-size:11px; color:rgba(255,255,255,0.2); text-align:center; }
+
+/* ─── SCENARIO SHELL ─── */
+.scenario-screen { background:var(--grey-light); }
+.scenario-nav {
+  background:var(--navy); padding:0.9rem 2rem;
+  display:flex; align-items:center; justify-content:space-between; flex-shrink:0;
+}
+.back-btn {
+  background:rgba(255,255,255,0.1); border:none; color:white;
+  padding:7px 14px; border-radius:8px; cursor:pointer;
+  font-family:'DM Sans',sans-serif; font-size:13px;
+  display:flex; align-items:center; gap:6px; transition:background 0.2s;
+}
+.back-btn:hover { background:rgba(255,255,255,0.2); }
+.nav-label { font-size:11px; font-weight:700; letter-spacing:0.1em; color:var(--orange); text-transform:uppercase; }
+.nav-dots { display:flex; gap:5px; }
+.dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.2); transition:background 0.3s; }
+.dot.active { background:var(--orange); }
+
+/* ─── CONTENT AREAS ─── */
+.scene {
+  flex:1; display:flex; flex-direction:column;
+  padding:2rem 3rem; max-width:1000px; margin:0 auto; width:100%;
+}
+.scene-title { font-family:'DM Serif Display',serif; font-size:2rem; color:var(--navy); margin-bottom:0.4rem; line-height:1.2; }
+.scene-title em { color:var(--orange); font-style:italic; }
+.scene-sub { font-size:0.9rem; color:var(--grey-text); line-height:1.7; margin-bottom:1.5rem; }
+
+/* ─── PATIENT CARD ─── */
+.patient-card {
+  background:white; border-radius:14px; border:1px solid var(--grey-mid);
+  overflow:hidden; margin-bottom:1.2rem;
+  box-shadow:0 4px 16px rgba(27,58,107,0.07);
+}
+.patient-header {
+  background:var(--navy); color:white; padding:0.9rem 1.4rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.patient-name { font-size:1rem; font-weight:600; }
+.patient-meta { font-size:11px; opacity:0.6; margin-top:2px; }
+.patient-badges { display:flex; gap:6px; }
+.badge { padding:3px 9px; border-radius:20px; font-size:11px; font-weight:600; }
+.badge-warn { background:rgba(247,148,29,0.2); color:var(--orange); }
+.badge-info { background:rgba(255,255,255,0.15); color:white; }
+.patient-body { padding:1rem 1.4rem; display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem; }
+.pstat label { font-size:10px; color:var(--grey-text); text-transform:uppercase; letter-spacing:0.06em; display:block; margin-bottom:2px; }
+.pstat value { font-size:0.95rem; font-weight:600; color:var(--text); }
+.pstat value.flag { color:var(--danger); }
+
+/* ─── ALERT BOX ─── */
+.alert-box {
+  border-radius:10px; padding:1.1rem 1.3rem; margin-bottom:1.2rem; border-left:4px solid; position:relative;
+}
+.alert-box.amber { background:#FFF8EC; border-color:var(--orange); }
+.alert-box.red { background:#FFF0EE; border-color:var(--danger); }
+.alert-box.blue { background:#EEF3FB; border-color:var(--navy); }
+.alert-box.green { background:#EDFAF4; border-color:var(--success); }
+.alert-title { font-weight:700; font-size:0.88rem; color:var(--text); margin-bottom:0.3rem; display:flex; align-items:center; gap:6px; }
+.alert-body { font-size:0.84rem; color:#444; line-height:1.6; }
+.alert-count { position:absolute; top:0.8rem; right:0.8rem; font-size:11px; color:var(--orange); font-weight:700; background:rgba(247,148,29,0.1); padding:2px 7px; border-radius:8px; }
+
+/* ─── CHOICE BUTTONS ─── */
+.choice-row { display:flex; gap:0.8rem; margin-top:auto; padding-top:1rem; }
+.choice-btn {
+  flex:1; padding:0.9rem; border-radius:12px; border:2px solid;
+  cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:600;
+  transition:all 0.2s; text-align:center;
+}
+.choice-btn.accept { background:rgba(26,127,75,0.07); border-color:var(--success); color:var(--success); }
+.choice-btn.accept:hover { background:var(--success); color:white; }
+.choice-btn.override { background:rgba(247,148,29,0.07); border-color:var(--orange); color:var(--orange-dark); }
+.choice-btn.override:hover { background:var(--orange); color:white; }
+.choice-btn.dismiss { background:rgba(217,48,37,0.07); border-color:var(--danger); color:var(--danger); }
+.choice-btn.dismiss:hover { background:var(--danger); color:white; }
+.choice-btn.neutral { background:rgba(27,58,107,0.06); border-color:var(--navy); color:var(--navy); }
+.choice-btn.neutral:hover { background:var(--navy); color:white; }
+
+/* ─── STATS ─── */
+.stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem; margin-bottom:1.2rem; }
+.stat-card { background:white; border-radius:12px; padding:1.1rem; border:1px solid var(--grey-mid); text-align:center; }
+.stat-num { font-family:'DM Serif Display',serif; font-size:1.9rem; color:var(--navy); display:block; line-height:1; margin-bottom:0.3rem; }
+.stat-num.orange { color:var(--orange); }
+.stat-num.green { color:var(--success); }
+.stat-num.red { color:var(--danger); }
+.stat-lbl { font-size:11px; color:var(--grey-text); line-height:1.4; }
+
+/* ─── REVEAL CARDS ─── */
+.reveal-card {
+  border-radius:14px; padding:1.3rem; margin-bottom:1rem;
+  display:flex; align-items:flex-start; gap:0.9rem;
+}
+.reveal-card.bad { background:linear-gradient(135deg,#FFF0EE,#FFECEA); border:1px solid rgba(217,48,37,0.15); }
+.reveal-card.good { background:linear-gradient(135deg,#EDFAF4,#E0F5EB); border:1px solid rgba(26,127,75,0.15); }
+.reveal-card.insight { background:linear-gradient(135deg,#EEF3FB,#E8EFFA); border:1px solid rgba(27,58,107,0.15); }
+.reveal-icon { font-size:1.8rem; flex-shrink:0; }
+.reveal-text h3 { font-size:0.95rem; font-weight:700; color:var(--text); margin-bottom:0.3rem; }
+.reveal-text p { font-size:0.84rem; color:#555; line-height:1.65; }
+
+/* ─── QI WHISPER ─── */
+.qi-whisper {
+  background:var(--navy-dark); border-radius:10px; padding:0.9rem 1.3rem;
+  display:flex; align-items:center; gap:0.8rem; margin-bottom:1.2rem;
+}
+.qi-dot { width:28px; height:28px; background:var(--orange); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
+.qi-whisper p { font-size:0.83rem; color:rgba(255,255,255,0.7); line-height:1.6; font-style:italic; }
+
+/* ─── AI DEMO ─── */
+.ai-demo { background:white; border-radius:14px; border:1px solid var(--grey-mid); overflow:hidden; margin-bottom:1.2rem; }
+.ai-demo-hdr { background:var(--navy); padding:0.8rem 1.3rem; display:flex; align-items:center; gap:8px; }
+.ai-pulse { width:9px; height:9px; background:var(--orange); border-radius:50%; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+.ai-demo-title { font-size:12px; font-weight:600; color:white; letter-spacing:0.05em; }
+.ai-demo-body { padding:1.2rem; }
+.ai-input-row { display:flex; gap:8px; margin-bottom:0.8rem; }
+.ai-input {
+  flex:1; padding:9px 12px; border:1.5px solid var(--grey-mid); border-radius:9px;
+  font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text); background:var(--grey-light);
+  transition:border-color 0.2s;
+}
+.ai-input:focus { outline:none; border-color:var(--navy); background:white; }
+.ai-run { background:var(--orange); color:white; border:none; padding:9px 18px; border-radius:9px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; transition:background 0.2s; }
+.ai-run:hover { background:var(--orange-dark); }
+.ai-run:disabled { opacity:0.55; cursor:not-allowed; }
+.ai-out { background:var(--grey-light); border-radius:9px; padding:0.9rem; font-size:13px; line-height:1.7; color:var(--text); min-height:70px; white-space:pre-wrap; }
+.ai-out.loading { color:var(--grey-text); font-style:italic; }
+.chip-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:0.8rem; }
+.chip { font-size:11px; background:var(--grey-light); padding:3px 10px; border-radius:10px; cursor:pointer; border:1px solid var(--grey-mid); color:var(--grey-text); transition:all 0.15s; }
+.chip:hover { border-color:var(--navy); color:var(--navy); }
+
+/* ─── NEXT BTN ─── */
+.next-btn {
+  background:var(--navy); color:white; border:none; padding:12px 28px; border-radius:11px;
+  font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:600;
+  cursor:pointer; transition:all 0.2s; align-self:flex-end; margin-top:auto;
+}
+.next-btn:hover { background:var(--navy-light); transform:translateY(-2px); }
+.next-btn.orange { background:var(--orange); }
+.next-btn.orange:hover { background:var(--orange-dark); }
+
+/* ─── BEFORE/AFTER ─── */
+.ba-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem; }
+.ba-card { background:white; border-radius:14px; border:1px solid var(--grey-mid); overflow:hidden; }
+.ba-hdr { padding:0.8rem 1.3rem; font-weight:700; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; }
+.ba-hdr.before { background:rgba(217,48,37,0.07); color:var(--danger); }
+.ba-hdr.after { background:rgba(26,127,75,0.07); color:var(--success); }
+.ba-body { padding:1.2rem; }
+.ba-row { display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px solid var(--grey-mid); font-size:0.85rem; }
+.ba-row:last-child { border-bottom:none; }
+.ba-lbl { color:var(--grey-text); }
+.ba-val { font-weight:700; color:var(--text); }
+.ba-val.red { color:var(--danger); }
+.ba-val.green { color:var(--success); }
+
+/* ─── VOTE ─── */
+.vote-row { display:flex; gap:0.8rem; margin-bottom:1.2rem; }
+.vote-btn {
+  flex:1; padding:1.1rem; border-radius:12px; border:2px solid var(--grey-mid);
+  background:white; cursor:pointer; font-family:'DM Sans',sans-serif;
+  font-size:0.9rem; font-weight:600; color:var(--text); transition:all 0.2s; text-align:center;
+}
+.vote-btn:hover { border-color:var(--navy); background:var(--grey-light); }
+.vote-btn.selected { border-color:var(--navy); background:var(--navy); color:white; }
+
+/* ─── POLL ─── */
+.poll-box { background:var(--navy); border-radius:14px; padding:1.4rem; margin-bottom:1.2rem; }
+.poll-title { font-size:11px; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem; }
+.poll-row { display:flex; align-items:center; gap:10px; margin-bottom:0.7rem; }
+.poll-lbl { font-size:12px; color:rgba(255,255,255,0.65); width:170px; flex-shrink:0; }
+.poll-track { flex:1; height:9px; background:rgba(255,255,255,0.1); border-radius:5px; overflow:hidden; }
+.poll-fill { height:100%; background:var(--orange); border-radius:5px; transition:width 1s ease; }
+.poll-fill.muted { background:rgba(255,255,255,0.25); }
+.poll-pct { font-size:12px; font-weight:700; color:white; width:34px; text-align:right; }
+.poll-meta { margin-top:1rem; padding-top:0.8rem; border-top:1px solid rgba(255,255,255,0.08); font-size:11px; color:rgba(255,255,255,0.3); }
+
+/* ─── CARD 2 NINJA GAME ─── */
+.ninja-arena {
+  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:340px; position:relative; overflow:hidden;
+  background:linear-gradient(135deg,var(--navy-dark),#0a1628);
+  border-radius:16px; margin-bottom:1.2rem; cursor:pointer;
+  user-select:none;
+}
+.ninja-instruction {
+  font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:1.5rem;
+  text-align:center; letter-spacing:0.05em; text-transform:uppercase;
+}
+.alert-fruit {
+  background:white; border-radius:14px; padding:1.2rem 1.5rem;
+  max-width:420px; width:90%; position:relative;
+  box-shadow:0 8px 32px rgba(0,0,0,0.3);
+  animation:fruitIn 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  border-left:5px solid var(--orange);
+}
+@keyframes fruitIn {
+  from { opacity:0; transform:translateY(40px) scale(0.9); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
+.fruit-sliced-left, .fruit-sliced-right {
+  position:absolute; width:50%; height:100%; top:0; background:white;
+  border-radius:14px; overflow:hidden;
+}
+.fruit-sliced-left { left:0; border-radius:14px 0 0 14px; border-left:5px solid var(--danger); animation:sliceLeft 0.5s ease forwards; }
+.fruit-sliced-right { right:0; border-radius:0 14px 14px 0; animation:sliceRight 0.5s ease forwards; }
+@keyframes sliceLeft { to { transform:translateX(-60px) translateY(20px) rotate(-15deg); opacity:0; } }
+@keyframes sliceRight { to { transform:translateX(60px) translateY(30px) rotate(15deg); opacity:0; } }
+
+.fruit-label { font-size:10px; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; }
+.fruit-title { font-size:1rem; font-weight:700; color:var(--text); margin-bottom:0.3rem; }
+.fruit-desc { font-size:0.82rem; color:var(--grey-text); line-height:1.5; }
+.fruit-stats { display:flex; gap:1rem; margin-top:0.8rem; }
+.fstat { background:var(--grey-light); border-radius:8px; padding:5px 10px; font-size:11px; color:var(--grey-text); }
+.fstat strong { color:var(--text); display:block; font-size:13px; font-weight:700; }
+
+.ninja-hint {
+  position:absolute; bottom:1.2rem;
+  display:flex; gap:1rem;
+}
+.ninja-action {
+  padding:10px 22px; border-radius:20px; font-family:'DM Sans',sans-serif;
+  font-size:13px; font-weight:700; cursor:pointer; border:2px solid; transition:all 0.2s;
+}
+.ninja-slice { background:rgba(217,48,37,0.1); border-color:var(--danger); color:var(--danger); }
+.ninja-slice:hover { background:var(--danger); color:white; }
+.ninja-keep { background:rgba(26,127,75,0.1); border-color:var(--success); color:var(--success); }
+.ninja-keep:hover { background:var(--success); color:white; }
+
+.ninja-counter {
+  position:absolute; top:1rem; right:1rem;
+  font-size:12px; font-weight:700; color:rgba(255,255,255,0.4);
+  letter-spacing:0.06em;
+}
+
+.slice-feedback {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  font-size:3rem; animation:feedbackPop 0.6s ease forwards; pointer-events:none; z-index:10;
+}
+@keyframes feedbackPop {
+  0% { opacity:0; transform:translate(-50%,-50%) scale(0.5); }
+  30% { opacity:1; transform:translate(-50%,-60%) scale(1.3); }
+  100% { opacity:0; transform:translate(-50%,-80%) scale(1); }
+}
+
+/* ─── CARD 3 SIGNAL/NOISE ─── */
+.sn-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:1.2rem; }
+.sn-card {
+  background:white; border-radius:12px; border:2px solid var(--grey-mid);
+  padding:1rem; transition:all 0.2s; overflow:hidden;
+}
+.sn-card.selected-signal { border-color:var(--success); background:rgba(26,127,75,0.04); }
+.sn-card.selected-noise { border-color:var(--danger); background:rgba(217,48,37,0.04); }
+.sn-alert-name { font-size:0.88rem; font-weight:700; color:var(--text); margin-bottom:0.4rem; }
+.sn-stats { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.8rem; }
+.sn-stat { background:var(--grey-light); border-radius:6px; padding:3px 8px; font-size:11px; color:var(--grey-text); }
+.sn-stat strong { color:var(--text); }
+.sn-buttons { display:flex; gap:0.5rem; }
+.sn-btn {
+  flex:1; padding:6px; border-radius:8px; border:1.5px solid; cursor:pointer;
+  font-family:'DM Sans',sans-serif; font-size:11px; font-weight:700; transition:all 0.2s; text-align:center;
+}
+.sn-btn.signal { border-color:var(--success); color:var(--success); background:transparent; }
+.sn-btn.signal:hover, .sn-btn.signal.active { background:var(--success); color:white; }
+.sn-btn.noise { border-color:var(--danger); color:var(--danger); background:transparent; }
+.sn-btn.noise:hover, .sn-btn.noise.active { background:var(--danger); color:white; }
+
+/* ─── CARD 3 REVEAL ─── */
+.sn-reveal-grid { display:flex; flex-direction:column; gap:0.7rem; margin-bottom:1.2rem; }
+.sn-reveal-row {
+  background:white; border-radius:12px; border:1px solid var(--grey-mid);
+  padding:1rem 1.2rem; display:flex; align-items:center; gap:1rem;
+}
+.sn-reveal-verdict {
+  width:70px; flex-shrink:0; text-align:center;
+  font-size:11px; font-weight:700; padding:4px 8px; border-radius:8px;
+}
+.sn-reveal-verdict.signal { background:rgba(26,127,75,0.1); color:var(--success); }
+.sn-reveal-verdict.noise { background:rgba(217,48,37,0.1); color:var(--danger); }
+.sn-reveal-name { font-size:0.88rem; font-weight:700; color:var(--text); flex:1; }
+.sn-reveal-outcome { font-size:0.82rem; color:var(--grey-text); flex:2; line-height:1.5; }
+.sn-reveal-saving { font-size:0.85rem; font-weight:700; color:var(--navy); flex-shrink:0; text-align:right; }
+
+/* ─── CARD 5 REQUESTS ─── */
+.req-list { display:flex; flex-direction:column; gap:0.65rem; margin-bottom:1.2rem; }
+.req-card {
+  background:white; border:2px solid var(--grey-mid); border-radius:12px;
+  padding:1rem 1.2rem; cursor:pointer; transition:all 0.2s;
+  display:flex; align-items:flex-start; gap:0.9rem;
+}
+.req-card:hover { border-color:var(--navy-light); background:var(--grey-light); }
+.req-card.selected { border-color:var(--orange); background:rgba(247,148,29,0.03); }
+.req-circle {
+  width:38px; height:38px; border-radius:50%; background:var(--grey-light);
+  border:2px solid var(--grey-mid); display:flex; align-items:center;
+  justify-content:center; flex-shrink:0; transition:all 0.2s; font-size:12px; font-weight:700; color:var(--grey-text);
+}
+.req-card.selected .req-circle { background:var(--orange); border-color:var(--orange); color:white; }
+.req-body { flex:1; }
+.req-title { font-size:0.92rem; font-weight:700; color:var(--text); margin-bottom:0.3rem; }
+.req-desc { font-size:0.8rem; color:var(--grey-text); line-height:1.55; margin-bottom:0.5rem; }
+.req-tags { display:flex; gap:5px; flex-wrap:wrap; }
+.rtag { font-size:10px; font-weight:600; padding:2px 7px; border-radius:8px; background:var(--grey-light); color:var(--grey-text); border:1px solid var(--grey-mid); }
+.rtag.red { background:rgba(217,48,37,0.07); color:var(--danger); border-color:rgba(217,48,37,0.2); }
+.rtag.orange { background:rgba(247,148,29,0.09); color:var(--orange-dark); border-color:rgba(247,148,29,0.25); }
+
+.req-footer {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0.9rem 1.2rem; background:white; border-radius:11px; border:1.5px solid var(--grey-mid);
+}
+
+/* ─── PGx PATIENT COMPARE ─── */
+.pgx-compare { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem; }
+.pgx-col { background:white; border-radius:14px; border:2px solid var(--grey-mid); overflow:hidden; }
+.pgx-col.danger { border-color:var(--danger); }
+.pgx-col-hdr { background:var(--navy); color:white; padding:0.8rem 1.2rem; font-weight:600; font-size:0.9rem; }
+.pgx-col.danger .pgx-col-hdr { background:var(--danger); }
+.pgx-col-body { padding:1.1rem; }
+.gene-badge { display:inline-block; padding:3px 9px; border-radius:12px; font-size:11px; font-weight:700; margin-bottom:0.7rem; }
+.gene-badge.normal { background:rgba(26,127,75,0.1); color:var(--success); }
+.gene-badge.unknown { background:rgba(107,122,153,0.1); color:var(--grey-text); }
+.pgx-row { display:flex; justify-content:space-between; padding:0.45rem 0; border-bottom:1px solid var(--grey-mid); font-size:0.83rem; }
+.pgx-row:last-child { border-bottom:none; }
+.pgx-lbl { color:var(--grey-text); }
+.pgx-val { font-weight:600; color:var(--text); }
+
+/* ─── CARD 1 PRINCIPLES ─── */
+.principle-item {
+  background:white; border:2px solid var(--grey-mid); border-radius:11px;
+  padding:0.9rem 1rem; cursor:pointer; transition:all 0.2s;
+  display:flex; align-items:flex-start; gap:0.8rem;
+}
+.principle-item:hover { border-color:var(--navy-light); }
+.principle-item.selected { border-color:var(--orange); background:rgba(247,148,29,0.04); }
+.principle-check {
+  width:22px; height:22px; border-radius:50%; border:2px solid var(--grey-mid);
+  flex-shrink:0; margin-top:1px; transition:all 0.2s;
+  display:flex; align-items:center; justify-content:center; font-size:11px; color:white;
+}
+.principle-item.selected .principle-check { background:var(--orange); border-color:var(--orange); }
+.principle-item.selected .principle-check::after { content:'✓'; }
+.principle-name { font-size:0.88rem; font-weight:700; color:var(--text); margin-bottom:2px; }
+.principle-desc { font-size:0.78rem; color:var(--grey-text); line-height:1.5; }
+
+.principle-reveal-row {
+  background:white; border-radius:11px; border:1px solid var(--grey-mid);
+  padding:0.8rem 1rem; display:flex; align-items:flex-start; gap:0.8rem;
+}
+.pr-verdict {
+  flex-shrink:0; font-size:10px; font-weight:700; padding:3px 8px;
+  border-radius:8px; white-space:nowrap; margin-top:2px;
+}
+.pr-verdict.violated { background:rgba(217,48,37,0.1); color:var(--danger); }
+.pr-verdict.ok { background:rgba(26,127,75,0.1); color:var(--success); }
+.pr-name { font-size:0.85rem; font-weight:700; color:var(--text); flex:1; }
+.pr-reason { font-size:0.8rem; color:var(--grey-text); line-height:1.55; flex:2; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.fade-up { animation:fadeUp 0.4s ease forwards; }
+
+/* ─── SLOT MACHINE ─── */
+.slot-machine {
+  background:var(--navy-dark); border-radius:20px; padding:2rem;
+  text-align:center; margin-bottom:1.2rem; position:relative; overflow:hidden;
+}
+.slot-machine::before {
+  content:''; position:absolute; top:-60px; left:50%; transform:translateX(-50%);
+  width:300px; height:300px;
+  background:radial-gradient(circle, rgba(247,148,29,0.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+.slot-reels {
+  display:flex; gap:1rem; justify-content:center; margin:1.5rem 0;
+}
+.reel {
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px; padding:1rem 0.8rem; min-width:140px;
+  position:relative; overflow:hidden;
+}
+.reel-label { font-size:10px; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.8rem; }
+.reel-value {
+  font-family:'DM Serif Display',serif; font-size:1rem; color:white;
+  line-height:1.3; min-height:3rem; display:flex; align-items:center; justify-content:center;
+  transition:all 0.3s;
+}
+.reel-value.spinning {
+  animation:reelSpin 0.15s linear infinite;
+}
+@keyframes reelSpin {
+  0% { opacity:1; transform:translateY(0); }
+  50% { opacity:0.3; transform:translateY(-4px); }
+  100% { opacity:1; transform:translateY(0); }
+}
+.slot-lever {
+  background:var(--orange); color:white; border:none;
+  padding:14px 40px; border-radius:30px; font-family:'DM Sans',sans-serif;
+  font-size:1rem; font-weight:700; cursor:pointer; transition:all 0.2s;
+  margin-bottom:1.2rem; position:relative; z-index:1;
+}
+.slot-lever:hover { background:var(--orange-dark); transform:scale(1.03); }
+.slot-lever:active { transform:scale(0.97); }
+.slot-lever:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+.slot-result {
+  background:white; border-radius:14px; padding:1.3rem;
+  margin-top:1rem; text-align:left; display:none;
+  animation:fadeUp 0.4s ease forwards;
+}
+.slot-result.show { display:block; }
+.slot-result-label { font-size:10px; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem; }
+.slot-result-title { font-size:1rem; font-weight:700; color:var(--text); margin-bottom:0.5rem; }
+.slot-result-body { font-size:0.84rem; color:#555; line-height:1.7; }
+.slot-spin-count { font-size:11px; color:rgba(255,255,255,0.3); margin-top:0.8rem; }
+
+/* ─── PATIENT STORY ─── */
+.story-timeline { display:flex; flex-direction:column; gap:0; margin-bottom:1.2rem; position:relative; }
+.story-timeline::before {
+  content:''; position:absolute; left:22px; top:0; bottom:0; width:2px;
+  background:var(--grey-mid);
+}
+.story-step {
+  display:flex; gap:1rem; align-items:flex-start;
+  opacity:0; transform:translateY(12px);
+  transition:all 0.5s ease; padding-bottom:1.2rem;
+}
+.story-step.visible { opacity:1; transform:translateY(0); }
+.story-step-dot {
+  width:44px; height:44px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.2rem; position:relative; z-index:1; border:3px solid white;
+}
+.step-dot-normal { background:var(--grey-light); }
+.step-dot-warning { background:#FFF8EC; border-color:var(--orange); }
+.step-dot-danger { background:#FFF0EE; border-color:var(--danger); }
+.step-dot-insight { background:#EEF3FB; border-color:var(--navy); }
+.step-dot-success { background:#EDFAF4; border-color:var(--success); }
+.story-step-content { flex:1; background:white; border-radius:12px; padding:1rem 1.2rem; border:1px solid var(--grey-mid); }
+.story-step-day { font-size:10px; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.3rem; }
+.story-step-title { font-size:0.92rem; font-weight:700; color:var(--text); margin-bottom:0.3rem; }
+.story-step-body { font-size:0.82rem; color:#555; line-height:1.6; }
+.story-step-alert { background:#FFF8EC; border:1px solid rgba(247,148,29,0.3); border-radius:8px; padding:0.6rem 0.8rem; margin-top:0.6rem; font-size:0.8rem; color:var(--text); }
+.story-next-btn {
+  background:var(--navy); color:white; border:none; padding:10px 24px;
+  border-radius:10px; font-family:'DM Sans',sans-serif; font-size:13px;
+  font-weight:600; cursor:pointer; transition:all 0.2s; margin-top:0.8rem;
+}
+.story-next-btn:hover { background:var(--navy-light); }
+.story-next-btn.orange { background:var(--orange); }
+.story-next-btn.orange:hover { background:var(--orange-dark); }
+</style>
+</head>
+<body>
+
+<!-- ══ HOME ══ -->
+<div id="home" class="screen active">
+  <div class="home-header">
+    <div class="nuhs-badge">NUHS · GMIO</div>
+    <div class="conf-label">SmartHealth Asia 2026</div>
+  </div>
+  <div class="home-hero">
+    <div class="home-eyebrow">Interactive Experience</div>
+    <h1 class="home-title">Behind the Alert —<br>A NUHS <em>CDS Journey</em></h1>
+    <p class="home-subtitle-small">Real stories. Real data. Pick a card to begin.</p>
+    <div class="pick-label" style="margin-top:1.5rem;">Hover · Flip · Explore</div>
+    <div class="card-deck">
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-num">Card 01</div>
+            <span class="card-icon-front">🔔</span>
+            <div class="card-phrase">"86% ignored it. Were they wrong?"</div>
+            <div class="card-hint">Hover to reveal →</div>
+          </div>
+          <div class="flip-card-back" onclick="go(1)">
+            <div class="card-back-eyebrow">Alert Fatigue · CDS 5 Rights</div>
+            <div class="card-back-title">Not all alerts are equal. Find out why.</div>
+            <button class="card-enter-btn">Explore →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-num">Card 02</div>
+            <span class="card-icon-front">🔕</span>
+            <div class="card-phrase">"What if the best fix was no alert at all?"</div>
+            <div class="card-hint">Hover to reveal →</div>
+          </div>
+          <div class="flip-card-back" onclick="go(2)">
+            <div class="card-back-eyebrow">Governance · Alert Removal</div>
+            <div class="card-back-title">Slice the alerts that shouldn't exist.</div>
+            <button class="card-enter-btn">Play →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-num">Card 03</div>
+            <span class="card-icon-front">📡</span>
+            <div class="card-phrase">"Alert Fatigue Combat — what is signal? What is noise?"</div>
+            <div class="card-hint">Hover to reveal →</div>
+          </div>
+          <div class="flip-card-back" onclick="go(3)">
+            <div class="card-back-eyebrow">Data · QI · Optimisation</div>
+            <div class="card-back-title">Can you tell the difference between signal and noise?</div>
+            <button class="card-enter-btn">Classify →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-num">Card 04</div>
+            <span class="card-icon-front">🧬</span>
+            <div class="card-phrase">"Pharmacogenomics CDS — are we there yet?"</div>
+            <div class="card-hint">Hover to reveal →</div>
+          </div>
+          <div class="flip-card-back" onclick="go(4)">
+            <div class="card-back-eyebrow">Pharmacogenomics · 3 Experiences</div>
+            <div class="card-back-title">Game. Science. Story. Pick your way in.</div>
+            <button class="card-enter-btn">Explore →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-num">Card 05</div>
+            <span class="card-icon-front">⚖️</span>
+            <div class="card-phrase">"5 requests. 2 slots. Your call."</div>
+            <div class="card-hint">Hover to reveal →</div>
+          </div>
+          <div class="flip-card-back" onclick="go(5)">
+            <div class="card-back-eyebrow">Governance · Live Poll</div>
+            <div class="card-back-title">You're in the committee. What gets built?</div>
+            <button class="card-enter-btn">Decide →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="home-footer">
+    <p>Based on published research · JAMIA Open 2023 · Journal of Pharmacogenetics 2026 · NUHS GMIO</p>
+    <button onclick="resetPoll()" style="background:none;border:none;color:rgba(255,255,255,0.1);font-size:10px;cursor:pointer;margin-left:1rem;font-family:'DM Sans',sans-serif;letter-spacing:0.05em;" title="Reset poll data">reset poll</button>
+  </div>
+</div>
+
+<!-- ══ CARD 1 ══ -->
+<div id="s1" class="screen scenario-screen">
+  <div class="scenario-nav">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="nav-label">Card 01 · 86% Ignored It</div>
+    <div class="nav-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
+  </div>
+
+  <!-- Step 1: The Decision -->
+  <div id="s1-stage1" class="stage active scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">You're a doctor.<br>An alert just fired — <em>again.</em></h2>
+      <p class="scene-sub">You're mid-shift, about to sign a medication order. This is the 5th time today this alert has appeared for this patient.</p>
+      <div class="patient-card">
+        <div class="patient-header">
+          <div><div class="patient-name">Ahmad bin Ismail, 67M</div><div class="patient-meta">Ward 5B · Day 3 · UTI / Urosepsis query</div></div>
+          <div class="patient-badges"><span class="badge badge-warn">Penicillin allergy</span><span class="badge badge-info">eGFR 32</span></div>
+        </div>
+        <div class="patient-body">
+          <div class="pstat"><label>eGFR</label><value class="flag">32 mL/min</value></div>
+          <div class="pstat"><label>WBC</label><value class="flag">14.2 × 10⁹/L ↑</value></div>
+          <div class="pstat"><label>CRP</label><value>87 mg/L ↑</value></div>
+        </div>
+      </div>
+      <div class="alert-box amber">
+        <div class="alert-count">Alert #5 today</div>
+        <div class="alert-title">⚠ Allergies have not been verified during this encounter.</div>
+        <div class="alert-body">Patient allergies may not be up to date. Please review before proceeding.<br><a href="#" style="color:var(--orange);font-size:12px;font-weight:600;text-decoration:none;display:inline-block;margin-top:0.5rem;">→ Allergies Activity</a></div>
+      </div>
+      <p style="font-size:0.88rem;color:var(--grey-text);margin-bottom:0.8rem;">You're focused on a critically ill patient. What do you do?</p>
+      <div class="choice-row">
+        <button class="choice-btn accept" onclick="s1go('accept')">✓ Accept<br><span style="font-size:11px;font-weight:400;">Review allergies now</span></button>
+        <button class="choice-btn override" onclick="s1go('override')">↗ Override<br><span style="font-size:11px;font-weight:400;">Already checked</span></button>
+        <button class="choice-btn dismiss" onclick="s1go('dismiss')">✕ Dismiss<br><span style="font-size:11px;font-weight:400;">Ignore and continue</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: Diagnose the 7 principles -->
+  <div id="s1-stage2" class="stage scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Now think like a<br><em>CDS analyst.</em></h2>
+      <p class="scene-sub">Look at the alert again. Which of these principles did it violate? Select all that apply — then see how NUHS diagnosed it.</p>
+
+      <div class="alert-box amber" style="margin-bottom:1.2rem;">
+        <div class="alert-count">Alert #5 today</div>
+        <div class="alert-title">⚠ Allergies have not been verified during this encounter.</div>
+        <div class="alert-body">Patient allergies may not be up to date. Please review before proceeding.</div>
+      </div>
+
+      <div style="margin-bottom:0.6rem;">
+        <div style="font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.6rem;">CDS 5 Rights</div>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;" id="s1-principles">
+
+          <div class="principle-item" data-id="info" data-correct="true" onclick="togglePrinciple(this)">
+            <div class="principle-check" id="pc-info"></div>
+            <div class="principle-content">
+              <div class="principle-name">Right Information</div>
+              <div class="principle-desc">Does the alert show the right clinical information to make a decision?</div>
+            </div>
+          </div>
+
+          <div class="principle-item" data-id="people" data-correct="true" onclick="togglePrinciple(this)">
+            <div class="principle-check" id="pc-people"></div>
+            <div class="principle-content">
+              <div class="principle-name">Right People</div>
+              <div class="principle-desc">Is it going to the clinicians who can actually act on it?</div>
+            </div>
+          </div>
+
+          <div class="principle-item" data-id="time" data-correct="true" onclick="togglePrinciple(this)">
+            <div class="principle-check" id="pc-time"></div>
+            <div class="principle-content">
+              <div class="principle-name">Right Time</div>
+              <div class="principle-desc">Does it fire at the right point in the clinical workflow?</div>
+            </div>
+          </div>
+
+          <div class="principle-item" data-id="channel" data-correct="false" onclick="togglePrinciple(this)">
+            <div class="principle-check" id="pc-channel"></div>
+            <div class="principle-content">
+              <div class="principle-name">Right Channel</div>
+              <div class="principle-desc">Is this the right medium — interruptive alert vs passive notification?</div>
+            </div>
+          </div>
+
+          <div class="principle-item" data-id="format" data-correct="true" onclick="togglePrinciple(this)">
+            <div class="principle-check" id="pc-format"></div>
+            <div class="principle-content">
+              <div class="principle-name">Right Intervention Format</div>
+              <div class="principle-desc">Is the alert structured to make the right action easy?</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="margin-bottom:1.2rem;">
+        <div style="font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.6rem;">NUHS ALCAP Principles</div>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+
+          <div class="principle-item" data-id="actionable" data-correct="true" onclick="togglePrinciple(this)">
+            <div class="principle-check" id="pc-actionable"></div>
+            <div class="principle-content">
+              <div class="principle-name">Actionable</div>
+              <div class="principle-desc">Does the alert tell the clinician exactly what to do — not just what's wrong?</div>
+            </div>
+          </div>
+
+          <div class="principle-item" data-id="clicks" data-correct="true" onclick="togglePrinciple(this)">
+            <div class="principle-check" id="pc-clicks"></div>
+            <div class="principle-content">
+              <div class="principle-name">As Little Clicks As Possible</div>
+              <div class="principle-desc">Does responding to this alert require minimal effort from the clinician?</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 1.2rem;background:white;border-radius:11px;border:1.5px solid var(--grey-mid);">
+        <div style="font-size:0.88rem;color:var(--grey-text);">Selected: <strong id="s1-sel-count" style="color:var(--navy);">0</strong> principles</div>
+        <button class="next-btn orange" id="s1-diagnose-btn" onclick="s1diagnose()" style="margin:0;padding:9px 20px;font-size:0.88rem;" disabled>Submit my diagnosis →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3: Reveal + NUHS data -->
+  <div id="s1-stage3" class="stage scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">NUHS found <em>all 7 violated.</em><br>Here's what we changed.</h2>
+
+      <div id="s1-score-banner" style="border-radius:12px;padding:1rem 1.3rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;background:linear-gradient(135deg,#EEF3FB,#E8EFFA);border:1px solid rgba(27,58,107,0.15);">
+        <span style="font-size:1.5rem;" id="s1-score-icon">🎯</span>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px;">Your diagnosis</div>
+          <div style="font-size:0.88rem;color:var(--text);font-weight:500;" id="s1-score-text">—</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.2rem;" id="s1-principle-reveal">
+
+        <div class="principle-reveal-row">
+          <div class="pr-verdict violated">✕ Violated</div>
+          <div class="pr-name">Right Information</div>
+          <div class="pr-reason">Generic message — no allergy details shown. Clinician had to navigate away to find the information needed to act.</div>
+        </div>
+        <div class="principle-reveal-row">
+          <div class="pr-verdict violated">✕ Violated</div>
+          <div class="pr-name">Right People</div>
+          <div class="pr-reason">Firing for all clinicians — including nurses and allied health with no allergy review rights. Only doctors and pharmacists should receive it.</div>
+        </div>
+        <div class="principle-reveal-row">
+          <div class="pr-verdict violated">✕ Violated</div>
+          <div class="pr-name">Right Time</div>
+          <div class="pr-reason">Firing at every order entry — including non-medication orders, pre-charting, and routine reviews. Should only fire when signing a medication order.</div>
+        </div>
+        <div class="principle-reveal-row">
+          <div class="pr-verdict ok">✓ Passed</div>
+          <div class="pr-name">Right Channel</div>
+          <div class="pr-reason">Interruptive was appropriate here — allergy review before prescribing is a genuine safety step. The channel was right, the design was not.</div>
+        </div>
+        <div class="principle-reveal-row">
+          <div class="pr-verdict violated">✕ Violated</div>
+          <div class="pr-name">Right Intervention Format</div>
+          <div class="pr-reason">No structured options — just "Dismiss." No acknowledge reasons, no inline allergy display, no one-click review action.</div>
+        </div>
+        <div class="principle-reveal-row" style="background:rgba(247,148,29,0.04);border-color:rgba(247,148,29,0.2);">
+          <div class="pr-verdict violated" style="background:rgba(247,148,29,0.1);color:var(--orange-dark);">✕ Violated</div>
+          <div class="pr-name" style="color:var(--orange-dark);">Actionable <span style="font-size:10px;color:var(--orange);font-weight:700;margin-left:4px;">ALCAP</span></div>
+          <div class="pr-reason">The alert said what was wrong but not what to do. "Allergies not verified" — so what? No clear recommended action embedded in the alert.</div>
+        </div>
+        <div class="principle-reveal-row" style="background:rgba(247,148,29,0.04);border-color:rgba(247,148,29,0.2);">
+          <div class="pr-verdict violated" style="background:rgba(247,148,29,0.1);color:var(--orange-dark);">✕ Violated</div>
+          <div class="pr-name" style="color:var(--orange-dark);">As Little Clicks As Possible <span style="font-size:10px;color:var(--orange);font-weight:700;margin-left:4px;">ALCAP</span></div>
+          <div class="pr-reason">To review allergies the clinician had to dismiss the alert, navigate to the allergies activity, review, mark as reviewed, then return to prescribing — 5+ clicks for a 2-second task.</div>
+        </div>
+
+      </div>
+
+      <div style="background:white;border-radius:14px;border:1px solid var(--grey-mid);overflow:hidden;margin-bottom:1.2rem;">
+        <div style="background:var(--success);padding:0.8rem 1.2rem;font-size:11px;font-weight:700;color:white;letter-spacing:0.08em;text-transform:uppercase;">After NUHS redesign — applying all 7 principles</div>
+        <div style="padding:1.2rem;">
+          <div class="alert-box green" style="margin-bottom:0.8rem;">
+            <div class="alert-title">⚠ Allergies have not been reviewed in this encounter.</div>
+            <div class="alert-body" style="margin-bottom:0.8rem;">
+              <strong>Current allergies:</strong> Penicillin (rash, 2019) · Plaster (contact dermatitis)<br>
+              <em style="font-size:11px;color:var(--grey-text);">Last reviewed by Dr Tan, 14 Mar 2026</em>
+            </div>
+            <div style="display:flex;gap:7px;flex-wrap:wrap;">
+              <span style="background:var(--success);color:white;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">✓ Mark as reviewed</span>
+              <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 12px;border-radius:8px;font-size:12px;">Patient not under my care</span>
+              <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 12px;border-radius:8px;font-size:12px;">Will review allergies later</span>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--grey-text);">One click to resolve. Allergies shown inline. Only fires for doctors and pharmacists at medication sign-off.</div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card"><span class="stat-num green">73%</span><div class="stat-lbl">Alert reduction</div></div>
+        <div class="stat-card"><span class="stat-num green">80%</span><div class="stat-lbl">Action taken (was 5.8%)</div></div>
+        <div class="stat-card"><span class="stat-num green">432K</span><div class="stat-lbl">Clicks saved/month</div></div>
+        <div class="stat-card"><span class="stat-num green">0</span><div class="stat-lbl">Safety events from change</div></div>
+      </div>
+
+      <div class="qi-whisper"><div class="qi-dot">💡</div><p>"GMIO watches what clinicians do with every alert — so we can design ones worth acting on. Without the data, 323,000 alerts a month would still be running and calling it safety."</p></div>
+
+      <div class="ai-demo">
+        <div class="ai-demo-hdr"><div class="ai-pulse"></div><div class="ai-demo-title">AI Alert Redesign Tool — CDS 5 Rights + ALCAP</div></div>
+        <div class="ai-demo-body">
+          <p style="font-size:12px;color:var(--grey-text);margin-bottom:0.8rem;">Describe any alert from your institution. The AI redesigns it applying all 7 principles.</p>
+          <div class="ai-input-row">
+            <input class="ai-input" id="s1in" placeholder="e.g. Drug interaction alert fires for every nurse on every shift..." />
+            <button class="ai-run" id="s1btn" onclick="runRedesign()">Redesign →</button>
+          </div>
+          <div class="ai-out" id="s1out">Your redesigned alert will appear here...</div>
+        </div>
+      </div>
+      <button class="next-btn" onclick="goHome()">← Try another card</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CARD 2 — NINJA SLICE GAME ══ -->
+<div id="s2" class="screen scenario-screen">
+  <div class="scenario-nav">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="nav-label">Card 02 · Kill the Alert</div>
+    <div class="nav-dots"><div class="dot active"></div><div class="dot"></div></div>
+  </div>
+
+  <div id="s2-stage1" class="stage active scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Three alerts.<br><em>Which ones should go?</em></h2>
+      <p class="scene-sub">Each alert appears one at a time. Slice to kill it — or leave it if it deserves to stay. Trust your instincts.</p>
+
+      <div class="ninja-arena" id="ninjaArena">
+        <div class="ninja-counter" id="ninjaCounter">1 / 3</div>
+        <div style="text-align:center;">
+          <div class="ninja-instruction" id="ninjaInstruction">An alert is incoming...</div>
+          <div id="ninjaFruit"></div>
+        </div>
+        <div class="ninja-hint" id="ninjaHint" style="display:none;">
+          <button class="ninja-action ninja-slice" onclick="ninjaSlice()">⚔ Slice it — kill this alert</button>
+          <button class="ninja-action ninja-keep" onclick="ninjaKeep()">🛡 Keep it — this alert stays</button>
+        </div>
+      </div>
+
+      <div id="s2-mini-results" style="display:none;margin-bottom:1rem;">
+        <div style="background:white;border-radius:12px;border:1px solid var(--grey-mid);padding:1rem 1.2rem;">
+          <div style="font-size:12px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem;">Your calls</div>
+          <div id="s2-results-list" style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.85rem;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="s2-stage2" class="stage scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Here's what <em>NUHS did</em> —<br>and what it saved.</h2>
+      <div class="sn-reveal-grid">
+        <div class="sn-reveal-row">
+          <div class="sn-reveal-verdict noise">Killed ⚔</div>
+          <div class="sn-reveal-name">CAUTI catheter alert</div>
+          <div class="sn-reveal-outcome">Near-100% override rate. ID experts agreed clinical education was the better channel. Turned off entirely.</div>
+          <div class="sn-reveal-saving" style="color:var(--success);">263 hrs saved/month</div>
+        </div>
+        <div class="sn-reveal-row">
+          <div class="sn-reveal-verdict noise">Killed ⚔</div>
+          <div class="sn-reveal-name">Non-ED orders to nurses</div>
+          <div class="sn-reveal-outcome">Nurses had zero authority to act on it. Firing for wrong people entirely. Removed from their queue.</div>
+          <div class="sn-reveal-saving" style="color:var(--success);">50,910 alerts eliminated/month</div>
+        </div>
+        <div class="sn-reveal-row">
+          <div class="sn-reveal-verdict signal" style="background:rgba(26,127,75,0.1);color:var(--success);">Kept 🛡</div>
+          <div class="sn-reveal-name">NSAID in asthma</div>
+          <div class="sn-reveal-outcome">Real clinical risk — NSAIDs can trigger bronchospasm in asthma patients. Specific, actionable, right people. This alert earns its place.</div>
+          <div class="sn-reveal-saving" style="color:var(--navy);">High clinical value</div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><span class="stat-num green">50,910</span><div class="stat-lbl">Interrupted alerts eliminated/month</div></div>
+        <div class="stat-card"><span class="stat-num green">263 hrs</span><div class="stat-lbl">Clinician time saved/month</div></div>
+        <div class="stat-card"><span class="stat-num green">0</span><div class="stat-lbl">Safety events after removal</div></div>
+        <div class="stat-card"><span class="stat-num green">↔</span><div class="stat-lbl">CAUTI rates unchanged</div></div>
+      </div>
+      <div class="qi-whisper"><div class="qi-dot">💡</div><p>"Before we turned them off, we needed data — who was receiving them, what the override rates were, what we'd monitor after removal. The data made deletion defensible. Without it, it's just a guess."</p></div>
+      <button class="next-btn" onclick="goHome()">← Try another card</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CARD 3 — SIGNAL VS NOISE ══ -->
+<div id="s3" class="screen scenario-screen">
+  <div class="scenario-nav">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="nav-label">Card 03 · Signal vs Noise</div>
+    <div class="nav-dots"><div class="dot active"></div><div class="dot"></div></div>
+  </div>
+
+  <div id="s3-stage1" class="stage active scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Four alerts.<br><em>Signal or noise?</em></h2>
+      <p class="scene-sub">You're looking at real alert data from an EMR system. Based on the numbers alone — classify each alert as a meaningful signal or unhelpful noise.</p>
+
+      <div class="sn-grid" id="snGrid">
+
+        <div class="sn-card" id="snc1">
+          <div class="sn-alert-name">Allergies not reviewed</div>
+          <div class="sn-stats">
+            <div class="sn-stat">Fires: <strong>323,113/month</strong></div>
+            <div class="sn-stat">Override rate: <strong>86%</strong></div>
+            <div class="sn-stat">Action taken: <strong>5.8%</strong></div>
+          </div>
+          <div class="sn-buttons">
+            <button class="sn-btn signal" onclick="snVote(1,'signal',this)">📶 Signal</button>
+            <button class="sn-btn noise" onclick="snVote(1,'noise',this)">🔇 Noise</button>
+          </div>
+        </div>
+
+        <div class="sn-card" id="snc2">
+          <div class="sn-alert-name">Warfarin dose check on renal impairment</div>
+          <div class="sn-stats">
+            <div class="sn-stat">Fires: <strong>1,240/month</strong></div>
+            <div class="sn-stat">Override rate: <strong>22%</strong></div>
+            <div class="sn-stat">Action taken: <strong>71%</strong></div>
+          </div>
+          <div class="sn-buttons">
+            <button class="sn-btn signal" onclick="snVote(2,'signal',this)">📶 Signal</button>
+            <button class="sn-btn noise" onclick="snVote(2,'noise',this)">🔇 Noise</button>
+          </div>
+        </div>
+
+        <div class="sn-card" id="snc3">
+          <div class="sn-alert-name">CAUTI catheter reminder (&gt;3 days)</div>
+          <div class="sn-stats">
+            <div class="sn-stat">Fires: <strong>50,910/month</strong></div>
+            <div class="sn-stat">Override rate: <strong>~97%</strong></div>
+            <div class="sn-stat">Action taken: <strong>&lt;3%</strong></div>
+          </div>
+          <div class="sn-buttons">
+            <button class="sn-btn signal" onclick="snVote(3,'signal',this)">📶 Signal</button>
+            <button class="sn-btn noise" onclick="snVote(3,'noise',this)">🔇 Noise</button>
+          </div>
+        </div>
+
+        <div class="sn-card" id="snc4">
+          <div class="sn-alert-name">NSAID prescribed to asthma patient</div>
+          <div class="sn-stats">
+            <div class="sn-stat">Fires: <strong>890/month</strong></div>
+            <div class="sn-stat">Override rate: <strong>31%</strong></div>
+            <div class="sn-stat">Action taken: <strong>64%</strong></div>
+          </div>
+          <div class="sn-buttons">
+            <button class="sn-btn signal" onclick="snVote(4,'signal',this)">📶 Signal</button>
+            <button class="sn-btn noise" onclick="snVote(4,'noise',this)">🔇 Noise</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 1.2rem;background:white;border-radius:11px;border:1.5px solid var(--grey-mid);">
+        <div style="font-size:0.88rem;color:var(--grey-text);">Classified: <strong id="snCount" style="color:var(--navy);">0</strong> / 4</div>
+        <button class="next-btn orange" id="snRevealBtn" onclick="stage(3,2)" disabled style="margin:0;padding:9px 20px;font-size:0.88rem;opacity:0.4;">See NUHS outcomes →</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="s3-stage2" class="stage scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Here's what the <em>data told us</em> —<br>and what we did.</h2>
+      <p class="scene-sub">Signal and noise look different when you have the numbers. Here's how NUHS responded to each.</p>
+
+      <div class="sn-reveal-grid">
+        <div class="sn-reveal-row">
+          <div class="sn-reveal-verdict noise">Noise</div>
+          <div class="sn-reveal-name">Allergies not reviewed</div>
+          <div class="sn-reveal-outcome">86% dismissed — but redesigned using CDS 5 Rights. Same alert, right people, right time. Action taken jumped to 80%.</div>
+          <div class="sn-reveal-saving" style="color:var(--success);">73% alert reduction</div>
+        </div>
+        <div class="sn-reveal-row">
+          <div class="sn-reveal-verdict signal">Signal</div>
+          <div class="sn-reveal-name">Warfarin dose check</div>
+          <div class="sn-reveal-outcome">71% action taken — clinicians trust it. Specific trigger, right patient, right time in workflow. This is what good CDS looks like.</div>
+          <div class="sn-reveal-saving" style="color:var(--navy);">Kept and maintained</div>
+        </div>
+        <div class="sn-reveal-row">
+          <div class="sn-reveal-verdict noise">Noise</div>
+          <div class="sn-reveal-name">CAUTI catheter reminder</div>
+          <div class="sn-reveal-outcome">97% override rate. ID experts agreed clinical education was better. Turned off entirely. CAUTI rates unchanged after removal.</div>
+          <div class="sn-reveal-saving" style="color:var(--success);">263 hrs saved/month</div>
+        </div>
+        <div class="sn-reveal-row">
+          <div class="sn-reveal-verdict signal">Signal</div>
+          <div class="sn-reveal-name">NSAID in asthma</div>
+          <div class="sn-reveal-outcome">64% action taken — clinicians engage with it. Real risk, specific population, actionable recommendation. Earns its place.</div>
+          <div class="sn-reveal-saving" style="color:var(--navy);">Kept and monitored</div>
+        </div>
+      </div>
+
+      <div class="reveal-card insight">
+        <div class="reveal-icon">📊</div>
+        <div class="reveal-text">
+          <h3>The pattern is consistent</h3>
+          <p>High firing rate + high override rate = noise. Low firing rate + high action taken = signal. The data doesn't lie — but someone has to be watching it. That's what CDS governance is.</p>
+        </div>
+      </div>
+
+      <div class="qi-whisper"><div class="qi-dot">💡</div><p>"Signal vs noise isn't a feeling — it's a measurement. Override rates, action taken rates, dwell time. If you're not tracking these, you can't govern your CDS."</p></div>
+      <button class="next-btn" onclick="goHome()">← Try another card</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CARD 4 — PGx GATEWAY ══ -->
+<div id="s4" class="screen scenario-screen">
+  <div class="scenario-nav">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="nav-label">Card 04 · Pharmacogenomics CDS</div>
+    <div class="nav-dots"><div class="dot active"></div></div>
+  </div>
+
+  <!-- Stage 1: Sub-card selector -->
+  <div id="s4-stage1" class="stage active scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Pharmacogenomics CDS —<br><em>are we there yet?</em></h2>
+      <p class="scene-sub">Three ways to explore the same question. Pick where you want to start — you can come back and try the others.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:1.5rem;">
+
+        <div onclick="go4('a')" style="background:white;border:2px solid var(--grey-mid);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.2s;text-align:center;" onmouseover="this.style.borderColor='var(--orange)';this.style.background='rgba(247,148,29,0.03)'" onmouseout="this.style.borderColor='var(--grey-mid)';this.style.background='white'">
+          <div style="font-size:2.5rem;margin-bottom:0.8rem;">🎰</div>
+          <div style="font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">Experience 4A · The Game</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:1rem;color:var(--text);line-height:1.4;margin-bottom:0.5rem;font-style:italic;">"Pull the lever. Every genome tells a different story."</div>
+          <div style="font-size:11px;color:var(--grey-text);">Personalised genomic safety card generator</div>
+        </div>
+
+        <div onclick="go4('b')" style="background:white;border:2px solid var(--grey-mid);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.2s;text-align:center;" onmouseover="this.style.borderColor='var(--orange)';this.style.background='rgba(247,148,29,0.03)'" onmouseout="this.style.borderColor='var(--grey-mid)';this.style.background='white'">
+          <div style="font-size:2.5rem;margin-bottom:0.8rem;">🧬</div>
+          <div style="font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">Experience 4B · The Science</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:1rem;color:var(--text);line-height:1.4;margin-bottom:0.5rem;font-style:italic;">"Same drug. Different genome. Different outcome."</div>
+          <div style="font-size:11px;color:var(--grey-text);">Two patients, one drug, completely different stories</div>
+        </div>
+
+        <div onclick="go4('c')" style="background:white;border:2px solid var(--grey-mid);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.2s;text-align:center;" onmouseover="this.style.borderColor='var(--orange)';this.style.background='rgba(247,148,29,0.03)'" onmouseout="this.style.borderColor='var(--grey-mid)';this.style.background='white'">
+          <div style="font-size:2.5rem;margin-bottom:0.8rem;">📖</div>
+          <div style="font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">Experience 4C · The Story</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:1rem;color:var(--text);line-height:1.4;margin-bottom:0.5rem;font-style:italic;">"The alert that could have saved her. But never fired."</div>
+          <div style="font-size:11px;color:var(--grey-text);">A patient story with a preventable ending</div>
+        </div>
+
+      </div>
+
+      <div class="qi-whisper"><div class="qi-dot">💡</div><p>"Standard medicine treats everyone the same. Precision medicine treats each patient as an individual. PGx CDS is the bridge between genomic knowledge and clinical action — and NUHS is building it."</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CARD 4A — SLOT MACHINE ══ -->
+<div id="s4a" class="screen scenario-screen">
+  <div class="scenario-nav">
+    <button class="back-btn" onclick="go(4)">← Back</button>
+    <div class="nav-label">Card 04A · Genome Slot Machine</div>
+    <div class="nav-dots"><div class="dot active"></div></div>
+  </div>
+  <div id="s4a-stage1" class="stage active scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Your genome.<br><em>Your safety card.</em></h2>
+      <p class="scene-sub">Enter your details. Pull the lever. Get a personalised genomic safety card — what could happen to someone like you if PGx CDS wasn't in place.</p>
+
+      <div style="background:white;border-radius:14px;border:1px solid var(--grey-mid);padding:1.4rem;margin-bottom:1.2rem;">
+        <div style="display:grid;grid-template-columns:1fr 0.4fr 1fr;gap:0.8rem;margin-bottom:0.8rem;">
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;">Your name</div>
+            <input class="ai-input" id="slotName" placeholder="e.g. Jishana" style="width:100%;" />
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;">Age</div>
+            <input class="ai-input" id="slotAge" placeholder="e.g. 35" style="width:100%;" type="number" />
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;">Diagnosis or condition</div>
+            <input class="ai-input" id="slotDx" placeholder="e.g. Atrial fibrillation" style="width:100%;" />
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--grey-text);font-style:italic;">Fictional genomic scenario for education only. Not personalised medical advice.</div>
+      </div>
+
+      <div class="slot-machine">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem;">Genomic profile randomising...</div>
+        <div class="slot-reels">
+          <div class="reel">
+            <div class="reel-label">Gene variant</div>
+            <div class="reel-value" id="s4a-reel1">CYP2C19<br>Poor metaboliser</div>
+          </div>
+          <div class="reel">
+            <div class="reel-label">Drug</div>
+            <div class="reel-value" id="s4a-reel2">Clopidogrel</div>
+          </div>
+          <div class="reel">
+            <div class="reel-label">Clinical risk</div>
+            <div class="reel-value" id="s4a-reel3">Stent<br>protection</div>
+          </div>
+        </div>
+        <button class="slot-lever" id="s4a-slotBtn" onclick="spinSlot4a()">🎰 Generate my safety card</button>
+        <div class="slot-spin-count" id="s4a-spinCount"></div>
+        <div class="slot-result" id="s4a-slotResult">
+          <div class="slot-result-label" id="s4a-cardLabel">Genomic Safety Card</div>
+          <div id="s4a-safetyCard"></div>
+        </div>
+      </div>
+
+      <button class="next-btn" onclick="go(4)">← Try another PGx experience</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CARD 4B — SCIENCE ══ -->
+<div id="s4b" class="screen scenario-screen">
+  <div class="scenario-nav">
+    <button class="back-btn" onclick="go(4)">← Back</button>
+    <div class="nav-label">Card 04B · Same Drug, Different Genome</div>
+    <div class="nav-dots"><div class="dot active"></div><div class="dot"></div></div>
+  </div>
+
+  <div id="s4b-stage1" class="stage active scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Two patients.<br>Same drug. <em>Same ward. Same day.</em></h2>
+      <p class="scene-sub">Both just had a cardiac stent. Both prescribed clopidogrel — standard post-stent therapy. No CDS alert fires for either. Which drugs below have known genomic variants that change how they work?</p>
+      <div class="pgx-compare">
+        <div class="pgx-col">
+          <div class="pgx-col-hdr">Patient A — Lim Ah Kow, 58M</div>
+          <div class="pgx-col-body">
+            <div class="gene-badge normal">CYP2C19 *1/*1 — Normal metaboliser</div>
+            <div class="pgx-row"><span class="pgx-lbl">Prescribed</span><span class="pgx-val">Clopidogrel 75mg OD</span></div>
+            <div class="pgx-row"><span class="pgx-lbl">Expected outcome</span><span class="pgx-val" style="color:var(--success);">Drug works as intended</span></div>
+            <div class="pgx-row"><span class="pgx-lbl">CDS alert</span><span class="pgx-val" style="color:var(--grey-text);">None fired</span></div>
+          </div>
+        </div>
+        <div class="pgx-col danger">
+          <div class="pgx-col-hdr">Patient B — Muthu s/o Rajan, 61M</div>
+          <div class="pgx-col-body">
+            <div class="gene-badge unknown">Genomic result: not in system</div>
+            <div class="pgx-row"><span class="pgx-lbl">Prescribed</span><span class="pgx-val">Clopidogrel 75mg OD</span></div>
+            <div class="pgx-row"><span class="pgx-lbl">Expected outcome</span><span class="pgx-val" style="color:var(--danger);">Unknown — no alert</span></div>
+            <div class="pgx-row"><span class="pgx-lbl">CDS alert</span><span class="pgx-val" style="color:var(--grey-text);">None fired</span></div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:0.8rem;">Which of these drugs have known genomic variants that change how they work?</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.7rem;margin-bottom:1rem;">
+        <button class="choice-btn neutral" onclick="stage('4b',2)">Clopidogrel</button>
+        <button class="choice-btn neutral" onclick="stage('4b',2)">Warfarin</button>
+        <button class="choice-btn neutral" onclick="stage('4b',2)">Codeine</button>
+        <button class="choice-btn neutral" onclick="stage('4b',2)">Simvastatin</button>
+        <button class="choice-btn neutral" onclick="stage('4b',2)">Escitalopram</button>
+        <button class="choice-btn neutral" style="border-color:var(--orange);color:var(--orange-dark);" onclick="stage('4b',2)">All of the above</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="s4b-stage2" class="stage scroll-content">
+    <div class="scene">
+      <h2 class="scene-title"><em>All of them.</em><br>Patient B is a CYP2C19 poor metaboliser.</h2>
+      <div class="reveal-card bad">
+        <div class="reveal-icon">🧬</div>
+        <div class="reveal-text"><h3>Clopidogrel doesn't work for him — and no one knows.</h3><p>Clopidogrel is a prodrug. It needs CYP2C19 to convert it into its active form. Poor metabolisers can't make that conversion. The drug sits inert. The stent stays unprotected. Without a PGx CDS alert, the prescriber has no idea.</p></div>
+      </div>
+      <div style="background:white;border-radius:14px;border:1px solid var(--grey-mid);overflow:hidden;margin-bottom:1.2rem;">
+        <div style="background:var(--navy);padding:0.8rem 1.2rem;font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.08em;text-transform:uppercase;">What good PGx CDS looks like — NUHS implementation</div>
+        <div style="padding:1.2rem;">
+          <div class="alert-box amber" style="margin-bottom:0.8rem;">
+            <div class="alert-title">⚠ Pharmacogenomics Warning: CYP2C19 POOR metaboliser</div>
+            <div class="alert-body">Patient may have significantly reduced platelet inhibition with clopidogrel due to impaired CYP2C19 metabolism.<br><br><strong>Recommendation:</strong> Consider switching to an antiplatelet not dependent on CYP2C19 activation (e.g. ticagrelor, prasugrel). If continuing clopidogrel, select an acknowledge reason below.</div>
+          </div>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;">
+            <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 11px;border-radius:8px;font-size:12px;">Switching to ticagrelor</span>
+            <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 11px;border-radius:8px;font-size:12px;">Patient preference — continue clopidogrel</span>
+            <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 11px;border-radius:8px;font-size:12px;">Will monitor closely</span>
+          </div>
+        </div>
+      </div>
+      <div class="qi-whisper"><div class="qi-dot">💡</div><p>"PGx CDS without outcome tracking is just an alert. With it, it's an improvement programme. NUHS GMIO is building that bridge — one gene-drug pair at a time."</p></div>
+      <button class="next-btn" onclick="go(4)">← Try another PGx experience</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CARD 4C — PATIENT STORY ══ -->
+<div id="s4c" class="screen scenario-screen">
+  <div class="scenario-nav">
+    <button class="back-btn" onclick="go(4)">← Back</button>
+    <div class="nav-label">Card 04C · The Missing Alert</div>
+    <div class="nav-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
+  </div>
+
+  <div id="s4c-stage1" class="stage active scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Meet Mdm Chen.<br><em>She needed an alert that never fired.</em></h2>
+      <p class="scene-sub">A real patient story — recreated. Read through what happened, day by day. Tap when you think a PGx CDS alert should have fired.</p>
+      <div style="background:white;border-radius:14px;border:2px solid var(--orange);padding:1.2rem;margin-bottom:1.5rem;">
+        <div style="font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">Patient</div>
+        <div style="font-size:1rem;font-weight:700;color:var(--text);">Chen Mei Ling, 58F</div>
+        <div style="font-size:0.84rem;color:var(--grey-text);margin-top:0.3rem;">New diagnosis of atrial fibrillation. Admitted for anticoagulation initiation. No known drug allergies. No prior warfarin use.</div>
+      </div>
+      <p style="font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:1rem;">Tap the moment you think a PGx CDS alert should have fired:</p>
+      <div class="story-timeline" id="s4c-timeline">
+        <div class="story-step" id="s4c-step1">
+          <div class="story-step-dot step-dot-normal">📋</div>
+          <div class="story-step-content">
+            <div class="story-step-day">Day 1 — Admission</div>
+            <div class="story-step-title">Warfarin prescribed at standard dose</div>
+            <div class="story-step-body">Cardiologist initiates warfarin 5mg daily — standard starting dose for AF. Pharmacogenomic testing available in system but not ordered. No alert fires.</div>
+            <button class="story-next-btn orange" onclick="s4cPick(1)">🔔 Alert should fire here</button>
+          </div>
+        </div>
+        <div class="story-step" id="s4c-step2">
+          <div class="story-step-dot step-dot-normal">🩸</div>
+          <div class="story-step-content">
+            <div class="story-step-day">Day 3 — First INR check</div>
+            <div class="story-step-title">INR: 1.8 — slightly subtherapeutic</div>
+            <div class="story-step-body">Target INR 2.0–3.0. Doctor increases warfarin to 6mg daily. Assumed she needs a higher dose. No alert fires.</div>
+            <button class="story-next-btn orange" onclick="s4cPick(2)">🔔 Alert should fire here</button>
+          </div>
+        </div>
+        <div class="story-step" id="s4c-step3">
+          <div class="story-step-dot step-dot-warning">⚠️</div>
+          <div class="story-step-content">
+            <div class="story-step-day">Day 5 — Second INR check</div>
+            <div class="story-step-title">INR: 4.9 — dangerously high</div>
+            <div class="story-step-body">Mdm Chen is at serious bleeding risk. Warfarin held. Vitamin K administered. Team puzzled — the dose increase was modest. Why did INR spike so dramatically?</div>
+            <button class="story-next-btn orange" onclick="s4cPick(3)">🔔 Alert should fire here</button>
+          </div>
+        </div>
+        <div class="story-step" id="s4c-step4">
+          <div class="story-step-dot step-dot-danger">🚨</div>
+          <div class="story-step-content">
+            <div class="story-step-day">Day 6 — Bleeding event</div>
+            <div class="story-step-title">Mdm Chen develops haematuria</div>
+            <div class="story-step-body">Visible blood in urine. Extended hospital stay. Family distressed. Investigation ordered — including pharmacogenomic testing. No alert fires.</div>
+            <button class="story-next-btn orange" onclick="s4cPick(4)">🔔 Alert should fire here</button>
+          </div>
+        </div>
+        <div class="story-step" id="s4c-step5">
+          <div class="story-step-dot step-dot-insight">🧬</div>
+          <div class="story-step-content">
+            <div class="story-step-day">Day 8 — PGx result returns</div>
+            <div class="story-step-title">VKORC1 variant detected — high warfarin sensitivity</div>
+            <div class="story-step-body">Mdm Chen carries a VKORC1 variant that makes her highly sensitive to warfarin. She needed approximately 50% of the standard dose. This was knowable from Day 1 — if anyone had looked.</div>
+            <button class="story-next-btn" onclick="s4cReveal()">See when the alert should have fired →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="s4c-stage2" class="stage scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">The alert should have<br>fired on <em>Day 1.</em></h2>
+      <div id="s4c-pick-box" style="background:white;border-radius:12px;border:1px solid var(--grey-mid);padding:1rem 1.3rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;">
+        <span style="font-size:1.3rem;">🎯</span>
+        <div><div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px;">You picked</div><div style="font-size:0.88rem;color:var(--text);font-weight:500;" id="s4cPickLabel">—</div></div>
+      </div>
+      <div style="background:white;border-radius:14px;border:1px solid var(--grey-mid);overflow:hidden;margin-bottom:1.2rem;">
+        <div style="background:var(--success);padding:0.8rem 1.2rem;font-size:11px;font-weight:700;color:white;letter-spacing:0.08em;text-transform:uppercase;">What the PGx CDS alert should have looked like — Day 1</div>
+        <div style="padding:1.2rem;">
+          <div class="alert-box green" style="margin-bottom:0.8rem;">
+            <div class="alert-title">🧬 Pharmacogenomics Alert: VKORC1 High Sensitivity Variant Detected</div>
+            <div class="alert-body">This patient carries a VKORC1 variant associated with significantly increased warfarin sensitivity. Standard dosing may lead to supratherapeutic INR and bleeding risk.<br><br><strong>Recommendation:</strong> Consider starting at 50% of standard dose (2.0–2.5mg daily). Increase INR monitoring frequency in first 2 weeks.</div>
+          </div>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;">
+            <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 11px;border-radius:8px;font-size:12px;">Starting at reduced dose per PGx protocol</span>
+            <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 11px;border-radius:8px;font-size:12px;">Will monitor INR closely — daily</span>
+            <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 11px;border-radius:8px;font-size:12px;">Clinical decision to proceed with standard dose</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-card bad">
+        <div class="reveal-icon">📅</div>
+        <div class="reveal-text"><h3>7 days. One bleeding event. One distressed family. All preventable.</h3><p>The genomic information existed. The testing capability existed. What was missing was the CDS — the system that connects the data to the decision at the right moment. Day 1. Before the first dose. That is the only moment that matters.</p></div>
+      </div>
+      <div class="qi-whisper"><div class="qi-dot">💡</div><p>"How many Mdm Chens are in your system right now — and does your CDS know?"</p></div>
+      <button class="next-btn orange" onclick="stage('4c',3)" style="align-self:flex-end;">Try the PGx generator →</button>
+    </div>
+  </div>
+
+  <div id="s4c-stage3" class="stage scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Generate a <em>PGx alert</em><br>for any gene-drug pair.</h2>
+      <p class="scene-sub">Standard CDS treats all patients the same. PGx CDS treats each patient as an individual. Try any combination.</p>
+      <div class="ai-demo">
+        <div class="ai-demo-hdr"><div class="ai-pulse"></div><div class="ai-demo-title">AI PGx Alert Generator — NUHS Framework</div></div>
+        <div class="ai-demo-body">
+          <div class="ai-input-row">
+            <input class="ai-input" id="s4cgene" placeholder="Gene variant (e.g. VKORC1 high sensitivity)" style="flex:1.3;" />
+            <input class="ai-input" id="s4cdrug" placeholder="Drug (e.g. Warfarin)" />
+            <button class="ai-run" id="s4cbtn" onclick="runPGx4c()">Generate →</button>
+          </div>
+          <div class="chip-row">
+            <span style="font-size:11px;color:var(--grey-text);">Try:</span>
+            <span class="chip" onclick="setP4c('CYP2D6 poor metaboliser','Codeine')">CYP2D6 + Codeine</span>
+            <span class="chip" onclick="setP4c('CYP2C19 poor metaboliser','Clopidogrel')">CYP2C19 + Clopidogrel</span>
+            <span class="chip" onclick="setP4c('SLCO1B1 variant','Simvastatin')">SLCO1B1 + Simvastatin</span>
+            <span class="chip" onclick="setP4c('VKORC1 high sensitivity','Warfarin')">VKORC1 + Warfarin</span>
+          </div>
+          <div class="ai-out" id="s4cout">Your PGx alert will appear here...</div>
+        </div>
+      </div>
+      <button class="next-btn" onclick="go(4)">← Try another PGx experience</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CARD 5 — GOVERNANCE POLL ══ -->
+<div id="s5" class="screen scenario-screen">
+  <div class="scenario-nav">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="nav-label">Card 05 · 5 Requests. 2 Slots.</div>
+    <div class="nav-dots"><div class="dot active"></div><div class="dot"></div></div>
+  </div>
+
+  <div id="s5-stage1" class="stage active scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">5 requests landed.<br><em>You can only build 2.</em></h2>
+      <p class="scene-sub">These are sitting in the CDS committee queue. Your team has capacity for 2 this sprint. Which 2 would you prioritise? No right answer — just your instinct.</p>
+      <div class="req-list">
+        <div class="req-card" data-id="1" onclick="toggleReq(this)"><div class="req-circle" id="rc1">01</div><div class="req-body"><div class="req-title">Ciprofloxacin + Amiodarone</div><div class="req-desc">Risk of fatal cardiac arrhythmia (QT prolongation). A near-miss incident was reported last month in the ED. No alert currently exists.</div><div class="req-tags"><span class="rtag red">Recent incident</span><span class="rtag">New build</span><span class="rtag">High severity</span></div></div></div>
+        <div class="req-card" data-id="2" onclick="toggleReq(this)"><div class="req-circle" id="rc2">02</div><div class="req-body"><div class="req-title">Vitamin D Screening Reminder</div><div class="req-desc">Outpatient reminder to consider Vitamin D screening in patients over 65. Requested by geriatrics team. No safety risk.</div><div class="req-tags"><span class="rtag">New build</span><span class="rtag">Low urgency</span><span class="rtag">Outpatient</span></div></div></div>
+        <div class="req-card" data-id="3" onclick="toggleReq(this)"><div class="req-circle" id="rc3">03</div><div class="req-body"><div class="req-title">Fix: ACEi + Diuretic + NSAID Alert</div><div class="req-desc">An existing alert for this triple combination is misfiring — triggering for patients already on nephroprotective monitoring. Clinicians are ignoring it entirely.</div><div class="req-tags"><span class="rtag orange">Existing — broken</span><span class="rtag">AKI risk</span><span class="rtag">High override rate</span></div></div></div>
+        <div class="req-card" data-id="4" onclick="toggleReq(this)"><div class="req-circle" id="rc4">04</div><div class="req-body"><div class="req-title">Duplicate PPI Alert</div><div class="req-desc">Flag when a patient is prescribed both Omeprazole and Pantoprazole. Happens infrequently. Requested by pharmacy.</div><div class="req-tags"><span class="rtag">New build</span><span class="rtag">Low frequency</span><span class="rtag">Pharmacy-driven</span></div></div></div>
+        <div class="req-card" data-id="5" onclick="toggleReq(this)"><div class="req-circle" id="rc5">05</div><div class="req-body"><div class="req-title">Valproate in Women of Childbearing Age</div><div class="req-desc">Regulatory requirement. Valproate carries significant teratogenic risk. National directive requires an active alert for prescribing to women of childbearing potential. Not yet implemented.</div><div class="req-tags"><span class="rtag red">Regulatory</span><span class="rtag">New build</span><span class="rtag">Teratogenic risk</span></div></div></div>
+      </div>
+      <div class="req-footer">
+        <div style="font-size:0.88rem;color:var(--grey-text);">Selected: <strong id="s5count" style="color:var(--navy);">0</strong> / 2</div>
+        <button class="next-btn orange" id="s5pollBtn" onclick="s5showPoll()" disabled style="margin:0;padding:9px 20px;font-size:0.88rem;opacity:0.4;">See how others voted →</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="s5-stage2" class="stage scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Here's what everyone<br>at this booth <em>chose.</em></h2>
+      <p class="scene-sub">No right answer. The spread of choices is the conversation.</p>
+      <div style="background:white;border-radius:12px;border:1px solid var(--grey-mid);padding:1rem 1.3rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;">
+        <span style="font-size:1.3rem;">🎯</span>
+        <div><div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px;">Your picks</div><div style="font-size:0.88rem;color:var(--text);font-weight:500;" id="s5picks">—</div></div>
+      </div>
+      <div class="poll-box">
+        <div class="poll-title">SmartHealth Asia 2026 · Live Governance Poll</div>
+        <div class="poll-row"><div class="poll-lbl">01 · Cipro + Amiodarone</div><div class="poll-track"><div class="poll-fill" id="pb1" style="width:0%"></div></div><div class="poll-pct" id="pp1">—</div></div>
+        <div class="poll-row"><div class="poll-lbl">02 · Vitamin D reminder</div><div class="poll-track"><div class="poll-fill muted" id="pb2" style="width:0%"></div></div><div class="poll-pct" id="pp2">—</div></div>
+        <div class="poll-row"><div class="poll-lbl">03 · Fix ACEi alert</div><div class="poll-track"><div class="poll-fill" id="pb3" style="width:0%;background:var(--orange-light);"></div></div><div class="poll-pct" id="pp3">—</div></div>
+        <div class="poll-row"><div class="poll-lbl">04 · Duplicate PPI</div><div class="poll-track"><div class="poll-fill muted" id="pb4" style="width:0%"></div></div><div class="poll-pct" id="pp4">—</div></div>
+        <div class="poll-row"><div class="poll-lbl">05 · Valproate (regulatory)</div><div class="poll-track"><div class="poll-fill" id="pb5" style="width:0%"></div></div><div class="poll-pct" id="pp5">—</div></div>
+        <div class="poll-meta" id="s5meta">Building results...</div>
+      </div>
+      <div style="background:white;border-radius:12px;border:1px solid var(--grey-mid);padding:1rem 1.3rem;margin-bottom:1.2rem;">
+        <div style="font-size:12px;color:var(--grey-text);font-style:italic;line-height:1.7;">What drove your decision? Every institution weighs these differently — urgency, regulatory pressure, clinical culture, available resources. We'd love to hear your thinking.</div>
+      </div>
+      <button class="next-btn" onclick="goHome()">← Try another card</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ CARD 6 — GENOME SLOT MACHINE ══ -->
+<div id="s6" class="screen scenario-screen">
+  <div class="scenario-nav">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="nav-label">Card 06 · Genome Slot Machine</div>
+    <div class="nav-dots"><div class="dot active"></div></div>
+  </div>
+  <div id="s6-stage1" class="stage active scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Pull the lever.<br><em>Every genome tells a different story.</em></h2>
+      <p class="scene-sub">Each spin generates a random gene variant + drug + patient combination. The AI tells you what happens — and whether a PGx CDS alert should have fired. Every result is unique.</p>
+
+      <div class="slot-machine">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem;">Randomising patient profile...</div>
+        <div class="slot-reels">
+          <div class="reel">
+            <div class="reel-label">Gene variant</div>
+            <div class="reel-value" id="reel1">CYP2C19<br>Poor metaboliser</div>
+          </div>
+          <div class="reel">
+            <div class="reel-label">Drug</div>
+            <div class="reel-value" id="reel2">Clopidogrel</div>
+          </div>
+          <div class="reel">
+            <div class="reel-label">Patient</div>
+            <div class="reel-value" id="reel3">Post-stent<br>62M</div>
+          </div>
+        </div>
+        <button class="slot-lever" id="slotBtn" onclick="spinSlot()">🎰 Spin the genome</button>
+        <div class="slot-spin-count" id="spinCount">Spin count: 0</div>
+        <div class="slot-result" id="slotResult">
+          <div class="slot-result-label">PGx CDS Analysis</div>
+          <div class="slot-result-title" id="slotTitle"></div>
+          <div class="slot-result-body" id="slotBody"></div>
+        </div>
+      </div>
+
+      <div class="reveal-card insight">
+        <div class="reveal-icon">🧬</div>
+        <div class="reveal-text">
+          <h3>Why this matters for Singapore</h3>
+          <p>Singapore's multiethnic population carries significantly different variant frequencies. CYP2C19 poor metaboliser status affects ~15% of Chinese patients. VKORC1 variants affect warfarin dosing differently across Malay, Chinese and Indian populations. One standard alert cannot serve all patients equally — PGx CDS must be population-aware.</p>
+        </div>
+      </div>
+      <button class="next-btn" onclick="goHome()">← Try another card</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CARD 7 — THE MISSING ALERT ══ -->
+<div id="s7" class="screen scenario-screen">
+  <div class="scenario-nav">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="nav-label">Card 07 · The Missing Alert</div>
+    <div class="nav-dots">
+      <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div>
+    </div>
+  </div>
+
+  <div id="s7-stage1" class="stage active scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Meet Mdm Chen.<br><em>She needed an alert that never fired.</em></h2>
+      <p class="scene-sub">A real patient story — recreated. Read through what happened, day by day. At any point, tap when you think a PGx CDS alert should have fired.</p>
+
+      <div style="background:white;border-radius:14px;border:2px solid var(--orange);padding:1.2rem;margin-bottom:1.5rem;">
+        <div style="font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">Patient</div>
+        <div style="font-size:1rem;font-weight:700;color:var(--text);">Chen Mei Ling, 58F</div>
+        <div style="font-size:0.84rem;color:var(--grey-text);margin-top:0.3rem;">New diagnosis of atrial fibrillation. Admitted for anticoagulation initiation. No known drug allergies. No prior warfarin use.</div>
+      </div>
+
+      <p style="font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:1rem;">Tap the moment you think a PGx CDS alert should have fired:</p>
+
+      <div class="story-timeline" id="storyTimeline">
+
+        <div class="story-step" id="step1">
+          <div class="story-step-dot step-dot-normal">📋</div>
+          <div class="story-step-content">
+            <div class="story-step-day">Day 1 — Admission</div>
+            <div class="story-step-title">Warfarin prescribed at standard dose</div>
+            <div class="story-step-body">Cardiologist initiates warfarin 5mg daily — standard starting dose for AF. Pharmacogenomic testing available in system but not ordered. No alert fires.</div>
+            <button class="story-next-btn orange" onclick="s7pick(1)">🔔 Alert should fire here</button>
+          </div>
+        </div>
+
+        <div class="story-step" id="step2">
+          <div class="story-step-dot step-dot-normal">🩸</div>
+          <div class="story-step-content">
+            <div class="story-step-day">Day 3 — First INR check</div>
+            <div class="story-step-title">INR: 1.8 — slightly subtherapeutic</div>
+            <div class="story-step-body">Target INR 2.0–3.0. Doctor increases warfarin to 6mg daily. Assumed she needs a higher dose. No alert fires.</div>
+            <button class="story-next-btn orange" onclick="s7pick(2)">🔔 Alert should fire here</button>
+          </div>
+        </div>
+
+        <div class="story-step" id="step3">
+          <div class="story-step-dot step-dot-warning">⚠️</div>
+          <div class="story-step-content">
+            <div class="story-step-day">Day 5 — Second INR check</div>
+            <div class="story-step-title">INR: 4.9 — dangerously high</div>
+            <div class="story-step-body">Mdm Chen is at serious bleeding risk. Warfarin held. Vitamin K administered. Team puzzled — the dose increase was modest. Why did INR spike so dramatically?</div>
+            <button class="story-next-btn orange" onclick="s7pick(3)">🔔 Alert should fire here</button>
+          </div>
+        </div>
+
+        <div class="story-step" id="step4">
+          <div class="story-step-dot step-dot-danger">🚨</div>
+          <div class="story-step-content">
+            <div class="story-step-day">Day 6 — Bleeding event</div>
+            <div class="story-step-title">Mdm Chen develops haematuria</div>
+            <div class="story-step-body">Visible blood in urine. Extended hospital stay. Family distressed. Investigation ordered — including pharmacogenomic testing. No alert fires.</div>
+            <button class="story-next-btn orange" onclick="s7pick(4)">🔔 Alert should fire here</button>
+          </div>
+        </div>
+
+        <div class="story-step" id="step5">
+          <div class="story-step-dot step-dot-insight">🧬</div>
+          <div class="story-step-content">
+            <div class="story-step-day">Day 8 — PGx result returns</div>
+            <div class="story-step-title">VKORC1 variant detected — high warfarin sensitivity</div>
+            <div class="story-step-body">Mdm Chen carries a VKORC1 variant that makes her highly sensitive to warfarin. She needed approximately 50% of the standard dose. This was knowable from Day 1 — if anyone had looked.</div>
+            <button class="story-next-btn" onclick="s7reveal()">See when the alert should have fired →</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="s7-stage2" class="stage scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">The alert should have<br>fired on <em>Day 1.</em></h2>
+      <div id="s7-your-pick" style="background:white;border-radius:12px;border:1px solid var(--grey-mid);padding:1rem 1.3rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;">
+        <span style="font-size:1.3rem;">🎯</span>
+        <div><div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px;">You picked</div><div style="font-size:0.88rem;color:var(--text);font-weight:500;" id="s7pickLabel">—</div></div>
+      </div>
+
+      <div style="background:white;border-radius:14px;border:1px solid var(--grey-mid);overflow:hidden;margin-bottom:1.2rem;">
+        <div style="background:var(--success);padding:0.8rem 1.2rem;font-size:11px;font-weight:700;color:white;letter-spacing:0.08em;text-transform:uppercase;">What the PGx CDS alert should have looked like — Day 1</div>
+        <div style="padding:1.2rem;">
+          <div class="alert-box green" style="margin-bottom:0.8rem;">
+            <div class="alert-title">🧬 Pharmacogenomics Alert: VKORC1 High Sensitivity Variant Detected</div>
+            <div class="alert-body">This patient carries a VKORC1 variant associated with significantly increased warfarin sensitivity. Standard dosing may lead to supratherapeutic INR and bleeding risk.<br><br><strong>Recommendation:</strong> Consider starting at 50% of standard dose (2.0–2.5mg daily). Increase INR monitoring frequency in first 2 weeks. Refer to NUHS PGx dosing protocol.<br><br><em>If proceeding with standard dose, please select an acknowledge reason.</em></div>
+          </div>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;">
+            <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 11px;border-radius:8px;font-size:12px;">Starting at reduced dose per PGx protocol</span>
+            <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 11px;border-radius:8px;font-size:12px;">Will monitor INR closely — daily</span>
+            <span style="background:var(--grey-light);border:1px solid var(--grey-mid);padding:5px 11px;border-radius:8px;font-size:12px;">Clinical decision to proceed with standard dose</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-card bad">
+        <div class="reveal-icon">📅</div>
+        <div class="reveal-text">
+          <h3>7 days. One bleeding event. One distressed family. All preventable.</h3>
+          <p>The genomic information existed. The testing capability existed. What was missing was the CDS — the system that connects the data to the decision at the right moment. Day 1. Before the first dose. That is the only moment that matters.</p>
+        </div>
+      </div>
+
+      <div class="qi-whisper"><div class="qi-dot">💡</div><p>"PGx CDS without outcome tracking is just an alert. With it, it becomes evidence. How many Mdm Chens are in your system right now — and does your CDS know?"</p></div>
+
+      <button class="next-btn orange" onclick="stage(7,3)" style="align-self:flex-end;">Try the PGx generator →</button>
+    </div>
+  </div>
+
+  <div id="s7-stage3" class="stage scroll-content">
+    <div class="scene">
+      <h2 class="scene-title">Generate a <em>PGx alert</em><br>for any gene-drug pair.</h2>
+      <p class="scene-sub">This is the frontier of CDS. Standard alerts treat all patients the same. PGx alerts treat each patient as an individual. Try any combination.</p>
+      <div class="ai-demo">
+        <div class="ai-demo-hdr"><div class="ai-pulse"></div><div class="ai-demo-title">AI PGx Alert Generator — NUHS Framework</div></div>
+        <div class="ai-demo-body">
+          <div class="ai-input-row">
+            <input class="ai-input" id="s7gene" placeholder="Gene variant (e.g. VKORC1 high sensitivity)" style="flex:1.3;" />
+            <input class="ai-input" id="s7drug" placeholder="Drug (e.g. Warfarin)" />
+            <button class="ai-run" id="s7btn" onclick="runPGx7()">Generate →</button>
+          </div>
+          <div class="chip-row">
+            <span style="font-size:11px;color:var(--grey-text);">Try:</span>
+            <span class="chip" onclick="setP7('CYP2D6 poor metaboliser','Codeine')">CYP2D6 + Codeine</span>
+            <span class="chip" onclick="setP7('CYP2C19 poor metaboliser','Clopidogrel')">CYP2C19 + Clopidogrel</span>
+            <span class="chip" onclick="setP7('SLCO1B1 variant','Simvastatin')">SLCO1B1 + Simvastatin</span>
+            <span class="chip" onclick="setP7('CYP2C19 poor metaboliser','Escitalopram')">CYP2C19 + Escitalopram</span>
+          </div>
+          <div class="ai-out" id="s7out">Your PGx alert will appear here...</div>
+        </div>
+      </div>
+      <button class="next-btn" onclick="goHome()">← Try another card</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── NAV ──
+function goHome() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('home').classList.add('active');
+}
+function go(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+  reset(n);
+}
+function reset(n) {
+  const sc = document.getElementById('s'+n);
+  sc.querySelectorAll('.stage').forEach((s,i) => s.classList.toggle('active', i===0));
+  sc.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===0));
+}
+function stage(n, num) {
+  const sc = document.getElementById('s'+n);
+  if (!sc) return;
+  sc.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+  const target = sc.querySelector('#s'+n+'-stage'+num);
+  if (target) target.classList.add('active');
+  sc.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i < num));
+  sc.querySelector('.scroll-content.active')?.scrollTo(0,0);
+}
+
+// ── CARD 4 sub-card navigation ──
+function go4(sub) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const sc = document.getElementById('s4'+sub);
+  if (sc) { sc.classList.add('active'); reset('4'+sub); }
+  if (sub === 'c') setTimeout(initS4c, 200);
+}
+
+// ── CARD 4A SLOT MACHINE ──
+const pgxGenes = [
+  'CYP2C19 poor metaboliser','CYP2D6 poor metaboliser',
+  'CYP2D6 ultra-rapid metaboliser','VKORC1 high sensitivity variant',
+  'SLCO1B1 variant','CYP2C9 poor metaboliser',
+  'TPMT deficiency variant','CYP2C19 intermediate metaboliser'
+];
+const pgxDrugs = [
+  'Clopidogrel','Warfarin','Codeine','Simvastatin',
+  'Escitalopram','Azathioprine','Tacrolimus','Tramadol'
+];
+const pgxRisks = [
+  'Stent protection','Bleeding risk','Pain control',
+  'Muscle toxicity','Mood stabilisation','Immune suppression',
+  'Transplant dosing','Opioid sensitivity'
+];
+let s4aSpinCount = 0;
+let s4aSpinning = false;
+
+async function spinSlot4a() {
+  if (s4aSpinning) return;
+  const name = document.getElementById('slotName').value.trim() || 'You';
+  const age = document.getElementById('slotAge').value.trim() || '—';
+  const dx = document.getElementById('slotDx').value.trim() || 'General health';
+  s4aSpinning = true;
+  const btn = document.getElementById('s4a-slotBtn');
+  const result = document.getElementById('s4a-slotResult');
+  btn.disabled = true;
+  result.className = 'slot-result';
+
+  const gene = pgxGenes[Math.floor(Math.random()*pgxGenes.length)];
+  const drug = pgxDrugs[Math.floor(Math.random()*pgxDrugs.length)];
+  const risk = pgxRisks[Math.floor(Math.random()*pgxRisks.length)];
+
+  ['s4a-reel1','s4a-reel2','s4a-reel3'].forEach(id => {
+    document.getElementById(id).classList.add('spinning');
+  });
+  await new Promise(r => setTimeout(r, 1200));
+
+  document.getElementById('s4a-reel1').classList.remove('spinning');
+  document.getElementById('s4a-reel1').innerHTML = gene.replace(' ','<br>');
+  await new Promise(r => setTimeout(r, 200));
+  document.getElementById('s4a-reel2').classList.remove('spinning');
+  document.getElementById('s4a-reel2').textContent = drug;
+  await new Promise(r => setTimeout(r, 200));
+  document.getElementById('s4a-reel3').classList.remove('spinning');
+  document.getElementById('s4a-reel3').innerHTML = risk.replace(' ','<br>');
+
+  s4aSpinCount++;
+  document.getElementById('s4a-spinCount').textContent = `Card generated: ${s4aSpinCount}`;
+  result.className = 'slot-result show';
+  document.getElementById('s4a-cardLabel').textContent = '🧬 Generating your genomic safety card...';
+  document.getElementById('s4a-safetyCard').innerHTML = '<div style="color:var(--grey-text);font-style:italic;font-size:13px;">Analysing genomic profile...</div>';
+
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:500,
+        messages:[{role:'user',content:`You are a pharmacogenomics CDS specialist at NUHS Singapore. Generate a personalised genomic safety card.
+
+Patient: ${name}, ${age} years old
+Diagnosis/condition: ${dx}
+Gene variant: ${gene}
+Drug: ${drug}
+
+Write a safety card with these exact sections (plain text, no markdown):
+GENOMIC SAFETY CARD FOR: ${name}
+GENE VARIANT: ${gene}
+DRUG OF CONCERN: ${drug}
+WHAT THIS MEANS: One sentence explaining the clinical implication for this patient specifically.
+WHAT COULD HAPPEN WITHOUT PGx CDS: One dramatic but clinically accurate sentence.
+WHAT PGx CDS DOES: One sentence — what the alert would say or do.
+NUHS STATUS: One sentence on whether NUHS has implemented this PGx alert.
+
+Keep total under 120 words. Make it feel personal and real. End with: "Fictional scenario for education. Not personal medical advice."`}]
+      })
+    });
+    const d = await r.json();
+    const text = d.content[0].text;
+    document.getElementById('s4a-cardLabel').textContent = '🧬 Your Genomic Safety Card';
+    document.getElementById('s4a-safetyCard').innerHTML = `
+      <div style="border-top:2px solid var(--orange);margin-top:0.8rem;padding-top:0.8rem;">
+        <div style="font-size:13px;line-height:1.8;color:var(--text);white-space:pre-wrap;">${text}</div>
+        <div style="margin-top:1rem;padding-top:0.8rem;border-top:1px solid var(--grey-mid);display:flex;justify-content:space-between;align-items:center;">
+          <div style="font-size:10px;color:var(--grey-text);">NUHS GMIO · SmartHealth Asia 2026</div>
+          <div style="font-size:10px;color:var(--orange);font-weight:700;">📸 Screenshot to share</div>
+        </div>
+      </div>`;
+  } catch(e) {
+    document.getElementById('s4a-cardLabel').textContent = 'Could not generate — please try again';
+  }
+  btn.disabled = false;
+  s4aSpinning = false;
+}
+
+// ── CARD 4C PATIENT STORY ──
+let s4cPicked = 0;
+const s4cPickNames = {
+  1:'Day 1 — when warfarin was first prescribed',
+  2:'Day 3 — when INR came back subtherapeutic',
+  3:'Day 5 — when INR spiked to 4.9',
+  4:'Day 6 — when the bleeding event occurred'
+};
+
+function initS4c() {
+  document.querySelectorAll('#s4c-timeline .story-step').forEach((el,i) => {
+    setTimeout(() => el.classList.add('visible'), i*300);
+  });
+}
+
+function s4cPick(day) {
+  s4cPicked = day;
+  document.getElementById('s4cPickLabel').textContent = s4cPickNames[day];
+  stage('4c', 2);
+}
+
+function s4cReveal() {
+  s4cPicked = 5;
+  document.getElementById('s4cPickLabel').textContent = 'End of story — after the bleeding event';
+  stage('4c', 2);
+}
+
+async function runPGx4c() {
+  const gene = document.getElementById('s4cgene').value.trim();
+  const drug = document.getElementById('s4cdrug').value.trim();
+  if (!gene || !drug) return;
+  const btn = document.getElementById('s4cbtn');
+  const out = document.getElementById('s4cout');
+  btn.disabled = true; out.className = 'ai-out loading'; out.textContent = 'Generating PGx alert...';
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:700,messages:[{role:'user',content:`You are a clinical pharmacogenomics CDS specialist. Generate a precise clinical PGx alert for:
+Gene variant: ${gene}
+Drug: ${drug}
+
+Format:
+ALERT TITLE: (concise)
+CLINICAL IMPLICATION: (what happens to this patient, 1-2 sentences)
+RECOMMENDATION: (specific actionable guidance)
+ACKNOWLEDGE REASONS: (3 options)
+MONITORING: (what to watch)
+
+Under 180 words. Be clinically precise.`}]})});
+    const d = await r.json();
+    out.className = 'ai-out'; out.textContent = d.content[0].text;
+  } catch(e) { out.className = 'ai-out'; out.textContent = 'Could not connect. Please try again.'; }
+  btn.disabled = false;
+}
+function setP4c(g,d) { document.getElementById('s4cgene').value=g; document.getElementById('s4cdrug').value=d; }
+
+// ── CARD 1 ──
+let s1choice = '';
+let s1selected = new Set();
+
+function s1go(choice) {
+  s1choice = choice;
+  stage(1,2);
+}
+
+function togglePrinciple(el) {
+  const id = el.dataset.id;
+  if (s1selected.has(id)) {
+    s1selected.delete(id);
+    el.classList.remove('selected');
+  } else {
+    s1selected.add(id);
+    el.classList.add('selected');
+  }
+  document.getElementById('s1-sel-count').textContent = s1selected.size;
+  const btn = document.getElementById('s1-diagnose-btn');
+  btn.disabled = s1selected.size === 0;
+}
+
+function s1diagnose() {
+  // correct answers: info, people, time, format, actionable, clicks (NOT channel)
+  const correct = new Set(['info','people','time','format','actionable','clicks']);
+  const correct6 = [...correct];
+  let hits = 0;
+  let missed = 0;
+  let falsePos = 0;
+
+  s1selected.forEach(id => {
+    if (correct.has(id)) hits++;
+    else falsePos++;
+  });
+  correct6.forEach(id => {
+    if (!s1selected.has(id)) missed++;
+  });
+
+  let scoreText = '';
+  let scoreIcon = '';
+  if (hits === 6 && falsePos === 0) {
+    scoreText = `Perfect — you identified all 6 violated principles and correctly spared Right Channel.`;
+    scoreIcon = '🎯';
+  } else if (hits >= 4) {
+    scoreText = `You caught ${hits} of 6 violated principles. ${missed > 0 ? `Missed: ${missed} violation${missed>1?'s':''}.` : ''} ${falsePos > 0 ? `Right Channel actually passed — the channel was correct, the design wasn't.' ` : ''}`;
+    scoreIcon = '✅';
+  } else {
+    scoreText = `You caught ${hits} of 6 violated principles. Most CDS analysts are surprised how many this alert failed — see the full breakdown below.`;
+    scoreIcon = '🔍';
+  }
+
+  document.getElementById('s1-score-icon').textContent = scoreIcon;
+  document.getElementById('s1-score-text').textContent = scoreText;
+  stage(1,3);
+}
+async function runRedesign() {
+  const v = document.getElementById('s1in').value.trim();
+  if (!v) return;
+  const btn = document.getElementById('s1btn');
+  const out = document.getElementById('s1out');
+  btn.disabled = true; out.className = 'ai-out loading'; out.textContent = 'Redesigning using CDS 5 Rights...';
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,messages:[{role:'user',content:`You are a CDS governance expert at NUHS Singapore. Redesign this poorly designed CDS alert using the CDS 5 Rights framework (Right Information, Right People, Right Time, Right Channel, Right Format) and ALCAP principles (Actionable, Local context-aware, Clinician-friendly, Acknowledged with reasons, Post-deployment monitored).
+
+Alert: "${v}"
+
+Structure your response as:
+PROBLEM: Which Rights were violated (2 sentences max)
+REDESIGNED ALERT TEXT: The actual alert message
+RIGHT PEOPLE: Who should receive it
+RIGHT TIME: When it fires in workflow  
+ACKNOWLEDGE REASONS: 3 options
+MEASURE SUCCESS: One metric to track
+
+Under 200 words. Be specific and clinical.`}]})});
+    const d = await r.json();
+    out.className = 'ai-out'; out.textContent = d.content[0].text;
+  } catch(e) { out.className = 'ai-out'; out.textContent = 'Could not connect. Please try again.'; }
+  btn.disabled = false;
+}
+
+// ── CARD 2 NINJA GAME ──
+const alerts = [
+  { id:'cauti', title:'CAUTI catheter reminder', desc:'Patient has had a urinary catheter for more than 3 days. Please review need for continued catheterisation.', stats:['Fires: 50,910/month','Override rate: ~97%','Action taken: <3%'], correct:'slice', label:'Inpatient alert' },
+  { id:'edorders', title:'Orders placed by non-ED users', desc:'There are new orders placed by non-ED clinicians while patient is still under ED care. Please review.', stats:['Fires: 208,801/month','Sending to: All ED staff','0% nurse authority to act'], correct:'slice', label:'ED alert' },
+  { id:'nsaid', title:'NSAID prescribed — asthma patient', desc:'This patient has a documented asthma diagnosis. NSAIDs may trigger bronchospasm. Please review the prescription before signing.', stats:['Fires: 890/month','Override rate: 31%','Action taken: 64%'], correct:'keep', label:'Medication alert' }
+];
+let ninjaIdx = 0;
+let ninjaResults = [];
+let ninjaAnimating = false;
+
+function ninjaRender() {
+  if (ninjaIdx >= alerts.length) { ninjaFinish(); return; }
+  const a = alerts[ninjaIdx];
+  document.getElementById('ninjaCounter').textContent = `${ninjaIdx+1} / ${alerts.length}`;
+  document.getElementById('ninjaInstruction').textContent = 'Slice it or keep it?';
+  document.getElementById('ninjaHint').style.display = 'flex';
+  document.getElementById('ninjaFruit').innerHTML = `
+    <div class="alert-fruit" id="currentFruit">
+      <div class="fruit-label">${a.label}</div>
+      <div class="fruit-title">${a.title}</div>
+      <div style="font-size:0.82rem;color:var(--grey-text);line-height:1.5;margin:0.4rem 0;">${a.desc}</div>
+      <div class="fruit-stats">${a.stats.map(s=>`<div class="fstat">${s}</div>`).join('')}</div>
+    </div>`;
+}
+
+function ninjaSlice() {
+  if (ninjaAnimating) return;
+  ninjaAnimating = true;
+  ninjaResults.push({ title: alerts[ninjaIdx].title, chose:'slice', correct: alerts[ninjaIdx].correct==='slice' });
+  const fruit = document.getElementById('currentFruit');
+  showFeedback('⚔️');
+  if (fruit) fruit.style.animation = 'sliceLeft 0.4s ease forwards';
+  updateMiniResults();
+  setTimeout(() => { ninjaIdx++; ninjaAnimating = false; ninjaRender(); }, 500);
+}
+
+function ninjaKeep() {
+  if (ninjaAnimating) return;
+  ninjaAnimating = true;
+  ninjaResults.push({ title: alerts[ninjaIdx].title, chose:'keep', correct: alerts[ninjaIdx].correct==='keep' });
+  const fruit = document.getElementById('currentFruit');
+  showFeedback('🛡️');
+  if (fruit) { fruit.style.transition = 'all 0.3s'; fruit.style.opacity = '0'; fruit.style.transform = 'scale(0.9)'; }
+  updateMiniResults();
+  setTimeout(() => { ninjaIdx++; ninjaAnimating = false; ninjaRender(); }, 500);
+}
+
+function showFeedback(emoji) {
+  const el = document.createElement('div');
+  el.className = 'slice-feedback';
+  el.textContent = emoji;
+  document.getElementById('ninjaArena').appendChild(el);
+  setTimeout(() => el.remove(), 700);
+}
+
+function updateMiniResults() {
+  const list = document.getElementById('s2-results-list');
+  list.innerHTML = ninjaResults.map(r => `
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span style="font-size:14px;">${r.chose==='slice'?'⚔️':'🛡️'}</span>
+      <span style="color:var(--text);flex:1;">${r.title}</span>
+      <span style="font-size:11px;font-weight:700;color:${r.correct?'var(--success)':'var(--danger)'};">${r.correct?'✓ Right call':'× Worth discussing'}</span>
+    </div>`).join('');
+}
+
+function ninjaFinish() {
+  document.getElementById('ninjaInstruction').textContent = 'All done!';
+  document.getElementById('ninjaHint').style.display = 'none';
+  document.getElementById('ninjaFruit').innerHTML = `<div style="text-align:center;color:white;"><div style="font-size:3rem;margin-bottom:0.5rem;">✅</div><div style="font-size:1rem;font-weight:600;">See what NUHS actually did →</div></div>`;
+  document.getElementById('s2-mini-results').style.display = 'block';
+  setTimeout(() => stage(2,2), 1800);
+}
+
+// init ninja on enter
+document.getElementById('s2').addEventListener('transitionend', () => {});
+function initNinja() { ninjaIdx=0; ninjaResults=[]; ninjaAnimating=false; ninjaRender(); }
+
+// ── CARD 3 SIGNAL/NOISE ──
+const snAnswers = {};
+let snCount = 0;
+
+function snVote(id, verdict, btn) {
+  const card = document.getElementById('snc'+id);
+  card.querySelectorAll('.sn-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  card.className = 'sn-card selected-' + verdict;
+  if (!snAnswers[id]) { snCount++; document.getElementById('snCount').textContent = snCount; }
+  snAnswers[id] = verdict;
+  const revBtn = document.getElementById('snRevealBtn');
+  if (snCount >= 4) { revBtn.disabled = false; revBtn.style.opacity = '1'; }
+}
+
+// ── CARD 4 PGx ──
+function pgxReveal() { stage(4,2); }
+function setPGx(gene, drug) { document.getElementById('s4gene').value = gene; document.getElementById('s4drug').value = drug; }
+async function runPGx() {
+  const gene = document.getElementById('s4gene').value.trim();
+  const drug = document.getElementById('s4drug').value.trim();
+  if (!gene || !drug) return;
+  const btn = document.getElementById('s4btn');
+  const out = document.getElementById('s4out');
+  btn.disabled = true; out.className = 'ai-out loading'; out.textContent = 'Generating PGx alert...';
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:700,messages:[{role:'user',content:`You are a clinical pharmacogenomics CDS specialist. Generate a precise clinical PGx alert for:
+Gene variant: ${gene}
+Drug: ${drug}
+
+Format:
+ALERT TITLE: (concise)
+CLINICAL IMPLICATION: (what happens to this patient, 1-2 sentences)
+RECOMMENDATION: (specific actionable guidance)
+ACKNOWLEDGE REASONS: (3 options)
+MONITORING: (what to watch)
+
+Under 180 words. Be clinically precise.`}]})});
+    const d = await r.json();
+    out.className = 'ai-out'; out.textContent = d.content[0].text;
+  } catch(e) { out.className = 'ai-out'; out.textContent = 'Could not connect. Please try again.'; }
+  btn.disabled = false;
+}
+
+// ── CARD 5 POLL ──
+const s5sel = new Set();
+const defaultVotes = {1:14,2:4,3:9,4:5,5:12};
+const defaultTotal = 44;
+const savedVotes = localStorage.getItem('nuhs_poll_votes');
+const savedTotal = localStorage.getItem('nuhs_poll_total');
+const pollVotes = savedVotes ? JSON.parse(savedVotes) : {...defaultVotes};
+let pollTotal = savedTotal ? parseInt(savedTotal) : defaultTotal;
+const reqNames = {1:'01 · Cipro + Amiodarone',2:'02 · Vitamin D reminder',3:'03 · Fix ACEi alert',4:'04 · Duplicate PPI',5:'05 · Valproate (regulatory)'};
+
+function toggleReq(card) {
+  const id = parseInt(card.dataset.id);
+  if (s5sel.has(id)) { s5sel.delete(id); card.classList.remove('selected'); }
+  else { if (s5sel.size >= 2) return; s5sel.add(id); card.classList.add('selected'); }
+  document.getElementById('s5count').textContent = s5sel.size;
+  const btn = document.getElementById('s5pollBtn');
+  btn.disabled = s5sel.size < 2;
+  btn.style.opacity = s5sel.size < 2 ? '0.4' : '1';
+}
+
+function s5showPoll() {
+  s5sel.forEach(id => pollVotes[id]++);
+  pollTotal++;
+  localStorage.setItem('nuhs_poll_votes', JSON.stringify(pollVotes));
+  localStorage.setItem('nuhs_poll_total', pollTotal);
+  document.getElementById('s5picks').textContent = [...s5sel].sort().map(id=>reqNames[id]).join(' + ');
+  stage(5,2);
+  setTimeout(() => {
+    [1,2,3,4,5].forEach(i => {
+      const pct = Math.round((pollVotes[i]/pollTotal)*100);
+      animBar('pb'+i,'pp'+i,pct);
+    });
+    document.getElementById('s5meta').textContent = `Based on ${pollTotal} responses at this booth`;
+  }, 400);
+}
+
+function animBar(bid, pid, target) {
+  const bar = document.getElementById(bid);
+  const pct = document.getElementById(pid);
+  let cur = 0;
+  const step = target/40;
+  const iv = setInterval(() => {
+    cur = Math.min(cur+step, target);
+    bar.style.width = cur+'%';
+    pct.textContent = Math.round(cur)+'%';
+    if (cur >= target) clearInterval(iv);
+  }, 25);
+}
+
+// ── POLL RESET ──
+function resetPoll() {
+  if (confirm('Reset all poll votes? This cannot be undone.')) {
+    localStorage.removeItem('nuhs_poll_votes');
+    localStorage.removeItem('nuhs_poll_total');
+    location.reload();
+  }
+}
+
+// ── CARD 6 — SLOT MACHINE ──
+const genes = [
+  'CYP2C19 poor metaboliser',
+  'CYP2D6 poor metaboliser',
+  'CYP2D6 ultra-rapid metaboliser',
+  'VKORC1 high sensitivity variant',
+  'SLCO1B1 variant',
+  'CYP2C9 poor metaboliser',
+  'TPMT deficiency variant',
+  'UGT1A1 reduced function'
+];
+const drugs = [
+  'Clopidogrel','Warfarin','Codeine','Simvastatin',
+  'Escitalopram','Azathioprine','Irinotecan','Tamoxifen'
+];
+const patients = [
+  'Post-stent, 62M','AF patient, 58F','Post-op pain, 45M',
+  'Hyperlipidaemia, 71F','Depression, 34F','IBD patient, 28M',
+  'Colorectal cancer, 66F','Breast cancer, 52F'
+];
+let spinCount = 0;
+let isSpinning = false;
+
+async function spinSlot() {
+  if (isSpinning) return;
+  isSpinning = true;
+  const btn = document.getElementById('slotBtn');
+  const result = document.getElementById('slotResult');
+  btn.disabled = true;
+  result.className = 'slot-result';
+
+  const gene = genes[Math.floor(Math.random()*genes.length)];
+  const drug = drugs[Math.floor(Math.random()*drugs.length)];
+  const patient = patients[Math.floor(Math.random()*patients.length)];
+
+  ['reel1','reel2','reel3'].forEach(id => {
+    document.getElementById(id).classList.add('spinning');
+  });
+
+  await new Promise(r => setTimeout(r, 1200));
+
+  document.getElementById('reel1').classList.remove('spinning');
+  document.getElementById('reel1').innerHTML = gene.replace(' ','<br>');
+  await new Promise(r => setTimeout(r, 200));
+  document.getElementById('reel2').classList.remove('spinning');
+  document.getElementById('reel2').textContent = drug;
+  await new Promise(r => setTimeout(r, 200));
+  document.getElementById('reel3').classList.remove('spinning');
+  document.getElementById('reel3').innerHTML = patient.replace(', ','<br>');
+
+  spinCount++;
+  document.getElementById('spinCount').textContent = `Spin count: ${spinCount}`;
+
+  document.getElementById('slotTitle').textContent = 'Analysing...';
+  document.getElementById('slotBody').textContent = '';
+  result.className = 'slot-result show';
+
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:400,
+        messages:[{role:'user',content:`PGx CDS scenario:
+Gene: ${gene}
+Drug: ${drug}
+Patient: ${patient}
+
+Respond in exactly this format (no markdown, just plain text):
+ALERT NEEDED: Yes / No / Caution
+WHAT HAPPENS: One sentence describing the clinical consequence for this patient.
+CDS VERDICT: One sentence — should an alert fire, and what should it say in 10 words or less.
+RISK LEVEL: Low / Moderate / High / Critical
+
+Keep total under 80 words.`}]
+      })
+    });
+    const d = await r.json();
+    const text = d.content[0].text;
+    document.getElementById('slotTitle').textContent = `${gene} + ${drug}`;
+    document.getElementById('slotBody').textContent = text;
+  } catch(e) {
+    document.getElementById('slotTitle').textContent = `${gene} + ${drug}`;
+    document.getElementById('slotBody').textContent = 'Could not connect. Try again.';
+  }
+
+  btn.disabled = false;
+  isSpinning = false;
+}
+
+// ── CARD 7 — PATIENT STORY ──
+let s7userPick = 0;
+const s7pickNames = {
+  1: 'Day 1 — when warfarin was first prescribed',
+  2: 'Day 3 — when INR came back subtherapeutic',
+  3: 'Day 5 — when INR spiked to 4.9',
+  4: 'Day 6 — when the bleeding event occurred',
+};
+
+function s7pick(day) {
+  s7userPick = day;
+  document.querySelectorAll('.story-next-btn.orange').forEach(b => b.style.opacity='0.5');
+  const steps = ['step1','step2','step3','step4','step5'];
+  steps.forEach((id,i) => {
+    const el = document.getElementById(id);
+    el.classList.add('visible');
+  });
+  setTimeout(() => {
+    document.getElementById('s7pickLabel').textContent = s7pickNames[day] || 'Day ' + day;
+    stage(7,2);
+  }, 600);
+}
+
+function s7reveal() {
+  s7userPick = 5;
+  document.getElementById('s7pickLabel').textContent = 'End of the story — after the bleeding event';
+  stage(7,2);
+}
+
+function initS7() {
+  document.querySelectorAll('.story-step').forEach((el,i) => {
+    setTimeout(() => el.classList.add('visible'), i * 300);
+  });
+}
+
+async function runPGx7() {
+  const gene = document.getElementById('s7gene').value.trim();
+  const drug = document.getElementById('s7drug').value.trim();
+  if (!gene || !drug) return;
+  const btn = document.getElementById('s7btn');
+  const out = document.getElementById('s7out');
+  btn.disabled = true; out.className = 'ai-out loading'; out.textContent = 'Generating PGx alert...';
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:700,messages:[{role:'user',content:`You are a clinical pharmacogenomics CDS specialist. Generate a precise clinical PGx alert for:
+Gene variant: ${gene}
+Drug: ${drug}
+
+Format:
+ALERT TITLE: (concise)
+CLINICAL IMPLICATION: (what happens to this patient, 1-2 sentences)
+RECOMMENDATION: (specific actionable guidance)
+ACKNOWLEDGE REASONS: (3 options)
+MONITORING: (what to watch)
+
+Under 180 words. Be clinically precise.`}]})});
+    const d = await r.json();
+    out.className = 'ai-out'; out.textContent = d.content[0].text;
+  } catch(e) { out.className = 'ai-out'; out.textContent = 'Could not connect. Please try again.'; }
+  btn.disabled = false;
+}
+function setP7(g,d) { document.getElementById('s7gene').value=g; document.getElementById('s7drug').value=d; }
+
+// ── INIT NINJA ON CARD 2, SPACEBAR TRIGGER ──
+const origGo = go;
+window.go = function(n) {
+  origGo(n);
+  if (n === 2) setTimeout(initNinja, 100);
+};
+
+// Spacebar triggers slot machine spin
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space' && document.getElementById('s4a').classList.contains('active')) {
+    e.preventDefault();
+    spinSlot4a();
+  }
+});
+</script>
+</body>
+</html>
