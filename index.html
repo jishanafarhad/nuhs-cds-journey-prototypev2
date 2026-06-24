@@ -45,7 +45,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .home-title em{color:var(--orange);font-style:italic}
 .home-sub{font-size:.9rem;color:rgba(255,255,255,.55);margin-top:.7rem}
 .deck{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;max-width:1200px;margin:1.8rem auto 0;padding:0 2rem;position:relative;z-index:2}
-.flip{flex:1 1 230px;min-width:230px;max-width:270px;height:290px;perspective:1400px;cursor:pointer}
+.flip{flex:1 1 235px;min-width:235px;max-width:275px;height:304px;perspective:1400px;cursor:pointer}
 .flip-in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
 .flip:hover .flip-in,.flip.flipped .flip-in{transform:rotateY(180deg)}
 .face{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;padding:1.6rem 1.4rem;overflow:hidden;transition:opacity .4s ease}
@@ -68,7 +68,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .flip:nth-child(3) .back-face{background:linear-gradient(150deg,#15AAE2,#0c6c97)}
 .flip:nth-child(4) .back-face{background:linear-gradient(150deg,#16B6A6,#0c7567)}
 .beyebrow{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:.7rem}
-.btitle{font-family:'DM Serif Display',serif;font-size:1.4rem;line-height:1.25;margin-bottom:1.4rem}
+.btitle{font-family:'DM Serif Display',serif;font-size:1.35rem;line-height:1.2;margin-bottom:1.3rem}
 .enter{background:#fff;border:none;padding:11px 26px;border-radius:24px;font-family:'DM Sans';font-size:14px;font-weight:700;cursor:pointer;color:var(--navy);transition:transform .15s}
 .enter:hover{transform:scale(1.05)}
 .home-foot{padding:1rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,.07);position:relative;z-index:2;margin-top:1.2rem}
@@ -85,9 +85,10 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s}
 .dot.on{background:var(--orange)}
 .scene{flex:1;max-width:1000px;margin:0 auto;width:100%;padding:1.8rem 2rem 2.6rem}
+#s1 .scene,#s3 .scene{max-width:1280px}
 .s-title{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--navy);line-height:1.12}
 .s-title em{color:var(--orange);font-style:italic}
-.s-sub{font-size:.92rem;color:var(--slate);line-height:1.6;margin:.35rem 0 1.3rem}
+.s-sub{font-size:.92rem;color:var(--slate);line-height:1.6;margin:.35rem 0 1.3rem;max-width:840px}
 .next{background:var(--navy);color:#fff;border:none;padding:.8rem 1.8rem;border-radius:11px;font-family:'DM Sans';font-size:.93rem;font-weight:600;cursor:pointer;transition:all .2s;margin-top:1.2rem;align-self:flex-end}
 .next:hover{background:var(--indigo);transform:translateY(-2px)}
 .next.orange{background:var(--orange)}.next.orange:hover{background:var(--orange-deep)}
@@ -95,7 +96,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 
 /* abbreviation chip */
 .abbr{border-bottom:1px dotted var(--slate);cursor:help}
-.glossbar{background:#EAF0FA;border:1px solid var(--line);border-radius:11px;padding:.7rem .95rem;font-size:12px;color:#39455c;line-height:1.55;margin-bottom:1.1rem}
+.glossbar{background:#EAF0FA;border:1px solid var(--line);border-radius:11px;padding:.7rem .95rem;font-size:12px;color:#39455c;line-height:1.55;margin-bottom:1.1rem;max-width:880px}
 .glossbar b{color:var(--navy)}
 
 /* patient */
@@ -221,7 +222,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 
 /* ───── GAME 3 CASINO SLOT ───── */
 .lab-head{margin-bottom:1.3rem}
-.lab-grid{display:grid;grid-template-columns:390px 1fr;gap:1.6rem;align-items:start}
+.lab-grid{display:grid;grid-template-columns:420px 1fr;gap:1.8rem;align-items:start}
 @media(max-width:980px){.lab-grid{grid-template-columns:1fr}}
 .lab-left{position:sticky;top:16px;display:flex;flex-direction:column;gap:1.2rem;align-self:start}
 @media(max-width:980px){.lab-left{position:static}}
@@ -234,14 +235,14 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .window{margin:1.1rem 1.1rem 0;background:#0a1428;border-radius:14px;padding:.7rem;box-shadow:inset 0 4px 14px rgba(0,0,0,.6);position:relative;border:0}
 .window{border:2px solid #2a4a86}
-.win-reels{display:grid;grid-template-columns:1fr 1.32fr 1fr;gap:.5rem;position:relative}
+.win-reels{display:grid;grid-template-columns:1fr 1.46fr 1fr;gap:.45rem;position:relative}
 .reel{height:96px;background:linear-gradient(#fff,#eef1f7);border-radius:9px;overflow:hidden;position:relative}
 .reel::before,.reel::after{content:'';position:absolute;left:0;right:0;height:12px;z-index:2;pointer-events:none}
 .reel::before{top:0;background:linear-gradient(#e8ebf2,transparent)}
 .reel::after{bottom:0;background:linear-gradient(transparent,#e8ebf2)}
 .reel-inner{position:absolute;width:100%;left:0;top:0}
 .reel-item{height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 5px;text-align:center}
-.reel-item .m{font-size:12px;font-weight:700;color:var(--ink);line-height:1.16;word-break:break-word}
+.reel-item .m{font-size:11px;font-weight:700;color:var(--ink);line-height:1.12;hyphens:auto;overflow-wrap:anywhere}
 .reel-item .rs{font-size:8.5px;font-weight:700;line-height:1.12;margin-top:3px}
 .win-cols{display:grid;grid-template-columns:1fr 1.32fr 1fr;gap:.5rem;margin:.55rem .1rem 0}
 .win-col{font-size:9.5px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:rgba(255,255,255,.78);text-align:center;line-height:1.25}
@@ -262,13 +263,20 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .map-card .mh{padding:.8rem 1.1rem;border-bottom:1px solid var(--line)}
 .map-card .mh b{font-size:12px;color:var(--navy);font-weight:700}
 .map-card .mh span{display:block;font-size:10px;color:var(--slate);margin-top:1px}
-#net{display:block;width:100%;aspect-ratio:4/3;background:linear-gradient(160deg,#fbfcfe,#eef2fb)}
+#net{display:block;width:100%;aspect-ratio:4/3;background:linear-gradient(160deg,#fbfcfe,#eaf1f8)}
 .gene-tip{display:none;position:absolute;z-index:20;max-width:230px;background:#0B1F4D;color:#fff;font-size:11px;line-height:1.5;padding:.55rem .7rem;border-radius:9px;box-shadow:0 8px 22px rgba(11,31,77,.35);pointer-events:none}
 .gene-tip b{display:block;color:var(--gold);font-size:11px;margin-bottom:2px;letter-spacing:.02em}
 .chips{padding:.7rem .9rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px}
 .chip{font-size:10px;font-weight:600;padding:4px 9px;border-radius:100px;border:1px solid var(--line);background:#fff;color:var(--slate);cursor:pointer;transition:all .15s}
 .chip:hover{border-color:var(--navy);color:var(--navy)}
 .chip::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:5px;vertical-align:middle;background:var(--dot,var(--slate))}
+.chip .qual{opacity:.55;font-weight:600;font-style:italic}
+.vbar{margin-bottom:.1rem}
+.vbar .vlbl{display:block;font-size:10.5px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+.vbtns{display:flex;flex-wrap:wrap;gap:.5rem}
+.vbtn{font-size:12px;font-weight:600;padding:6px 12px;border-radius:9px;border:1px solid var(--line);background:#fff;color:var(--slate);cursor:pointer;transition:all .15s}
+.vbtn:hover{border-color:var(--navy);color:var(--navy)}
+.vbtn.on{background:var(--navy);border-color:var(--navy);color:#fff}
 
 .empty{background:#fff;border:1.5px dashed var(--line);border-radius:18px;padding:2.4rem 1rem;text-align:center;color:var(--slate);font-size:.92rem}
 .empty .ico{width:46px;height:46px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin:0 auto .8rem;font-size:20px}
@@ -287,7 +295,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .story{display:flex;gap:1rem;padding:1.1rem 1.2rem;align-items:center}
 .story .nm{font-size:14px;font-weight:700}.story .wd{font-size:11.5px;color:var(--slate);margin-top:1px}.story .bd{font-size:13px;color:#3c485f;line-height:1.6;margin-top:.5rem}
 .alert{padding:1.1rem 1.2rem;background:#fff}
-.alert-frame{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.alert-frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;max-width:720px}
 .alert-amber{background:var(--amber-bg);padding:1.05rem 1.15rem;font-size:13px;color:#2a2300;line-height:1.6}
 .alert-amber .warn{font-weight:800;text-decoration:underline;text-underline-offset:2px}
 .alert-amber .status{font-weight:700}.alert-amber .status em{font-style:italic}
@@ -326,7 +334,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .uptake .sub{font-size:11px;color:var(--slate);margin-top:.45rem}
 .fun{display:flex;gap:.7rem;align-items:flex-start;padding:1rem 1.15rem;background:linear-gradient(135deg,rgba(21,170,226,.07),rgba(247,148,29,.07))}
 .fun .ico{font-size:1.3rem}.fun .t{font-size:13px;color:#39455c;line-height:1.55}.fun .t b{color:var(--navy)}
-.pullq{margin:.9rem 0 0;padding:.85rem 1.1rem;border-left:4px solid var(--orange);background:linear-gradient(135deg,rgba(247,148,29,.08),rgba(21,170,226,.06));border-radius:0 10px 10px 0;font-family:'DM Serif Display',serif;font-size:1.02rem;line-height:1.45;color:var(--navy)}
+.pullq{margin:.9rem 0 0;padding:.85rem 1.1rem;border-left:4px solid var(--orange);background:linear-gradient(135deg,rgba(247,148,29,.08),rgba(21,170,226,.06));border-radius:0 10px 10px 0;font-family:'DM Serif Display',serif;font-size:1.02rem;line-height:1.45;color:var(--navy);max-width:880px}
 .pullq cite{display:block;margin-top:.45rem;font-family:'DM Sans',sans-serif;font-style:normal;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);font-weight:700}
 .pilot-stat{margin:.1rem 0 0;padding:.8rem 1.05rem;border-radius:12px;background:linear-gradient(135deg,rgba(27,44,107,.05),rgba(21,170,226,.07));border:1px solid var(--line);font-size:.84rem;line-height:1.55;color:#39455c}
 .pilot-stat b{color:var(--navy)}.pilot-stat .big{font-family:'DM Serif Display',serif;color:var(--orange);font-size:1.05rem}
@@ -402,6 +410,170 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .footer-note{text-align:center;color:var(--slate);font-size:10.5px;margin-top:1.6rem;line-height:1.6}
 .tip{position:fixed;background:var(--navy);color:#fff;font-size:11px;padding:.5rem .7rem;border-radius:8px;max-width:240px;line-height:1.45;z-index:99;pointer-events:none;opacity:0;transition:opacity .15s;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 .tip.show{opacity:1}
+/* ── Card 1 redesign ── */
+.story-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:1.5rem;align-items:start}
+@media(max-width:880px){.story-wrap{grid-template-columns:1fr}}
+.bpa{background:#FFFEF7;border:1px solid #E6D9A8;border-radius:12px;overflow:hidden;box-shadow:0 6px 22px rgba(11,31,77,.08)}
+.bpa-ttl{display:flex;align-items:center;gap:.5rem;background:#FCF6E0;border-bottom:1px solid #E6D9A8;padding:.45rem .85rem;font-size:11px;font-weight:700;color:#8a6d1a;text-transform:uppercase;letter-spacing:.05em}
+.bpa-ttl .dot2{width:16px;height:16px;border-radius:5px;background:#F7941D;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800}
+.bpa-ttl .dot2::before{content:'!'}
+.bpa-banner{background:#FCD850;color:#5a4a00;font-weight:600;font-size:.9rem;padding:.7rem .9rem;display:flex;align-items:flex-start;gap:.5rem;line-height:1.4}
+.bpa-body{padding:.6rem .9rem .7rem}
+.bpa-link{color:#1f7fd0;font-weight:600;font-size:.84rem;display:inline-flex;gap:.35rem;margin:.15rem 0;cursor:default}
+.bpa-foot{display:flex;justify-content:flex-end;gap:.5rem;padding:.55rem .9rem;border-top:1px solid #E6D9A8;background:#FFFDF5}
+.bpa-btn{background:#eef1f6;border:1px solid var(--line);border-radius:7px;padding:.4rem 1.1rem;font-size:.82rem;font-weight:700;color:var(--slate);cursor:default}
+.bpa.fixed{border-color:var(--success)}
+.bpa.fixed .bpa-banner{background:#EAF7F0;color:var(--success)}
+.bpa.flash{animation:bpaFlash .5s ease}
+@keyframes bpaFlash{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+.bpa-count{display:inline-block;background:var(--red);color:#fff;font-size:.7rem;font-weight:700;padding:.15rem .55rem;border-radius:99px;margin-left:auto}
+.allergy-tbl{width:100%;border-collapse:collapse;margin:.2rem 0 .45rem;font-size:.82rem}
+.allergy-tbl th{text-align:left;color:var(--slate);font-weight:600;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;padding:.2rem .4rem;border-bottom:1px solid var(--line)}
+.allergy-tbl td{padding:.2rem .4rem;font-weight:700;color:var(--ink)}
+.allergy-tbl td.sev{background:#FCD850;color:#5a4a00;font-weight:700}
+.ack-lbl{font-size:.7rem;font-weight:700;color:var(--slate);margin:.5rem 0 .3rem;text-transform:uppercase;letter-spacing:.04em}
+.ack-row{display:flex;flex-wrap:wrap;gap:.4rem}
+.ack-btn{background:#eef4fb;border:1px solid #cfe0f3;border-radius:7px;padding:.35rem .7rem;font-size:.78rem;font-weight:600;color:var(--navy)}
+.ack-btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.comments{display:flex;flex-direction:column;gap:.6rem}
+.cmt-row{display:flex;gap:.55rem;align-items:flex-start}
+.cmt-av{width:34px;height:34px;border-radius:50%;background:#FFF1E0;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-top:.15rem}
+.cmt{position:relative;flex:1;background:#fff;border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:.55rem .85rem;font-size:.85rem;color:var(--ink);font-style:italic;line-height:1.45;box-shadow:0 3px 12px rgba(11,31,77,.05)}
+.cmt::before{content:'';position:absolute;left:-6px;top:11px;width:11px;height:11px;background:#fff;border-left:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
+.cmt b{font-style:normal;color:var(--slate);font-size:.72rem;display:block;margin-top:.25rem;font-weight:700}
+.sick{background:linear-gradient(135deg,#FFF6EC,#fdeef0);border:1px solid var(--line);border-radius:14px;padding:.7rem .6rem .5rem;margin-bottom:.75rem;text-align:center}
+.sick-cap{font-size:.8rem;font-weight:700;color:var(--slate)}
+.chglog{margin-top:.7rem;background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:.6rem .85rem}
+.chglog .cl-h{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate);margin-bottom:.35rem}
+.chglog ul{margin:0;padding-left:1.1rem}
+.chglog li{font-size:.8rem;color:var(--ink);line-height:1.5;margin-bottom:.25rem}
+.chglog li.cap{color:#9a6b2f;font-weight:600;list-style:none;margin-left:-1.1rem;margin-top:.3rem}
+.noise-stat{display:flex;gap:.8rem;margin:.1rem 0}
+.noise-stat .ns{flex:1;background:#fff;border:1px solid var(--line);border-radius:11px;padding:.7rem .6rem;text-align:center}
+.noise-stat .ns .n{font-family:'DM Serif Display',serif;font-size:1.7rem;line-height:1}
+.noise-stat .ns .n.red{color:var(--red)}.noise-stat .ns .n.green{color:var(--success)}
+.noise-stat .ns .l{font-size:.7rem;color:var(--slate);margin-top:.25rem;line-height:1.3}
+.diag{display:grid;grid-template-columns:1fr 1.08fr;gap:1.5rem;align-items:start}
+@media(max-width:880px){.diag{grid-template-columns:1fr}}
+.factor{display:flex;gap:.7rem;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:11px;padding:.7rem .85rem;margin-bottom:.5rem;cursor:pointer;transition:all .18s}
+.factor:hover{border-color:var(--blue)}
+.factor .cbx{width:22px;height:22px;border:2px solid #c7d0de;border-radius:6px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:transparent;font-size:.82rem;font-weight:800;transition:all .18s;margin-top:1px}
+.factor .pttl{font-weight:700;color:var(--navy);font-size:.95rem}
+.factor .fd{font-size:.81rem;color:var(--slate);line-height:1.45;margin-top:.15rem}
+.factor.done{background:#F2FBF6;border-color:var(--success)}
+.factor.done .cbx{background:var(--success);border-color:var(--success);color:#fff}
+.factor.done .fd{color:var(--slate)}
+.factor .fdetail{font-size:.8rem;color:var(--navy);line-height:1.5;margin-top:.4rem;padding-top:.4rem;border-top:1px dashed var(--line);display:none}
+.factor.done .fdetail{display:block}
+.factor.cap.done{background:#FFF6EC;border-color:var(--orange)}
+.factor.cap.done .cbx{background:var(--orange);border-color:var(--orange)}
+.factor.cap.done .fd{color:#9a6b2f}
+@keyframes aapulse{0%{box-shadow:0 0 0 0 rgba(26,127,75,.5)}100%{box-shadow:0 0 0 11px rgba(26,127,75,0)}}
+#afterBpa.pulse{animation:aapulse .65s ease}
+.ba-stack{display:flex;flex-direction:column;gap:.9rem}
+.ba-lab{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.35rem}
+.ba-lab.bf{color:var(--red)}.ba-lab.af{color:var(--success)}
+.aa-sec{display:none}.aa-sec.on{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.aa-tag{display:inline-block;background:#EAF7F0;color:var(--success);border:1px solid #bfe6d2;border-radius:6px;font-size:.74rem;font-weight:700;padding:.22rem .55rem;margin:.25rem 0}
+/* ── Card 2 (Kill or Keep) ── */
+.nwrap{max-width:600px;width:100%;animation:fly .5s cubic-bezier(.2,.9,.3,1)}
+.nwrap.sliced{animation:slice .5s forwards}
+.nwrap.kept{animation:keepfade .5s forwards}
+.ncat{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);display:flex;justify-content:space-between;margin-bottom:.5rem}
+.nstats{display:flex;gap:.5rem;margin-top:.8rem;flex-wrap:wrap}
+.nstat{background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:.45rem .6rem;font-size:10.5px;color:var(--slate);flex:1;min-width:96px;text-align:center;line-height:1.3}
+.nstat b{display:block;font-size:1rem;color:var(--navy);font-family:'DM Serif Display',serif}
+.aw-body{font-size:.84rem;color:#48566e;line-height:1.5;margin:.2rem 0 .4rem}
+.aw-warn{font-size:.82rem;color:var(--red);font-weight:600;margin:.2rem 0 .5rem}
+.opa-tbl{font-size:.83rem;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.opa-h,.opa-r{display:grid;grid-template-columns:1.7fr 1fr 1.3fr;padding:.45rem .7rem;gap:.5rem}
+.opa-h{background:var(--paper);font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;color:var(--slate);font-weight:700}
+.opa-r{border-top:1px solid var(--line)}
+.mw-drug{font-weight:700;color:var(--navy);font-size:.9rem;margin-bottom:.4rem}
+.mw-warn{background:#FFF6EC;border:1px solid #f3dcc0;border-radius:8px;padding:.5rem .7rem;font-size:.85rem;color:#7a4a00;margin-bottom:.5rem;line-height:1.4}
+.mw-warn .mw-up{color:var(--red);font-weight:800}
+.mw-dup{display:flex;gap:.6rem;align-items:flex-start;margin-bottom:.5rem}
+.sev-high{background:var(--red);color:#fff;font-size:.68rem;font-weight:700;padding:.2rem .55rem;border-radius:6px;flex:0 0 auto;margin-top:.1rem}
+.mw-dup-txt{font-size:.83rem;color:var(--ink);line-height:1.45}
+.muted{color:var(--slate);font-weight:400}
+.mw-meds{display:flex;flex-direction:column;gap:.4rem;margin:.3rem 0 .5rem}
+.mw-med{display:flex;justify-content:space-between;align-items:center;gap:.6rem;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.45rem .6rem;font-size:.78rem;line-height:1.35}
+.ovr-field{border:1px dashed #c7d0de;border-radius:8px;padding:.45rem .7rem;font-size:.8rem;color:var(--slate);font-style:italic}
+.bpa-btn.primary2{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chartcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;box-shadow:0 8px 26px rgba(11,31,77,.06);margin-bottom:1.1rem}
+.chartcard h4{font-size:.95rem;color:var(--navy);margin-bottom:.1rem}
+.chartcard .csub{font-size:.75rem;color:var(--slate);margin-bottom:.6rem}
+.chartwrap{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.chartwrap svg{flex:1;min-width:280px}
+.callout{background:var(--paper);border-radius:12px;padding:.8rem 1rem;text-align:center;min-width:140px;flex:0 0 auto}
+.bigpct{font-family:'DM Serif Display',serif;font-size:2.5rem;line-height:1;color:var(--orange)}
+.bigpct.blue{color:var(--blue)}
+.callout .cl-l{font-size:.73rem;color:var(--slate);margin-top:.25rem;line-height:1.3}
+.cendpts{display:flex;justify-content:space-between;font-size:.72rem;color:var(--slate);margin-top:.3rem;font-weight:600}
+.cline{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 1.7s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.rtbl{width:100%;border-collapse:collapse;font-size:.81rem;margin-top:.5rem}
+.rtbl th{background:var(--navy);color:#fff;text-align:left;padding:.42rem .6rem;font-size:.68rem;text-transform:uppercase;letter-spacing:.03em}
+.rtbl td{padding:.4rem .6rem;border-bottom:1px solid var(--line)}
+.rtbl tr:last-child td{border-bottom:none}
+.rtbl .dn{color:var(--success);font-weight:700}
+.rhead{font-family:'DM Serif Display',serif;font-size:1.02rem;color:var(--navy);margin-top:.8rem;text-align:center}
+.dash{background:linear-gradient(180deg,#fff,#f7f9fd);border:1px solid var(--line);border-radius:16px;padding:1.2rem;box-shadow:0 10px 30px rgba(11,31,77,.07)}
+.dash-h{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--navy);margin-bottom:.1rem}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:.9rem 0}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem .6rem;text-align:center}
+.kpi .kn{font-family:'DM Serif Display',serif;font-size:1.6rem;line-height:1}
+.kpi .kl{font-size:.69rem;color:var(--slate);margin-top:.3rem;line-height:1.3}
+.kpi .ksub{font-size:.64rem;color:var(--slate);margin-top:.25rem;opacity:.85}
+.kpi.green .kn{color:var(--success)}
+.dash-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:.8rem;margin-top:.3rem}
+.dash-grid h5{font-size:.8rem;color:var(--navy);margin-bottom:.4rem}
+.itbl{width:100%;border-collapse:collapse;font-size:.76rem}
+.itbl th{background:var(--navy);color:#fff;text-align:left;padding:.38rem .5rem;font-size:.64rem;text-transform:uppercase}
+.itbl td{padding:.36rem .5rem;border-bottom:1px solid var(--line)}
+.itbl .s{color:var(--success);font-weight:700}.itbl .o{color:var(--red);font-weight:700}
+.sidecards{display:flex;flex-direction:column;gap:.55rem}
+.sidecard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.65rem;text-align:center}
+.sidecard .sn{font-family:'DM Serif Display',serif;font-size:1.35rem}
+.sidecard .sn .b{color:var(--blue)}.sidecard .sn .o{color:var(--orange)}
+.sidecard .sl{font-size:.66rem;color:var(--slate);margin-top:.2rem;line-height:1.3}
+.lessons{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1rem 0 .4rem}
+.lesson{background:#fff;border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:11px;padding:.8rem .95rem}
+.lesson h5{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--navy);margin-bottom:.3rem}
+.lesson p{font-size:.81rem;color:#4a566e;line-height:1.55}
+@media(max-width:760px){.lessons{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.dash-grid{grid-template-columns:1fr}}
+.story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1.5rem;align-items:start}
+@media(max-width:880px){.story-grid{grid-template-columns:1fr}}
+.story-main{display:flex;flex-direction:column;gap:1rem}
+.order-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;padding:.7rem .9rem 0}
+.order-lbl{font-size:.8rem;font-weight:700;color:var(--slate)}
+.orderbtn{background:var(--navy);color:#fff;border:none;border-radius:9px;padding:.45rem .85rem;font-size:.82rem;font-weight:700;font-family:"DM Sans";cursor:pointer}
+.orderbtn:hover{background:var(--deep)}
+.order-note{font-size:.8rem;color:var(--slate);padding:.5rem .9rem .8rem}
+.bignum{background:linear-gradient(135deg,#FFF0EE,#FFE6E3);border:1px solid rgba(237,28,36,.18);border-radius:14px;padding:1.1rem;text-align:center;margin-bottom:1.1rem}
+.bignum .bn{font-family:"DM Serif Display",serif;font-size:2.7rem;color:var(--red);line-height:1}
+.bignum .bnl{font-size:.92rem;color:var(--ink);margin-top:.25rem}
+.bignum .bnsub{font-size:.75rem;color:var(--slate);margin-top:.4rem}
+.side-h{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin-bottom:.6rem}
+.slicebox{position:relative}
+.slicebox .half{position:absolute;inset:0;overflow:hidden}
+.nwrap{position:relative}
+.swordslash{position:absolute;top:-12%;left:-16%;width:132%;height:124%;background:linear-gradient(108deg,transparent 48.5%,rgba(255,255,255,.85) 49.3%,#fff 50%,rgba(255,255,255,.85) 50.7%,transparent 51.5%);transform:translateX(-122%);animation:slashSweep .4s ease-out forwards;pointer-events:none;filter:drop-shadow(0 0 9px rgba(255,255,255,.95)) drop-shadow(0 0 5px rgba(247,148,29,.9));z-index:6}
+@keyframes slashSweep{to{transform:translateX(118%)}}
+.fbcard{max-width:520px;width:100%;border-radius:14px;padding:1.3rem 1.5rem;animation:fly .4s}
+.fbcard.right{background:linear-gradient(135deg,#EDFAF4,#E0F5EB);border:1px solid rgba(26,127,75,.25)}
+.fbcard.wrong{background:linear-gradient(135deg,#FFF7E8,#FFEFD6);border:1px solid rgba(247,148,29,.3)}
+.fbcard .fbh{font-size:1.2rem;font-weight:700;margin-bottom:.4rem}
+.fbcard.right .fbh{color:var(--success)}.fbcard.wrong .fbh{color:var(--orange-deep)}
+.fbcard p{font-size:.88rem;color:#48566e;line-height:1.6}
+.fbcard .fbnext{margin-top:1.1rem;background:var(--navy);color:#fff;border:none;padding:.7rem 1.5rem;border-radius:10px;font-family:"DM Sans";font-weight:600;font-size:.92rem;cursor:pointer}
+.bulb{display:flex;gap:.7rem;align-items:flex-start;background:linear-gradient(135deg,#FFFBEC,#FFF4D2);border:1px solid #f0e0a8;border-radius:12px;padding:.85rem 1.05rem;margin:1.1rem 0}
+.bulb-i{font-size:1.25rem;flex:0 0 auto;line-height:1.3}
+.bulb div{font-size:.85rem;color:#5f5526;line-height:1.55}
+.bulb b{color:var(--navy)}
+.slice-feedback{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);font-size:5.2rem;animation:feedbackPop .72s ease forwards;pointer-events:none;z-index:20;filter:drop-shadow(0 12px 28px rgba(11,31,77,.38))}
+@keyframes feedbackPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.4) rotate(-14deg)}28%{opacity:1;transform:translate(-50%,-58%) scale(1.55) rotate(0)}100%{opacity:0;transform:translate(-50%,-84%) scale(1.1) rotate(0)}}
 </style>
 </head>
 <body>
@@ -418,25 +590,25 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
   <div class="deck">
     <div class="flip" onclick="flipCard(this,event)">
       <div class="flip-in">
-        <div class="face front"><div class="cicon">🚨</div><div class="cgame">Fix the Alert</div><div class="cphrase">86% ignored it. Can you make it worth clicking?</div><div class="chint">↻ tap to flip</div></div>
-        <div class="face back-face"><div class="btitle">Diagnose it, rebuild it, watch the signal climb.</div><button class="enter" onclick="go(1)">Play →</button></div>
-      </div>
-    </div>
-    <div class="flip" onclick="flipCard(this,event)">
-      <div class="flip-in">
-        <div class="face front"><div class="cicon">✂️</div><div class="cgame">Kill or Keep</div><div class="cphrase">What if the best fix was no alert at all?</div><div class="chint">↻ tap to flip</div></div>
-        <div class="face back-face"><div class="btitle">Slice the noise. Keep the signal.</div><button class="enter" onclick="go(2)">Play →</button></div>
-      </div>
-    </div>
-    <div class="flip" onclick="flipCard(this,event)">
-      <div class="flip-in">
-        <div class="face front"><div class="cicon">🎰</div><div class="cgame">Gene–Drug Jackpot</div><div class="cphrase">Pull the lever. Your genome sets the dose.</div><div class="chint">↻ tap to flip</div></div>
+        <div class="face front"><div class="cicon">🎰</div><div class="cgame">Gene–Drug Jackpot</div><div class="cphrase">One gene can change the prescription.</div><div class="chint">↻ tap to flip</div></div>
         <div class="face back-face"><div class="btitle">Real NUHS alerts. One spin each.</div><button class="enter" onclick="go(3)">Spin →</button></div>
       </div>
     </div>
     <div class="flip" onclick="flipCard(this,event)">
       <div class="flip-in">
-        <div class="face front"><div class="cicon">🏆</div><div class="cgame">Two Make the Cut</div><div class="cphrase">Five requests. You can build two.</div><div class="chint">↻ tap to flip</div></div>
+        <div class="face front"><div class="cicon">✂️</div><div class="cgame">Kill It or Keep It</div><div class="cphrase">Not every alert deserves to exist.</div><div class="chint">↻ tap to flip</div></div>
+        <div class="face back-face"><div class="btitle">Slice the noise. Keep the signal.</div><button class="enter" onclick="go(2)">Play →</button></div>
+      </div>
+    </div>
+    <div class="flip" onclick="flipCard(this,event)">
+      <div class="flip-in">
+        <div class="face front"><div class="cicon">🚨</div><div class="cgame">Rescue the Alert</div><div class="cphrase">94.4% dismissed it. What went wrong?</div><div class="chint">↻ tap to flip</div></div>
+        <div class="face back-face"><div class="btitle">Diagnose it, rebuild it, watch the signal climb.</div><button class="enter" onclick="go(1)">Play →</button></div>
+      </div>
+    </div>
+    <div class="flip" onclick="flipCard(this,event)">
+      <div class="flip-in">
+        <div class="face front"><div class="cicon">🏆</div><div class="cgame">Two Make the Cut</div><div class="cphrase">Everyone wants an alert. You pick two.</div><div class="chint">↻ tap to flip</div></div>
         <div class="face back-face"><div class="btitle">Make your picks. See who tops the table.</div><button class="enter" onclick="go(4)">Decide →</button></div>
       </div>
     </div>
@@ -446,62 +618,99 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 
 <!-- ════ CARD 1 ════ -->
 <section id="s1" class="screen scene-screen">
-  <div class="nav"><button class="back" onclick="goHome()">← Home</button><span class="navlbl">Fix the Alert</span><div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div></div>
+  <div class="nav"><button class="back" onclick="goHome()">← Home</button><span class="navlbl">Rescue the Alert</span><div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div></div>
 
   <div id="s1-stage1" class="stage active scroll"><div class="scene">
-    <h1 class="s-title">You're a doctor. An alert just fired — <em>again.</em></h1>
-    <p class="s-sub">Mid-shift, about to sign a medication order. This is the <b>5th time today</b> this same alert has appeared for this patient.</p>
-    <div class="glossbar"><b>Quick context:</b> <b>CDS</b> = Clinical Decision Support — the prompts and alerts that pop up to guide a clinician's decision. This card is about what happens when those alerts fire too often.</div>
-    <div class="pcard">
-      <div class="pcard-h">
-        <div id="p1fig"></div>
-        <div><div class="pname">Ahmad bin Ismail · 67M</div><div class="pmeta">Ward 5B · Day 3 · query urinary tract infection (UTI) / urosepsis</div></div>
-        <div class="badges"><span class="badge warn">Penicillin allergy</span><span class="badge info">Kidney function low</span></div>
+    <h1 class="s-title">An order. <em>An alert. Again.</em></h1>
+    <p class="s-sub">This alert was created to help clinicians — but today it interrupts the same workflow again and again. You're on the ward round for Mr Tan, ordering a couple of routine tests, and it fires every single time. Can you make it smarter?</p>
+    <div class="story-grid">
+      <div class="story-main">
+        <div class="pcard">
+          <div class="pcard-h">
+            <div id="p1fig"></div>
+            <div><div class="pname">Mr Tan, 68M</div><div class="pmeta">General Medicine · admitted overnight · allergies already on file</div></div>
+          </div>
+          <div class="order-row"><span class="order-lbl">Place an order:</span><button class="orderbtn" onclick="orderPing('Full blood count')">＋ Full blood count</button><button class="orderbtn" onclick="orderPing('Chest X-ray')">＋ Chest X-ray</button></div>
+          <div class="order-note" id="orderNote">Tap an order — watch the alert fire.</div>
+        </div>
+        <div class="bpa" id="beforeBpa">
+          <div class="bpa-ttl"><span class="dot2"></span>BestPractice Advisory<span class="bpa-count" id="bpaCount">Alert #1</span></div>
+          <div class="bpa-banner">Allergies have not been verified during this encounter.</div>
+          <div class="bpa-body"><span class="bpa-link">↗ Allergies Activity</span></div>
+          <div class="bpa-foot"><span class="bpa-btn">Dismiss</span></div>
+        </div>
       </div>
-      <div class="pbody">
-        <div class="pstat"><label><span class="abbr" data-tip="estimated glomerular filtration rate — a measure of kidney function. 32 is low (normal ≈ 90+).">eGFR</span></label><span class="pv flag">32 mL/min</span><span class="pvs">kidney function — low</span></div>
-        <div class="pstat"><label><span class="abbr" data-tip="white blood cell count — raised levels suggest infection.">WBC</span></label><span class="pv flag">14.2 ↑</span><span class="pvs">white cells — high</span></div>
-        <div class="pstat"><label><span class="abbr" data-tip="C-reactive protein — a blood marker of inflammation or infection.">CRP</span></label><span class="pv flag">87 mg/L ↑</span><span class="pvs">inflammation — high</span></div>
+      <div class="story-side">
+        <div class="bignum"><div class="bn">94.4%</div><div class="bnl">of clinicians just <b>dismiss</b> this alert</div><div class="bnsub">only 5.6% ever click through · ~141,430 firings / month</div></div>
+        <div class="side-h">What clinicians actually said</div>
+        <div class="comments">
+          <div class="cmt-row"><div class="cmt-av">😣</div><div class="cmt">I'm trying to focus on my sick patient, but these constant pop-ups are driving me crazy…<b>— Inpatient doctor</b></div></div>
+          <div class="cmt-row"><div class="cmt-av">😩</div><div class="cmt">I've already documented the patient's allergy — why is this still warning me??<b>— Ward pharmacist</b></div></div>
+          <div class="cmt-row"><div class="cmt-av">😤</div><div class="cmt">These alerts are so annoying, I'm just going to ignore them…<b>— Senior resident</b></div></div>
+          <div class="cmt-row"><div class="cmt-av">😕</div><div class="cmt">Generic warnings are useless! I don't understand what I'm supposed to do.<b>— Medical officer</b></div></div>
+          <div class="cmt-row"><div class="cmt-av">🙅</div><div class="cmt">I'm a physiotherapist — I can't verify allergies. Why am I seeing this, repeatedly?<b>— Allied health</b></div></div>
+        </div>
       </div>
     </div>
-    <div class="alertstack">
-      <div class="ghost g1"></div><div class="ghost g2"></div>
-      <div class="alert-box">
-        <span class="acount">Alert #5 today</span>
-        <div class="atitle">⚠ Allergies not verified</div>
-        <div class="abody">Allergies have not been verified during this encounter. Patient allergies may not be up to date. Please review before proceeding.</div>
-      </div>
-    </div>
-    <p class="s-sub" style="margin:.2rem 0 0">It's the same alert as the last four times. What do you do?</p>
-    <div class="choices">
-      <button class="choice acc" onclick="s1choose(this)">✓ Accept<small>Review allergies now</small></button>
-      <button class="choice ovr" onclick="s1choose(this)">↗ Override<small>Already checked</small></button>
-      <button class="choice dis" onclick="s1choose(this)">✕ Dismiss<small>Ignore and continue</small></button>
-    </div>
-    <div id="s1-choice-resp" style="display:none;font-size:.85rem;color:var(--slate);margin-top:1rem;line-height:1.6"></div>
+    <div class="bulb"><span class="bulb-i">💡</span><div><b>Every alert spends attention.</b> Clinician attention is finite and shared — an alert that fires without changing a decision borrows credibility from every alert that follows.</div></div>
+    <p class="s-sub" style="margin:1.1rem 0 0"><b>This alert is broken.</b> The way NUHS fixes it is by running it through our <b>7 CDS principles</b> — let's diagnose it.</p>
+    <div style="text-align:right;margin-top:.6rem"><button class="next orange" onclick="setStage(1,2)" style="margin:0">Diagnose this alert →</button></div>
   </div></div>
 
   <div id="s1-stage2" class="stage scroll"><div class="scene">
-    <h1 class="s-title">Now <em>fix it.</em> Make it worth clicking.</h1>
-    <p class="s-sub">86% of clinicians dismiss this alert — the problem is the design, not the doctor. Tap each fix to install it and watch the strength meter climb. One of these is already right; see if you can spot the trap.</p>
-    <div class="pullq">"Clinicians ignore alerts not because they are careless, but because the system conditions them to. Alert fatigue is adaptive behaviour in a poorly designed system."</div>
-    <div class="glossbar">We score alerts against <b>7 design principles</b> — the <b>5 Rights of CDS</b> (right information, people, time, channel, format) plus two NUHS add-ons, <b>ALCAP</b>: <b>A</b>ctionable and <b>A</b>s <b>L</b>ittle <b>C</b>licks <b>A</b>s <b>P</b>ossible.</div>
-    <div class="builder">
-      <div class="build-left">
+    <h1 class="s-title">Diagnose it. <em>Rebuild it.</em></h1>
+    <p class="s-sub">This is how NUHS optimises an alert: run it through our <b>7 CDS principles</b>. Tap each to diagnose it — the detail appears, and the <i>after</i> alert rebuilds with the fix.</p>
+    <div class="diag">
+      <div>
+        <div class="tray-h" style="margin-bottom:.6rem">The 7 principles — tap to install the fix</div>
+        <div id="factorList"></div>
+      </div>
+      <div class="ba-stack">
         <div class="meter-card">
           <div class="meter-tier" id="meterTier">Pure noise</div>
           <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
           <div class="stars" id="stars"></div>
         </div>
-        <div class="alert-preview" id="alertPreview">
-          <div class="apre-h" id="apreH">⚠ Allergies not verified</div>
-          <div class="apre-b">Allergies have not been verified during this encounter. Please review before proceeding.</div>
-          <div class="upgrades" id="upgrades"></div>
+        <div>
+          <div class="ba-lab bf">● Before — what fired</div>
+          <div class="bpa">
+            <div class="bpa-banner">Allergies have not been verified during this encounter.</div>
+            <div class="bpa-body"><span class="bpa-link">↗ Allergies Activity</span></div>
+            <div class="bpa-foot"><span class="bpa-btn">Dismiss</span></div>
+          </div>
         </div>
-      </div>
-      <div class="build-right">
-        <div class="tray-h">The 7 principles — tap to install the fix</div>
-        <div class="tray" id="tray"></div>
+        <div>
+          <div class="ba-lab af">● After — what you're building</div>
+          <div class="bpa" id="afterBpa">
+            <div class="bpa-ttl"><span class="dot2"></span>BestPractice Advisory</div>
+            <div class="bpa-banner">Allergies have not been reviewed during this encounter.</div>
+            <div class="bpa-body">
+              <div class="aa-sec" id="aa-info">
+                <table class="allergy-tbl"><thead><tr><th>Allergies</th><th>Severity</th><th>Reactions</th></tr></thead><tbody>
+                  <tr><td>Amoxicillin</td><td class="sev">Not Specified</td><td></td></tr>
+                  <tr><td>Aspirin</td><td class="sev">Not Specified</td><td></td></tr>
+                  <tr><td>Bisoprolol</td><td class="sev">Not Specified</td><td></td></tr>
+                  <tr><td>Clavulanic Acid</td><td class="sev">Not Specified</td><td></td></tr>
+                </tbody></table>
+                <span class="bpa-link">↗ Open CMIS to add new allergies</span>
+              </div>
+              <div class="aa-sec" id="aa-people"><span class="aa-tag">Shown only to: Doctors · Dentists · Pharmacists · Advanced Practice Nurses</span></div>
+              <div class="aa-sec" id="aa-time"><span class="aa-tag">Fires once at Sign Orders · medications only · pre-charting excluded</span></div>
+              <div class="aa-sec" id="aa-action">
+                <div class="ack-lbl">Acknowledge Reason</div>
+                <div class="ack-row">
+                  <span class="ack-btn primary aa-sec" id="aa-mark">✓ Mark as Reviewed</span>
+                  <span class="ack-btn aa-sec" id="aa-nkda">No Known Drug Allergies</span>
+                  <span class="ack-btn">Patient is not under my care</span>
+                  <span class="ack-btn">Will review later</span>
+                </div>
+                <div class="aa-sec" id="aa-clicks" style="margin-top:.45rem"><span class="aa-tag">One-click acknowledge · ~432,232 clicks saved / month</span></div>
+              </div>
+              <div id="aa-default"><span class="bpa-link">↗ Allergies Activity</span></div>
+            </div>
+            <div class="bpa-foot"><span class="bpa-btn" id="aa-foot">Dismiss</span></div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="s1buildnext" style="display:none;text-align:right;margin-top:1.1rem"><button class="next orange" onclick="setStage(1,3)" style="margin:0">See what NUHS did →</button></div>
@@ -509,57 +718,131 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 
   <div id="s1-stage3" class="stage scroll"><div class="scene">
     <h1 class="s-title">You rebuilt it. <em>Here's what NUHS actually did.</em></h1>
-    <p class="s-sub">Same call you just made: 6 of the 7 principles were broken — and one (Right Channel) was already right.</p>
-    <div class="reveal insight"><div class="ri">🎯</div><div><h4>The one they got right: Right Channel</h4><p>An interruptive pop-up <i>was</i> appropriate — checking allergies before prescribing is a genuine safety step. The channel was right; the design was not. Everything else failed.</p></div></div>
+    <p class="s-sub">Same diagnosis you just made — six of the seven principles needed fixing, and one (Right Channel) was already right: an interruptive pop-up was the correct medium for a pre-prescribing safety check.</p>
     <div class="ba-grid">
-      <div class="ba"><div class="bah before">Before</div><div class="bab">Generic "allergies not verified" message · fired for every clinician at every order · no allergy detail shown · only option was "Dismiss" · 5+ clicks to act.</div></div>
-      <div class="ba"><div class="bah after">After redesign</div><div class="bab">Allergy list shown inline · fires only for doctors &amp; pharmacists at medication sign-off · "Mark as reviewed" as one primary action · acknowledge reasons built in.</div></div>
+      <div class="ba"><div class="bah before">Before</div><div class="bab">Generic "allergies not verified" line · fired on every order, even in pre-charting · shown to staff who couldn't act · no allergy detail · only option was Dismiss · repeated prior-encounter steps.</div></div>
+      <div class="ba"><div class="bah after">After redesign</div><div class="bab">Allergy list shown inline + CMIS link · fires once at medication sign-off · doctors, dentists, pharmacists &amp; APNs only · one-click "Mark as Reviewed" / "No Known Drug Allergies" built in.</div></div>
     </div>
     <div class="stat-grid">
-      <div class="stat-card"><span class="stat-num orange">73%</span><span class="stat-lbl">Fewer alerts</span></div>
-      <div class="stat-card"><span class="stat-num green">80%</span><span class="stat-lbl">Acted on<br>(was 5.8%)</span></div>
-      <div class="stat-card"><span class="stat-num blue">432K</span><span class="stat-lbl">Clicks saved / month</span></div>
-      <div class="stat-card"><span class="stat-num">0</span><span class="stat-lbl">Safety events from the change</span></div>
+      <div class="stat-card"><span class="stat-num orange">74%</span><span class="stat-lbl">Alert reduction</span></div>
+      <div class="stat-card"><span class="stat-num green">86%</span><span class="stat-lbl">Action taken<br>(was 5.6%)</span></div>
+      <div class="stat-card"><span class="stat-num blue">90%</span><span class="stat-lbl">Faster turnaround</span></div>
+      <div class="stat-card"><span class="stat-num">~432K</span><span class="stat-lbl">Clicks saved / month</span></div>
     </div>
-    <div class="qi"><div class="qd">🔍</div><p>GMIO watches what clinicians do with every alert — so we can design ones worth acting on. Without the data, 323,000 alerts a month would still be firing and calling it safety.</p></div>
+    <p class="s-sub" style="margin:.2rem 0 0">Per patient, the alert dropped from <b>~5.1</b> firings to <b>~1.3</b> — across four PDSA cycles, with no loss of safety.</p>
+    <div class="qi"><div class="qd">🔍</div><p>We didn't guess — we watched what clinicians did with every firing. The data showed who was getting the alert, who ignored it, and what to change. Without it, 141,000 alerts a month would still be firing, and we’d be calling it safety.</p></div>
+    <div class="src">Source: NUHS BPA optimisation programme · JAMIA Open 2023 (Ng et al.) · figures de-identified and aggregate.</div>
     <div style="display:flex;gap:.7rem;justify-content:flex-end;margin-top:1.2rem">
       <button class="next" onclick="goHome()" style="margin:0;background:var(--slate)">← Home</button>
-      <button class="next orange" onclick="go(2)" style="margin:0">Next: kill it or keep it →</button>
+      <button class="next orange" onclick="go(4)" style="margin:0">Next: two make the cut →</button>
     </div>
   </div></div>
 </section>
 
 <!-- ════ CARD 2 ════ -->
 <section id="s2" class="screen scene-screen">
-  <div class="nav"><button class="back" onclick="goHome()">← Home</button><span class="navlbl">Kill or Keep</span><div class="dots"><span class="dot on"></span><span class="dot"></span></div></div>
+  <div class="nav"><button class="back" onclick="goHome()">← Home</button><span class="navlbl">Kill It or Keep It</span><div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
 
   <div id="s2-stage1" class="stage active scroll"><div class="scene">
-    <h1 class="s-title">Three alerts. <em>Which ones should go?</em></h1>
-    <p class="s-sub">Each alert appears one at a time. <b>Slice</b> to kill it, or <b>Keep</b> it if it earns its place. There's a right answer — judge it on the numbers.</p>
-    <div class="glossbar"><b>Reading the numbers:</b> "Fires / month" = how often it pops up. "Override rate" = how often clinicians dismiss it. "Acted on" = how often they actually do something. High fires + high override = noise.</div>
+    <h1 class="s-title">Four alerts. <em>Which ones should go?</em></h1>
+    <p class="s-sub">Real NUHS alerts. Real data. One alert at a time — decide whether each <b>earns its interruption</b> or <b>deserves retirement</b>. Make your call, then uncover the story behind each one.</p>
+    <div class="glossbar"><b>Reading the numbers:</b> "Fires / month" = how often it pops up. "Dwell time" = clinician-hours it consumes. High volume + low value = a candidate to retire.</div>
     <div class="ninja-prog" id="ninjaProg"></div>
     <div class="ninja-arena" id="ninjaArena"></div>
     <div class="feedback" id="ninjaFb"></div>
   </div></div>
 
   <div id="s2-stage2" class="stage scroll"><div class="scene">
-    <h1 class="s-title">Here's what <em>NUHS did</em> — and what it saved.</h1>
-    <p class="s-sub">You judged three. Here's where each one landed, and why.</p>
-    <div class="reveal bad"><div class="ri">⚔️</div><div><h4>Killed · Catheter reminder (CAUTI &gt;3 days)</h4><p>Near-100% override. Infection-control experts agreed clinical education was the better channel. Turned off entirely — <b>263 clinician-hours saved every month</b>, and catheter-infection rates stayed unchanged.</p></div></div>
-    <div class="reveal bad"><div class="ri">⚔️</div><div><h4>Killed · Non-ED orders routed to ED nurses</h4><p>This alert asked <b>nurses</b> to review orders they had no authority to act on. Removed from their queue — <b>50,910 interruptive alerts eliminated every month.</b></p></div></div>
-    <div class="reveal good"><div class="ri">🛡️</div><div><h4>Kept · NSAID prescribed for an asthma patient</h4><p>Low firing rate, 64% acted on, a specific and actionable recommendation, right population. A real clinical risk — it earns its place.</p></div></div>
+    <h1 class="s-title">All four <em>were retired</em> — here's why.</h1>
+    <p class="s-sub">None of these were wrong to build. They simply stopped earning their interruption — and the data is what let us prove it and act.</p>
+    <div class="reveal bad"><div class="ri">⚔️</div><div><h4>Retired · CAUTI urethral-catheter reminder</h4><p>Fired at the wrong point in the workflow, buried under truncated buttons, often when the clinician wasn't even with the patient — near-total override. Infection-control experts agreed clinical education was the better channel. <b>9,992 alerts &amp; 21.9 clinician-hours saved every month.</b></p></div></div>
+    <div class="reveal bad"><div class="ri">⚔️</div><div><h4>Retired · Order placed by Non-ED specialty</h4><p>Fired to the whole ED team — including nurses who couldn't act — with only "OK" to click. The same information already lived in the ED Trackboard and Narrator. <b>75,543 alerts &amp; 269.6 clinician-hours saved every month.</b></p></div></div>
+    <div class="reveal bad"><div class="ri">⚔️</div><div><h4>Retired · GTN dose warning (false positive)</h4><p>The rule enforced an international 0.4 mg maximum, but locally only 0.5 mg tablets exist — so <i>every</i> order tripped an inaccurate warning. The threshold was corrected and the warning cleared. <b>~4,200 needless warnings removed every month.</b></p></div></div>
+    <div class="reveal bad"><div class="ri">⚔️</div><div><h4>Loosened · Duplicate-therapy (artificial tears)</h4><p>A near-zero-risk pairing — day + night eye lubricants — firing a "High" duplicate warning. One of <b>22 duplicate classes</b> reviewed and suppressed or loosened. <b>~13,000 overridden warnings cut every month.</b></p></div></div>
     <div class="stat-grid">
-      <div class="stat-card"><span class="stat-num orange">50,910</span><span class="stat-lbl">Interruptive alerts removed / month</span></div>
-      <div class="stat-card"><span class="stat-num green">263 hrs</span><span class="stat-lbl">Clinician time saved / month</span></div>
-      <div class="stat-card"><span class="stat-num">0</span><span class="stat-lbl">Safety events from removal</span></div>
-      <div class="stat-card"><span class="stat-num blue">59.6%</span><span class="stat-lbl">Overall alert reduction</span></div>
+      <div class="stat-card"><span class="stat-num orange">75,543</span><span class="stat-lbl">Largest single alert retired / month</span></div>
+      <div class="stat-card"><span class="stat-num green">269.6 hrs</span><span class="stat-lbl">Clinician time saved by that one / month</span></div>
+      <div class="stat-card"><span class="stat-num blue">~13,000</span><span class="stat-lbl">Duplicate overrides cut / month</span></div>
+      <div class="stat-card"><span class="stat-num">22</span><span class="stat-lbl">Duplicate classes reviewed</span></div>
     </div>
-    <p class="s-sub" style="margin:.2rem 0 0">Across the wider programme, the rate of alerts <i>acted on</i> rose from <b>8% to 55%</b>, freeing an estimated <b>3,600 clinician-hours a year</b> — with no rise in safety events.</p>
-    <div class="qi"><div class="qd">🔍</div><p>Before we turned anything off, we needed the data — who was receiving it, the override rates, what we'd monitor afterward. The data made deletion defensible. Without it, it's just a guess.</p></div>
-    <div class="src">Source: NUHS alert-optimisation programme · JAMIA Open 2023 · figures de-identified and aggregate.</div>
+    <div class="qi"><div class="qd">🔍</div><p>The job is never done. Alerts that were right once drift out of date as guidelines, formularies and tools change — so you keep reviewing the data and retire what no longer fits, or replace it with something better.</p></div>
     <div style="display:flex;gap:.7rem;justify-content:flex-end;margin-top:1.2rem">
       <button class="next" onclick="goHome()" style="margin:0;background:var(--slate)">← Home</button>
-      <button class="next orange" onclick="go(3)" style="margin:0">Next: pharmacogenomics →</button>
+      <button class="next orange" onclick="setStage(2,3)" style="margin:0">Now multiply that across the cluster →</button>
+    </div>
+  </div></div>
+
+  <div id="s2-stage3" class="stage scroll"><div class="scene">
+    <h1 class="s-title">One alert at a time, <em>cluster-wide.</em></h1>
+    <p class="s-sub">Retiring and tuning alerts like these, month after month, bends the whole curve — both for interruptive pop-ups and for medication warnings.</p>
+    <div class="chartcard">
+      <h4>Interruptive OPAs per user · per month (NUHS)</h4>
+      <div class="csub">Mar 2022 – Dec 2024 · the same per-user metric the live dashboard tracks</div>
+      <div class="chartwrap"><svg viewBox="0 0 360 176" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gF7941D" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7941D" stop-opacity=".18"/><stop offset="1" stop-color="#F7941D" stop-opacity="0"/></linearGradient></defs><line x1="30" y1="14.0" x2="348" y2="14.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="60.0" x2="348" y2="60.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="106.0" x2="348" y2="106.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="152.0" x2="348" y2="152.0" stroke="#eef1f7" stroke-width="1"/><path d="M30.0,152.0 L30.0,24.3 L41.0,41.6 L51.9,27.8 L62.9,24.3 L73.9,45.0 L84.8,69.2 L95.8,72.7 L106.8,86.5 L117.7,93.3 L128.7,96.8 L139.7,86.5 L150.6,103.7 L161.6,96.8 L172.6,100.2 L183.5,110.6 L194.5,107.2 L205.4,100.2 L216.4,107.2 L227.4,117.5 L238.3,110.6 L249.3,114.0 L260.3,107.2 L271.2,117.5 L282.2,121.0 L293.2,114.0 L304.1,117.5 L315.1,121.0 L326.1,124.4 L337.0,117.5 L348.0,121.0 L348.0,152.0 Z" fill="url(#gF7941D)"/><polyline points="30.0,24.3 41.0,41.6 51.9,27.8 62.9,24.3 73.9,45.0 84.8,69.2 95.8,72.7 106.8,86.5 117.7,93.3 128.7,96.8 139.7,86.5 150.6,103.7 161.6,96.8 172.6,100.2 183.5,110.6 194.5,107.2 205.4,100.2 216.4,107.2 227.4,117.5 238.3,110.6 249.3,114.0 260.3,107.2 271.2,117.5 282.2,121.0 293.2,114.0 304.1,117.5 315.1,121.0 326.1,124.4 337.0,117.5 348.0,121.0" class="cline" stroke="#F7941D"/><circle cx="30.0" cy="24.3" r="3.5" fill="#F7941D"/><circle cx="348.0" cy="121.0" r="3.5" fill="#F7941D"/></svg>
+        <div class="callout"><div class="bigpct">↓43%</div><div class="cl-l">fewer interruptive OPAs per user, every month</div></div>
+      </div>
+      <div class="cendpts"><span>~67 / user / month</span><span>~38 / user / month</span></div>
+    </div>
+    <div class="chartcard">
+      <h4>Medication warnings per 100 orders (normalised)</h4>
+      <div class="csub">Dec 2022 vs Dec 2024 · adjusted for order volume</div>
+      <div class="chartwrap"><svg viewBox="0 0 360 176" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g15AAE2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#15AAE2" stop-opacity=".18"/><stop offset="1" stop-color="#15AAE2" stop-opacity="0"/></linearGradient></defs><line x1="30" y1="14.0" x2="348" y2="14.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="60.0" x2="348" y2="60.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="106.0" x2="348" y2="106.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="152.0" x2="348" y2="152.0" stroke="#eef1f7" stroke-width="1"/><path d="M30.0,152.0 L30.0,45.0 L41.0,55.4 L51.9,48.5 L62.9,38.2 L73.9,27.8 L84.8,19.5 L95.8,26.4 L106.8,34.7 L117.7,38.2 L128.7,45.7 L139.7,55.4 L150.6,51.3 L161.6,55.4 L172.6,60.9 L183.5,69.2 L194.5,62.3 L205.4,55.4 L216.4,58.8 L227.4,63.7 L238.3,69.2 L249.3,76.1 L260.3,81.6 L271.2,89.9 L282.2,99.6 L293.2,116.1 L304.1,113.4 L315.1,116.8 L326.1,114.7 L337.0,116.1 L348.0,114.7 L348.0,152.0 Z" fill="url(#g15AAE2)"/><polyline points="30.0,45.0 41.0,55.4 51.9,48.5 62.9,38.2 73.9,27.8 84.8,19.5 95.8,26.4 106.8,34.7 117.7,38.2 128.7,45.7 139.7,55.4 150.6,51.3 161.6,55.4 172.6,60.9 183.5,69.2 194.5,62.3 205.4,55.4 216.4,58.8 227.4,63.7 238.3,69.2 249.3,76.1 260.3,81.6 271.2,89.9 282.2,99.6 293.2,116.1 304.1,113.4 315.1,116.8 326.1,114.7 337.0,116.1 348.0,114.7" class="cline" stroke="#15AAE2"/><circle cx="30.0" cy="45.0" r="3.5" fill="#15AAE2"/><circle cx="348.0" cy="114.7" r="3.5" fill="#15AAE2"/></svg>
+        <div class="callout"><div class="bigpct blue">↓31%</div><div class="cl-l">fewer warnings per 100 orders</div></div>
+      </div>
+      <table class="rtbl"><tr><th>Per month</th><th>Dec 2022</th><th>Dec 2024</th><th>Change</th></tr>
+        <tr><td>Total warnings</td><td>374,415</td><td>282,775</td><td class="dn">↓ 24.5%</td></tr>
+        <tr><td>Warnings / 100 orders</td><td>36.7</td><td>25.4</td><td class="dn">↓ 30.8%</td></tr>
+        <tr><td>Overridden warnings</td><td>333,787</td><td>217,321</td><td class="dn">↓ 34.9%</td></tr>
+        <tr><td>Override rate</td><td>89.1%</td><td>76.9%</td><td class="dn">↓ 12.2pp</td></tr>
+      </table>
+      <div class="rhead">≈ 1.0 – 1.4 million medication warnings removed per year</div>
+    </div>
+    <div class="bulb"><span class="bulb-i">💡</span><div><b>An alert is never &ldquo;finished.&rdquo;</b> Guidelines move, formularies change, tools improve. The Five Rights aren&rsquo;t a launch checklist — they&rsquo;re a test every alert must keep passing.</div></div>
+    <p class="s-sub" style="font-size:.78rem;color:var(--slate)">Results sit alongside external factors — vendor database updates, fluctuating patient volumes, and changing prescribing habits.</p>
+    <div style="display:flex;gap:.7rem;justify-content:flex-end;margin-top:1.1rem">
+      <button class="next" onclick="setStage(2,2)" style="margin:0;background:var(--slate)">← Back</button>
+      <button class="next orange" onclick="setStage(2,4)" style="margin:0">How we keep watch →</button>
+    </div>
+  </div></div>
+
+  <div id="s2-stage4" class="stage scroll"><div class="scene">
+    <h1 class="s-title">None of this works <em>without the dashboard.</em></h1>
+    <p class="s-sub">Every interruptive alert is monitored — volume, success, override, time consumed — so the noise stays visible and the signal can be protected.</p>
+    <div class="dash">
+      <div class="dash-h">Overview · Apr 2026</div>
+      <div class="kpis">
+        <div class="kpi"><div class="kn">445</div><div class="kl">Unique active interruptive OPAs</div></div>
+        <div class="kpi"><div class="kn">489,747</div><div class="kl">Total interruptive firings</div><div class="ksub">Hospitals 450k · NUP 100k / mo</div></div>
+        <div class="kpi green"><div class="kn">286,012</div><div class="kl">Met the OPA intent</div></div>
+        <div class="kpi green"><div class="kn">58.4%</div><div class="kl">Overall success rate</div><div class="ksub">Hospitals 54% · NUP 76%</div></div>
+      </div>
+      <div class="dash-grid">
+        <div>
+          <h5>Performance by institution</h5>
+          <table class="itbl"><tr><th>Institution</th><th>Firings</th><th>Success</th><th>Override</th></tr>
+            <tr><td>National University Hospital</td><td>228,252</td><td class="s">56%</td><td class="o">44%</td></tr>
+            <tr><td>Ng Teng Fong + JCH</td><td>120,127</td><td class="s">48%</td><td class="o">52%</td></tr>
+            <tr><td>National University Polyclinics</td><td>101,648</td><td class="s">76%</td><td class="o">24%</td></tr>
+            <tr><td>Alexandra Hospital</td><td>32,437</td><td class="s">58%</td><td class="o">42%</td></tr>
+            <tr><td>St Luke Hospital</td><td>4,889</td><td class="s">54%</td><td class="o">46%</td></tr>
+            <tr><td>Jurong Medical Centre</td><td>2,395</td><td class="s">72%</td><td class="o">28%</td></tr>
+          </table>
+        </div>
+        <div class="sidecards">
+          <div class="sidecard"><div class="sn"><span class="b">34</span> | <span class="o">92</span></div><div class="sl">Avg OPA alerts / user / month · Hospitals &amp; NUP</div></div>
+          <div class="sidecard"><div class="sn"><span class="b">9s</span> | <span class="o">5s</span></div><div class="sl">Avg response time · Hospitals &amp; NUP</div></div>
+          <div class="sidecard"><div class="sn">990</div><div class="sl">Total hours consumed by OPA firings</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="lessons">
+      <div class="lesson"><h5>You can't govern what you can't see.</h5><p>A dashboard turns thousands of invisible firings into something you can question. Without it, every alert feels necessary and none can be challenged; with it, the noise takes shape and you can tell which alerts earn their interruption.</p></div>
+      <div class="lesson"><h5>Sometimes the safest intervention is silence.</h5><p>Turning an alert off is a clinical decision, and the data is what makes it defensible. The goal was never more alerts; it was safer care with less friction. Often the most protective thing a CDS team can do is take an alert away.</p></div>
+    </div>
+    <div class="src">Source: NUHS BPA optimisation programme &amp; live OPA dashboard · JAMIA Open 2023 (Ng et al.) · figures de-identified and aggregate.</div>
+    <div style="display:flex;gap:.7rem;justify-content:flex-end;margin-top:1.2rem">
+      <button class="next" onclick="goHome()" style="margin:0;background:var(--slate)">← Home</button>
+      <button class="next orange" onclick="go(1)" style="margin:0">Next: rescue the alert →</button>
     </div>
   </div></div>
 </section>
@@ -603,22 +886,24 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
       <div id="empty" class="empty"><div class="ico">🧬</div>Pull the lever, click a gene in the map, or pick a drug below to reveal a real NUHS gene–drug alert. Hover a gene to see what it does.</div>
 
       <div id="result" class="result">
+      <div class="vbar" id="variantBar" style="display:none"></div>
       <div class="pair-bar" id="pairBar"></div>
+      <div class="plain" id="plainBox" style="display:none"></div>
       <div class="card"><div class="card-h"><span class="cd"></span>Patient scenario · illustrative</div><div class="story"><div id="pfig"></div><div><div class="nm" id="ptName"></div><div class="wd" id="ptWard"></div><div class="bd" id="ptStory"></div></div></div></div>
       <div class="card"><div class="card-h"><span class="cd"></span>The alert that fires — exactly as the prescriber sees it</div><div class="alert" id="alertBox"></div></div>
       <div class="card data"><div class="card-h"><span class="cd"></span>What this alert did at NUHS · real data</div>
         <div class="stat-grid2" id="statGrid"></div>
-        <div class="uptake"><div class="top"><span class="lbl">Acted-on rate (prescriber changed or removed the order)</span><span class="val" id="upVal"></span></div><div class="track"><div class="fill" id="upFill"></div></div></div>
+        <div class="uptake"><div class="top"><span class="lbl">Acted-on rate</span><span class="val" id="upVal"></span></div><div class="track"><div class="fill" id="upFill"></div></div></div>
         <div class="fun"><div class="ico">💡</div><div class="t" id="funStat"></div></div>
-        <div class="src" style="padding:.55rem 1.15rem;border-top:1px solid var(--line)">Source: routine alert-usage monitoring, NUHS GMIO · de-identified aggregate, Aug 2023 – Feb 2026</div>
       </div>
       <div class="qi"><div class="qd">🔍</div><p id="qiText"></p></div>
       </div>
+      <div class="src" id="srcBottom" style="display:none;text-align:center;margin-top:1rem">Source: routine alert-usage monitoring, NUHS GMIO · de-identified aggregate, Aug 2023 – Feb 2026</div>
       </div>
     </div>
     <div style="display:flex;gap:.7rem;justify-content:flex-end;margin-top:1.2rem">
       <button class="next" onclick="goHome()" style="margin:0;background:var(--slate)">← Home</button>
-      <button class="next orange" onclick="go(4)" style="margin:0">Next: the governance poll →</button>
+      <button class="next orange" onclick="go(2)" style="margin:0">Next: kill it or keep it →</button>
     </div>
     <div class="footer-note">Patient scenarios are illustrative · alert wording &amp; buttons reproduced from the live advisories<br>NUHS GMIO · Pharmacogenomics Consultation Service +65 9841 5019 · ppgx@nuhs.edu.sg</div>
   </div></div>
@@ -630,7 +915,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 
   <div id="s4-stage1" class="stage active scroll"><div class="scene">
     <h1 class="s-title">Five requests landed. <em>You can only build two.</em></h1>
-    <p class="s-sub">You're on the CDS governance committee. No right answer — just your instinct. Pick the <b>two</b> you'd build first.</p>
+    <p class="s-sub">Five CDS requests have landed on your desk. Resources are limited, and you can only move <b>two</b> forward this cycle. You're on the governance committee — which ones get your vote?</p>
     <div class="poll-legend">
       <span><span class="rtag build">New build</span> a brand-new alert</span>
       <span><span class="rtag fix">Fix</span> repair an existing one</span>
@@ -663,9 +948,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 
 <script>
 /* ───── logo & figures ───── */
-function nuhsLogo(){return `<svg width="38" height="38" viewBox="0 0 40 40"><g transform="translate(20,18)">
- <path d="M0 0 L8 -14 L13 -9 L4 1 Z" fill="#ED1C24"/><path d="M0 0 L14 -8 L9 -3 L-1 4 Z" fill="#F7941D" transform="rotate(58)"/>
- <path d="M0 0 L8 -14 L13 -9 L4 1 Z" fill="#15AAE2" transform="rotate(180)"/><path d="M0 0 L14 -8 L9 -3 L-1 4 Z" fill="#16B6A6" transform="rotate(238)"/></g></svg>
+function nuhsLogo(){return `<img src="data:image/png;base64,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" width="40" alt="NUHS logo" style="display:block;height:auto;flex-shrink:0">
  <div class="wm">NUHS<small>National University<br>Health System</small></div>`;}
 document.getElementById('logoHome').innerHTML=nuhsLogo();
 document.getElementById('logoNav').innerHTML=nuhsLogo();
@@ -685,77 +968,76 @@ document.addEventListener('mouseover',e=>{const t=e.target.closest('[data-tip]')
 document.addEventListener('mouseout',e=>{if(e.target.closest('[data-tip]'))tip.classList.remove('show');});
 
 /* ════ GAME 1 — Fix the Alert ════ */
-function resetCard1(){setStage(1,1);installed=0;
-  document.getElementById('s1-choice-resp').style.display='none';
-  document.querySelectorAll('#s1 .choice').forEach(c=>c.classList.remove('sel'));
-  const old=document.getElementById('s1next');if(old)old.remove();
-  buildTray();updateMeter();
-  document.getElementById('upgrades').innerHTML='';
-  document.getElementById('apreH').textContent='⚠ Allergies not verified';
-  document.getElementById('alertPreview').classList.remove('fixed');
-  document.getElementById('s1buildnext').style.display='none';}
-const choiceResp={'✓':'You chose to review — the safe call. But notice: nothing about the alert <i>helped</i> you do it. You still had to navigate away to find the allergy.','↗':'You overrode it — like 86% of clinicians do. Not negligence: the alert gave you nothing new, for the 5th time.','✕':'You dismissed it. Honest — and exactly what the data shows most people do. The alert trained you to ignore it.'};
-function s1choose(el){document.querySelectorAll('#s1 .choice').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');
-  const key=el.textContent.trim()[0];const r=document.getElementById('s1-choice-resp');
-  r.innerHTML=(choiceResp[key]||'')+'<br><br><b style="color:var(--navy)">The problem was never your choice — it was the alert. Want to fix it?</b>';
-  r.style.display='block';setTimeout(()=>{if(!document.getElementById('s1next')){const b=document.createElement('button');b.className='next orange';b.id='s1next';b.textContent='Now fix it →';b.onclick=()=>setStage(1,2);r.after(b);}},10);}
-
-const fixes=[
- {t:'Right Information',d:'Show the actual allergy detail, not a generic line',up:'Penicillin allergy now shown — rash (2019)'},
- {t:'Right People',d:'Reach only the clinicians who can act',up:'Fires only for doctors & pharmacists'},
- {t:'Right Time',d:'Fire at the right moment in the workflow',up:'Fires once, at medication sign-off'},
- {t:'Right Channel',d:'Is an interruptive pop-up the right medium?',trap:true},
- {t:'Right Format',d:'Structure it around the right action',up:'Rebuilt around one clear action'},
- {t:'Actionable',d:'Tell the clinician what to do',up:'“Mark allergies reviewed” button added'},
- {t:'As Little Clicks As Possible',d:'Minimal effort to respond',up:'One-click acknowledge'}
+let bpaN=1;
+function orderPing(what){bpaN++;document.getElementById('bpaCount').textContent='Alert #'+bpaN;
+  const b=document.getElementById('beforeBpa');b.classList.remove('flash');void b.offsetWidth;b.classList.add('flash');
+  document.getElementById('orderNote').innerHTML='<b>'+what+'</b> ordered — alert fired <b>again</b>. Same generic message.';}
+const F1=[
+ {t:'Right Information',d:'Show the actual allergy detail, not a generic line',detail:'The patient\u2019s allergies (Amoxicillin, Aspirin, Bisoprolol, Clavulanic Acid) now show inside the alert, with a link to add new ones.',reveal:['aa-info'],hideDefault:true},
+ {t:'Right People',d:'Reach only the clinicians who can act',detail:'Now fires only for doctors, dentists, pharmacists and advanced practice nurses \u2014 not allied health who can\u2019t verify allergies.',reveal:['aa-people']},
+ {t:'Right Time',d:'Fire at the right moment in the workflow',detail:'Fires once at medication sign-off \u2014 not on every order, and never during pre-charting.',reveal:['aa-time']},
+ {t:'Right Channel',d:'Is an interruptive pop-up the right medium?',detail:'Here, yes \u2014 checking allergies before prescribing is a genuine safety step, so an interruptive pop-up was the right channel. The channel was right; everything else was the problem.',nofix:true},
+ {t:'Right Format',d:'Structure it around the right action',detail:'Rebuilt around one clear action, presented cleanly instead of a vague generic line.',reveal:['aa-action'],foot:'\u2713 Accept'},
+ {t:'Actionable',d:'Tell the clinician what to do',detail:'A clear \u201CMark as Reviewed\u201D action added \u2014 filed directly, no leaving the workflow.',reveal:['aa-action','aa-mark']},
+ {t:'As Little Clicks As Possible',d:'Minimal effort to respond',detail:'One-click acknowledge (including \u201CNo Known Drug Allergies\u201D) \u2014 about 432,232 clicks saved every month.',reveal:['aa-action','aa-nkda','aa-clicks']}
 ];
-let installed=0;
-const tiers=['Pure noise','Still noisy','Getting there','Halfway there','Almost there','Nearly strong','Strong alert ✓'];
-function buildTray(){document.getElementById('tray').innerHTML=fixes.map((f,i)=>`<button class="fix" id="fix${i}" onclick="installFix(${i})"><div class="fix-t">${f.t}</div><div class="fix-d">${f.d}</div></button>`).join('');}
-function installFix(i){const f=fixes[i];const el=document.getElementById('fix'+i);if(el.classList.contains('done'))return;
-  if(f.trap){el.classList.add('done','trap');el.querySelector('.fix-d').innerHTML='Already right — an interruptive pop-up <b>was</b> the correct channel. Nothing to fix here.';return;}
-  el.classList.add('done');installed++;
-  const u=document.createElement('div');u.className='up-line';u.innerHTML='<span class="uc">✚</span>'+f.up;document.getElementById('upgrades').appendChild(u);
-  updateMeter();
-  if(installed===6){const pv=document.getElementById('alertPreview');pv.classList.add('fixed');document.getElementById('apreH').textContent='✓ Allergy check — ready to act';document.getElementById('s1buildnext').style.display='block';}}
-function updateMeter(){const pct=Math.round(installed/6*100);const col=installed<=2?'var(--red)':installed<=4?'var(--orange)':'var(--success)';
+let f1done=0;
+const tiers=['Pure noise','Still noisy','Getting there','Halfway there','Almost there','Nearly strong','Strong alert \u2713'];
+function resetCard1(){setStage(1,1);f1done=0;bpaN=1;
+  document.getElementById('bpaCount').textContent='Alert #1';
+  document.getElementById('orderNote').textContent='Tap an order \u2014 watch the alert fire.';
+  buildFactors();document.getElementById('afterBpa').classList.remove('pulse');renderAfter();
+  document.getElementById('s1buildnext').style.display='none';}
+function buildFactors(){document.getElementById('factorList').innerHTML=F1.map((f,i)=>`<div class="factor" id="fac${i}" onclick="fixFactor(${i})"><div class="cbx">\u2713</div><div><div class="pttl">${f.t}</div><div class="fd">${f.d}</div></div></div>`).join('');}
+function fixFactor(i){const el=document.getElementById('fac'+i);const on=!el.classList.contains('done');el.classList.toggle('done',on);
+  if(on){const ab=document.getElementById('afterBpa');ab.classList.remove('pulse');void ab.offsetWidth;ab.classList.add('pulse');}
+  renderAfter();
+  const t=F1.filter((f,k)=>document.getElementById('fac'+k).classList.contains('done')).length;
+  document.getElementById('s1buildnext').style.display=t===7?'block':'none';}
+function renderAfter(){
+  const ids=new Set();let foot='Dismiss',hideDef=false,fixes=0;
+  F1.forEach((f,i)=>{if(document.getElementById('fac'+i).classList.contains('done')&&!f.nofix){(f.reveal||[]).forEach(x=>ids.add(x));if(f.foot)foot=f.foot;if(f.hideDefault)hideDef=true;fixes++;}});
+  ['aa-info','aa-people','aa-time','aa-action','aa-mark','aa-nkda','aa-clicks'].forEach(id=>document.getElementById(id).classList.toggle('on',ids.has(id)));
+  document.getElementById('aa-default').style.display=hideDef?'none':'';
+  document.getElementById('aa-foot').textContent=foot;
+  f1done=fixes;document.getElementById('afterBpa').classList.toggle('fixed',fixes===6);updateMeter();}
+function updateMeter(){const pct=Math.round(f1done/6*100);const col=f1done<=2?'var(--red)':f1done<=4?'var(--orange)':'var(--success)';
   const f=document.getElementById('meterFill');f.style.width=pct+'%';f.style.background=col;
-  const t=document.getElementById('meterTier');t.textContent=tiers[installed];t.style.color=col;
-  document.getElementById('stars').innerHTML=Array.from({length:6},(_,i)=>`<span class="star ${i<installed?'on':''}">★</span>`).join('');}
+  const t=document.getElementById('meterTier');t.textContent=tiers[f1done];t.style.color=col;
+  document.getElementById('stars').innerHTML=Array.from({length:6},(_,i)=>`<span class="star ${i<f1done?'on':''}">\u2605</span>`).join('');}
 
 /* ════ CARD 2 ════ */
 const ninja=[
- {title:'Catheter reminder (CAUTI &gt;3 days)',tag:'Inpatient alert',text:'Patient has had a urinary catheter for more than 3 days. Please review the need for continued catheterisation.',stats:[['50,910','fires / month'],['~97%','override rate'],['<3%','acted on']],correct:'slice',why:'<b>Slice.</b> Near-total override and almost no action. Infection-control experts agreed education was the better channel. This is noise.'},
- {title:'Non-ED orders routed to ED nurses',tag:'Emergency Dept alert',text:'New orders have been placed by non-ED clinicians while the patient is still under ED care. Please review.',stats:[['208,801','fires / month'],['ED nurses','recipients'],['0%','authority to act']],correct:'slice',why:'<b>Slice.</b> It went to <b>nurses who had no authority to act</b> on these orders — pure interruption with no possible action.'},
- {title:'NSAID prescribed — asthma patient',tag:'Medication alert',text:'This patient has a documented asthma diagnosis. NSAIDs may trigger bronchospasm. Please review before signing.',stats:[['890','fires / month'],['31%','override rate'],['64%','acted on']],correct:'keep',why:'<b>Keep.</b> Low volume, high action, a specific and actionable warning for the right patients. This one earns its place.'}
+ {tag:"Interruptive OPA · Inpatient",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>BestPractice Advisory</div><div class="bpa-banner">UTI cause 30% of all healthcare-associated infections, and approximately 75% are related to urinary catheters.</div><div class="bpa-body"><p class="aw-body">My patient has an indwelling urinary catheter for the following indication(s), which are appropriate based on accepted international guidelines (SHEA Guidelines – May 2014).</p><p class="aw-warn">Please specify in comments if &gt;1 indications are present.</p><div class="ack-lbl">Acknowledge Reason</div><div class="ack-row"><span class="ack-btn">Management of acute urinary retention an…</span><span class="ack-btn">Urinary output monitoring in critically …</span><span class="ack-btn">Assistance in pressure ulcer healing for…</span><span class="ack-btn">To improve comfort for end of life care …</span><span class="ack-btn">Strictly prolonged immobilisation (eg. s…</span><span class="ack-btn">Perioperative use of selected surgical p…</span><span class="ack-btn">Bladder Washout</span><span class="ack-btn">Long term catheter</span><span class="ack-btn">Indication is not guideline appropriate</span><span class="ack-btn">Patient does not need a urinary catheter</span></div></div></div>`,stats:[["9,992","fires / month"],["21.9 hrs","dwell time / mo"],["high","override rate"]],why:"<b>Slice — retired.</b> Fired at the wrong point in the workflow and buried under truncated buttons, often when the clinician was not even with the patient. Infection-control experts agreed clinical education was the better channel."},
+ {tag:"Interruptive OPA · Emergency Dept",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Important (1)</div><div class="bpa-banner">There is/are new order(s) placed by Non-ED users.</div><div class="bpa-body"><div class="opa-tbl"><div class="opa-h"><span>Order(s)</span><span>Status</span><span>Ordering Clinician</span></div><div class="opa-r"><span><b>Paracetamol Tablet</b> STAT</span><span>Ordered</span><span>QUAH, TEIK JOO</span></div></div></div><div class="bpa-foot"><span class="bpa-btn primary2">✓ OK</span></div></div>`,stats:[["75,543","fires / month"],["269.6 hrs","dwell time / mo"],["whole ED team","recipients"]],why:"<b>Slice — retired.</b> Fired to the entire ED team, including nurses who could not act, with only OK to click. The same information already lived in the ED Trackboard and Narrator."},
+ {tag:"Medication Warning · Dosing",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Medication Warning</div><div class="bpa-body"><div class="mw-drug">Glyceryl Trinitrate Tablet · Sublingual · 0.5 mg</div><div class="mw-warn"><span class="mw-up">↑</span> Single dose of <b>0.5 mg</b> exceeds recommended maximum of <b>0.4 mg</b> by <b>25%</b></div><div class="ack-lbl">Override Reason / Comment</div><div class="ack-row"><span class="ack-btn">Benefit outweighs risk</span><span class="ack-btn">Per protocol</span><span class="ack-btn">Inaccurate warning</span><span class="ack-btn">Override Reason ▾</span></div></div><div class="bpa-foot"><span class="bpa-btn">✗ Cancel</span><span class="bpa-btn primary2">✓ Accept</span></div></div>`,stats:[["~4,200","fires / month"],["false +ve","accuracy"],["0.5 mg only","local formulary"]],why:"<b>Slice — retired.</b> A false positive: the rule followed an international 0.4 mg maximum, but locally only 0.5 mg tablets exist, so every order tripped it. The threshold was corrected."},
+ {tag:"Medication Warning · Duplicate",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Medication Warnings · New Warnings (1)</div><div class="bpa-body"><div class="mw-dup"><span class="sev-high">High</span><div class="mw-dup-txt"><b>Duplicate Therapy:</b> Carbomer (VIDISIC), TEARS NATURALE FREE — ARTIFICIAL TEAR SOLUTION. <span class="muted">No Abuse/Dependency Potential.</span></div></div><div class="mw-meds"><div class="mw-med"><div><b>Carbomer (VIDISIC) 2mg/g Eye Gel</b><br><span class="muted">At bedtime · Hospital medication. New.</span></div><span class="ack-btn">Remove</span></div><div class="mw-med"><div><b>TEARS NATURALE FREE Eye Drop</b><br><span class="muted">4 times a day · Hospital medication. New.</span></div><span class="ack-btn">Remove</span></div></div><div class="ovr-field">Override reason…</div></div></div>`,stats:[["~13,000","overrides / mo"],["very low","clinical risk"],["22 classes","reviewed"]],why:"<b>Slice — loosened.</b> A near-zero-risk pairing (day + night eye lubricants) firing a High duplicate warning. One of 22 duplicate classes reviewed and suppressed or loosened."}
 ];
 let ninjaIdx=0,ninjaAnim=false;
-function initNinja(){setStage(2,1);ninjaIdx=0;ninjaAnim=false;document.getElementById('ninjaFb').classList.remove('show');renderNinja();}
+function initNinja(){setStage(2,1);ninjaIdx=0;ninjaAnim=false;document.getElementById("ninjaFb").classList.remove("show");renderNinja();}
 function renderNinja(){
-  const prog=document.getElementById('ninjaProg');prog.innerHTML=ninja.map((_,i)=>`<span class="np ${i<ninjaIdx?'done':''}"></span>`).join('');
-  const a=document.getElementById('ninjaArena');
+  document.getElementById("ninjaProg").innerHTML=ninja.map((_,i)=>`<span class="np ${i<ninjaIdx?"done":""}"></span>`).join("");
+  const a=document.getElementById("ninjaArena");
   if(ninjaIdx>=ninja.length){setTimeout(()=>setStage(2,2),300);return;}
   const n=ninja[ninjaIdx];
-  a.innerHTML=`<div class="fruit" id="fruit">
-    <div class="fh">${n.tag}<span class="ftag">${ninjaIdx+1} of 3</span></div>
-    <div class="ftitle">${n.title}</div><div class="ftext">${n.text}</div>
-    <div class="fstats">${n.stats.map(s=>`<div class="fstat"><b>${s[0]}</b>${s[1]}</div>`).join('')}</div>
-    <div class="slicekeep"><button class="skbtn slice" onclick="ninjaPick('slice')">✂️ Slice it</button><button class="skbtn keep" onclick="ninjaPick('keep')">🛡️ Keep it</button></div>
-  </div>`;
+  a.innerHTML=`<div class="nwrap" id="fruit"><div class="ncat">${n.tag}<span>${ninjaIdx+1} of ${ninja.length}</span></div><div class="slicebox" id="slicebox">${n.al}</div><div class="nstats">${n.stats.map(x=>`<div class="nstat"><b>${x[0]}</b>${x[1]}</div>`).join("")}</div><div class="slicekeep"><button class="skbtn slice" onclick="ninjaPick('slice')">⚔️ Slice it</button><button class="skbtn keep" onclick="ninjaPick('keep')">🛡️ Keep it</button></div></div>`;
 }
 function ninjaPick(choice){
   if(ninjaAnim)return;ninjaAnim=true;
-  const n=ninja[ninjaIdx];const fruit=document.getElementById('fruit');
-  fruit.classList.add(choice==='slice'?'sliced':'kept');
-  const right=choice===n.correct;
-  const fb=document.getElementById('ninjaFb');
-  fb.className='feedback show '+(right?'right':'wrong');
-  fb.innerHTML=`<div class="fbh">${right?'✓ Right call':'↻ Worth a closer look'}</div><p>${n.why}</p><button class="fbnext" onclick="ninjaNext()">${ninjaIdx<ninja.length-1?'Next alert →':'See what NUHS did →'}</button>`;
+  const n=ninja[ninjaIdx];const right=choice==="slice";const last=ninjaIdx>=ninja.length-1;
+  document.querySelectorAll(".nstats,.slicekeep").forEach(e=>e.style.opacity="0");
+  const fruit=document.getElementById("fruit");
+  if(choice==="slice"){showSliceFeedback("⚔️");const sl=document.createElement("div");sl.className="swordslash";fruit.appendChild(sl);setTimeout(()=>fruit.classList.add("sliced"),110);}
+  else{showSliceFeedback("🛡️");fruit.classList.add("kept");}
+  setTimeout(()=>{
+    document.getElementById("ninjaArena").innerHTML=`<div class="fbcard ${right?"right":"wrong"}"><div class="fbh">${right?"✓ Right call":"↻ This one was retired too"}</div><p>${n.why}</p><button class="fbnext" onclick="ninjaNext()">${last?"See what NUHS did →":"Next alert →"}</button></div>`;
+  },760);
 }
-function ninjaNext(){document.getElementById('ninjaFb').classList.remove('show');ninjaIdx++;ninjaAnim=false;renderNinja();}
+function showSliceFeedback(emoji){const el=document.createElement("div");el.className="slice-feedback";el.textContent=emoji;document.getElementById("ninjaArena").appendChild(el);setTimeout(()=>{if(el.parentNode)el.remove();},780);}
+function ninjaNext(){document.getElementById("ninjaFb").classList.remove("show");ninjaIdx++;ninjaAnim=false;renderNinja();}
 
 /* ════ CARD 3 — data ════ */
-const CONTACT='For enquires, please contact the NUHS Pharmacogenomics Consultation Service at +65 9841 5019 or ppgx@nuhs.edu.sg';
+const CONTACT='For enquiries, please contact the NUHS Pharmacogenomics Consultation Service at +65 9841 5019 or ppgx@nuhs.edu.sg';
 const pairs=[
 {id:0,gene:"HLA-B*58:01",drug:"Allopurinol",risk:"high",geneKey:"HLA-B*58:01",plain:"HLA-B*58:01 is an immune marker. If a patient carries it, the gout drug allopurinol can trigger a severe, sometimes fatal skin reaction. The alert flags it before the first dose.",nm:"Mr Tan, 64",wd:"Rheumatology · new gout",story:"Allopurinol is about to be started for gout. His stored HLA-B*58:01 result is positive — a marker for severe skin reactions — so the alert fires before the order is signed.",al:{status:'<span class="status"><em>HLA-B*58:01</em> allele is POSITIVE</span>',risk:"Patient is at <b>INCREASED</b> risk of allopurinol-induced severe cutaneous adverse reactions (SCAR).",recTitle:"Recommendation <b>(For allopurinol-naïve patients):</b>",rec:["<b>AVOID allopurinol and prescribe an alternative therapy</b> e.g. febuxostat, probenecid etc"],cont:"OR, to continue Allopurinol, please select an Acknowledge Reason.",link:"Allopurinol Therapy and HLA-B*58:01 Genetic Testing",ack:["Tolerated current dose > 3 months","Patient's/ Dr's decision, will monitor","Others, enter comments"]},st:{fired:93,uptake:8,docs:81,pts:35,avg:24},fun:"Reached <b>81 prescribers</b> across <b>35 patients</b>. Most overrides were &lsquo;tolerated &gt;3 months&rsquo; — patients already safely on therapy — so a low change-rate here is sensible, not a failure.",qi:"7.5% sounds low, until you see most overrides were patients already tolerating the drug. The raw number lies without context."},
 {id:1,gene:"HLA-B*15:02",drug:"Carbamazepine",risk:"high",geneKey:"HLA-B*15:02",plain:"HLA-B*15:02 is carried by roughly 1 in 8 of the local Chinese population. With the seizure drug carbamazepine it raises the risk of life-threatening skin reactions, so the alert stops the order for review.",nm:"Ms Lim, 39",wd:"Neurology · first seizure",story:"Carbamazepine is first-line for her new seizures, but HLA-B*15:02 is positive — flagging serious risk of Stevens-Johnson syndrome. The alert pauses the order.",al:{status:'<span class="status"><em>HLA-B*15:02</em> allele is POSITIVE</span>',risk:"Patient is at <b>INCREASED</b> risk of SERIOUS/FATAL Carbamazepine-induced Stevens-Johnson syndrome / toxic epidermal necrolysis (SJS/TEN).",recTitle:"Recommendation <b>(For carbamazepine-naïve patients):</b>",rec:["<b>AVOID carbamazepine and prescribe an alternative therapy.</b> Cross reactivity with other aromatic agents e.g. lamotrigine, phenytoin and phenobarbital etc. is possible, use with caution."],cont:"OR, to continue Carbamazepine, please select an Acknowledge Reason.",link:"Carbamazepine Therapy and HLA-B*15:02/ HLA-A*31:01 Genetic Testing",ack:["Tolerated Carbamazepine > 3 months","Patient's/ Dr's decision, will monitor","Others, enter comments"]},st:{fired:9,uptake:22,docs:8,pts:8,avg:26},fun:"Each of the 8 firings was a <b>different patient</b> — no repeat noise. For a reaction with up to 10% mortality, even a handful of catches is decisive.",qi:"Low-volume, high-stakes — exactly the alert you never silence on firing-count alone. Rarity is the point, not a weakness."},
@@ -786,12 +1068,15 @@ const pairs=[
 /* result (phenotype) + action category — grounded per advisory */
 const meta={0:{ph:'*58:01 positive',cat:'avoid'},1:{ph:'*15:02 positive',cat:'avoid'},2:{ph:'Poor metaboliser',cat:'avoid'},3:{ph:'Genotyped',cat:'calc'},4:{ph:'Ultrarapid',cat:'avoid'},5:{ph:'Poor function',cat:'reduce'},6:{ph:'Poor metaboliser',cat:'reduce'},7:{ph:'Intermediate',cat:'reduce'},8:{ph:'Poor metaboliser',cat:'reduce'},9:{ph:'Intermediate',cat:'reduce'},10:{ph:'Intermediate',cat:'avoid'},11:{ph:'Intermediate',cat:'reduce'},12:{ph:'Intermediate',cat:'reduce'},13:{ph:'Poor (CYP2C19)',cat:'avoid'},14:{ph:'Possible interm.',cat:'reduce'},15:{ph:'Result unclear',cat:'review'},16:{ph:'Intermediate',cat:'reduce'},17:{ph:'Intermediate',cat:'reduce'},18:{ph:'*15:02 positive',cat:'avoid'},19:{ph:'Intermediate',cat:'reduce'},20:{ph:'Poor metaboliser',cat:'reduce'},21:{ph:'Decreased fn',cat:'reduce'},22:{ph:'Expressor',cat:'increase'},23:{ph:'Poor metaboliser',cat:'avoid'}};
 pairs.forEach(p=>{p.ph=meta[p.id].ph;p.cat=meta[p.id].cat;});
+/* distinct labels when one drug has several advisories */
+const VT={1:'HLA-B*15:02 positive',15:'Non-discrete result',7:'NUDT15 intermediate',14:'NUDT15 possible intermediate',2:'Poor metaboliser',10:'Intermediate metaboliser',4:'Ultrarapid metaboliser',23:'Poor metaboliser',5:'Poor function',21:'Decreased function',6:'Poor metaboliser',11:'Intermediate metaboliser',9:'CYP2C19 intermediate',12:'CYP2C19 normal',13:'CYP2C19 poor',19:'Intermediate metaboliser',20:'Poor metaboliser'};
+let curVariants=null;
 const CAT={avoid:{lbl:'Avoid / switch drug',sh:'Avoid / switch',col:'#C1121A'},reduce:{lbl:'Reduce / adjust dose',sh:'Adjust dose',col:'#E07A0C'},increase:{lbl:'Increase the dose',sh:'Increase dose',col:'#0e8478'},calc:{lbl:'Genotype-guided dose',sh:'Genotype dose',col:'#0E7FB0'},review:{lbl:'Review the result',sh:'Review result',col:'#5A6884'}};
 function catCol(c){return CAT[c].col;}
 function catLbl(c){return CAT[c].lbl;}
 
 /* reels */
-const reelG=pairs.map(p=>({m:p.gene.length>15?p.gene.split(' · ')[0]:p.gene,s:"Gene"}));
+const reelG=pairs.map(p=>({m:p.gene.includes(' · ')?p.gene.split(' · ')[0]:p.gene,s:"Gene"}));
 const reelD=pairs.map(p=>({m:p.drug,s:"Drug"}));
 const reelP=pairs.map(p=>({m:p.ph,s:CAT[p.cat].sh,col:catCol(p.cat)}));
 function reelItem(it,isR){const col=isR?it.col:'var(--ink)';const sub=isR?`<span class="rs" style="color:${it.col}">${it.s}</span>`:'';return `<div class="reel-item"><span class="m" style="color:${col}">${it.m}</span>${sub}</div>`;}
@@ -799,7 +1084,7 @@ function initReels(){[['reelG',reelG,0],['reelD',reelD,0],['reelR',reelP,1]].for
 function animReel(id,items,target,isR,delay){return new Promise(res=>{const el=document.getElementById(id);const seq=[];for(let i=0;i<11;i++)seq.push(items[Math.floor(Math.random()*items.length)]);seq.push(items[target]);el.innerHTML=seq.map(it=>reelItem(it,isR)).join('');el.style.transition='none';el.style.top='0px';requestAnimationFrame(()=>requestAnimationFrame(()=>{const dur=0.6+delay;el.style.transition=`top ${dur}s cubic-bezier(.2,.85,.3,1)`;el.style.top=`-${(seq.length-1)*96}px`;setTimeout(res,dur*1000+60);}));});}
 let spinning=false;
 function pullLeverAnim(){const l=document.getElementById('lever');l.classList.add('pulled');setTimeout(()=>l.classList.remove('pulled'),560);}
-async function doSpin(){if(spinning)return;spinning=true;pullLeverAnim();const b=document.getElementById('spinBtn');b.disabled=true;b.textContent='…';const idx=Math.floor(Math.random()*pairs.length);await Promise.all([animReel('reelG',reelG,idx,false,0),animReel('reelD',reelD,idx,false,.13),animReel('reelR',reelP,idx,true,.26)]);showPair(pairs[idx]);b.disabled=false;b.textContent='SPIN';spinning=false;}
+async function doSpin(){if(spinning)return;spinning=true;pullLeverAnim();const b=document.getElementById('spinBtn');b.disabled=true;b.textContent='…';const idx=Math.floor(Math.random()*pairs.length);await Promise.all([animReel('reelG',reelG,idx,false,0),animReel('reelD',reelD,idx,false,.13),animReel('reelR',reelP,idx,true,.26)]);curVariants=null;showPair(pairs[idx]);b.disabled=false;b.textContent='SPIN';spinning=false;}
 
 function actionPill(c){return `<span class="pill" style="background:${CAT[c].col}22;color:${CAT[c].col}">${CAT[c].lbl}</span>`;}
 function fillColor(c){return CAT[c].col;}
@@ -807,51 +1092,64 @@ function avatarColor(c){return CAT[c].col;}
 function ackPick(el){[...el.parentNode.children].forEach(b=>b.classList.remove('chosen'));el.classList.add('chosen');}
 function buildAlert(p){const a=p.al;const recLis=a.rec.map(r=>`<li>${r}</li>`).join('');const recBlock=a.rec.length?`<div class="rec">${a.recTitle?`<span class="rl">${a.recTitle}</span>`:''}<ul>${recLis}</ul></div>`:'';const moreBlock=a.link?`<div class="more">For more information: <a>${a.link}</a></div>`:'';const ackBtns=a.ack.map((t,i)=>`<button class="ack${i===0?' chosen':''}" onclick="ackPick(this)">${t}</button>`).join('');
  return `<div class="alert-frame"><div class="alert-amber"><span class="warn">Pharmacogenomics Warning:</span> ${a.status}<p>${a.risk}</p>${recBlock}<p><b>${a.cont}</b></p><div class="contact">${CONTACT}</div>${moreBlock}</div><div class="alert-lower"><span class="lab-link">↗ Review Lab Results</span><div class="ack-lbl"><span class="bang">!</span> Acknowledge Reason</div><div class="ack-row">${ackBtns}</div><div class="alert-actions"><button class="btn-accept" onclick="this.blur()">✓ Accept</button></div></div></div><div class="alert-note">Recreated in NUHS booth styling — wording and acknowledge buttons taken directly from the live ${p.drug} advisory.</div>`;}
+function setReelFace(p){[['reelG',reelG,false],['reelD',reelD,false],['reelR',reelP,true]].forEach(([id,items,isR])=>{const el=document.getElementById(id);el.style.transition='none';el.style.top='0px';el.innerHTML=reelItem(items[p.id],isR);});}
 function showPair(p){
   document.getElementById('empty').style.display='none';
   document.getElementById('result').classList.add('show');
-  document.getElementById('pairBar').innerHTML=`<span class="pill gene">${p.gene}</span><span class="x">×</span><span class="pill drug">${p.drug}</span><span class="pill" style="background:#eef2fb;color:#5A6884">${p.ph}</span>${actionPill(p.cat)}`;
+  document.getElementById('pairBar').innerHTML=`<span class="pill gene">${p.gene}</span><span class="x">×</span><span class="pill drug">${p.drug}</span><span class="pill" style="background:var(--paper);color:var(--slate)">${p.ph}</span>${actionPill(p.cat)}`;
+  const pb=document.getElementById('plainBox');pb.innerHTML=`<span class="tag">In plain terms</span>${p.plain}`;pb.style.display='block';
+  document.getElementById('srcBottom').style.display='block';
+  const vb=document.getElementById('variantBar');
+  if(curVariants&&curVariants.length>1&&curVariants.some(v=>v.id===p.id)){vb.innerHTML=`<span class="vlbl">${curVariants.length} alerts for ${p.drug} — tap to compare</span><div class="vbtns">`+curVariants.map(v=>`<button class="vbtn${v.id===p.id?' on':''}" onclick="pickVariant(${v.id})">${VT[v.id]||v.ph}</button>`).join('')+`</div>`;vb.style.display='block';}else{vb.style.display='none';}
   document.getElementById('pfig').innerHTML=patient(avatarColor(p.cat),48);
   document.getElementById('ptName').textContent=p.nm;document.getElementById('ptWard').textContent=p.wd;document.getElementById('ptStory').textContent=p.story;
   document.getElementById('alertBox').innerHTML=buildAlert(p);
   const s=p.st;const pl=(n,w)=>n===1?w:w+'s';
   document.getElementById('statGrid').innerHTML=`
-   <div class="scell"><div class="l">Times fired</div><div class="v navy">${s.fired}</div><div class="sub">${pl(s.fired,'interruptive pop-up')}</div></div>
-   <div class="scell"><div class="l">Prescribers</div><div class="v blue">${s.docs}</div><div class="sub">${pl(s.docs,'distinct doctor')}</div></div>
-   <div class="scell"><div class="l">Patients</div><div class="v green">${s.pts}</div><div class="sub">${pl(s.pts,'distinct patient')}</div></div>
-   <div class="scell"><div class="l">Response</div><div class="v orange">${s.avg?s.avg+'s':'—'}</div><div class="sub">avg. to act</div></div>`;
+   <div class="scell"><div class="l">Times fired</div><div class="v navy">${s.fired}</div></div>
+   <div class="scell"><div class="l">Prescribers</div><div class="v blue">${s.docs}</div></div>
+   <div class="scell"><div class="l">Patients</div><div class="v green">${s.pts}</div></div>
+   <div class="scell"><div class="l">Response</div><div class="v orange">${s.avg?s.avg+'s':'—'}</div></div>`;
   document.getElementById('upVal').textContent=s.uptake+'%';document.getElementById('upVal').style.color=fillColor(p.cat);
   const fill=document.getElementById('upFill');fill.style.width='0%';fill.style.background=fillColor(p.cat);setTimeout(()=>fill.style.width=s.uptake+'%',90);
   document.getElementById('funStat').innerHTML=p.fun;document.getElementById('qiText').innerHTML=p.qi;
-  activeGene=p.geneKey;drawNet();
+  activeGene=p.geneKey;drawNet();setReelFace(p);
   document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 /* gene map */
 const NW=400,NH=300;
 const genes=[
- {key:"CYP2C19",label:"CYP2C19",n:54,x:95,y:100,tip:"A liver enzyme that switches on or clears certain drugs. Poor metabolisers may get too little effect (e.g. clopidogrel) or too much (e.g. escitalopram)."},{key:"TPMT·NUDT15",label:"TPMT·NUDT15",n:57,x:215,y:60,tip:"Two enzymes that decide how safely the body handles thiopurines (azathioprine, mercaptopurine). Low activity raises the risk of bone marrow suppression."},
- {key:"CYP2D6",label:"CYP2D6",n:32,x:160,y:185,tip:"A liver enzyme that clears many antidepressants and painkillers. Activity varies widely between people, so doses often need adjusting."},{key:"HLA-B*15:02",label:"HLA-B*15:02",n:28,x:285,y:125,tip:"An immune marker. Carriers are at risk of severe, sometimes fatal skin reactions (SJS/TEN) with carbamazepine."},
- {key:"SLCO1B1",label:"SLCO1B1",n:20,x:330,y:60,tip:"A transporter that moves statins into the liver. Reduced function raises blood levels and muscle-toxicity risk."},{key:"CYP3A5",label:"CYP3A5",n:5,x:345,y:205,tip:"Determines how fast tacrolimus is cleared. Expressors clear it quickly and often need a higher starting dose."},
- {key:"UGT1A1",label:"UGT1A1",n:4,x:255,y:235,tip:"Clears the chemotherapy drug irinotecan. Poor metabolisers clear it slowly, raising the risk of severe low white-cell counts."},{key:"HLA-B*58:01",label:"HLA-B*58:01",n:3,x:70,y:215,tip:"An immune marker. Carriers are at risk of severe skin reactions with the gout drug allopurinol."},
- {key:"CYP2C9·VKORC1",label:"CYP2C9·VKORC1",n:2,x:355,y:140,tip:"Together these two genes predict warfarin dose — guiding genotype-based dosing instead of a one-size starting dose."}
+ {key:"CYP2C19",label:"CYP2C19",n:54,x:88,y:72,tip:"A liver enzyme that switches on or clears certain drugs. Poor metabolisers may get too little effect (e.g. clopidogrel) or too much (e.g. escitalopram)."},{key:"TPMT·NUDT15",label:"TPMT·NUDT15",n:57,x:235,y:58,tip:"Two enzymes that decide how safely the body handles thiopurines (azathioprine, mercaptopurine). Low activity raises the risk of bone marrow suppression."},
+ {key:"CYP2D6",label:"CYP2D6",n:32,x:150,y:150,tip:"A liver enzyme that clears many antidepressants and painkillers. Activity varies widely between people, so doses often need adjusting."},{key:"HLA-B*15:02",label:"HLA-B*15:02",n:28,x:335,y:110,tip:"An immune marker. Carriers are at risk of severe, sometimes fatal skin reactions (SJS/TEN) with carbamazepine."},
+ {key:"SLCO1B1",label:"SLCO1B1",n:20,x:300,y:185,tip:"A transporter that moves statins into the liver. Reduced function raises blood levels and muscle-toxicity risk."},{key:"CYP3A5",label:"CYP3A5",n:5,x:350,y:235,tip:"Determines how fast tacrolimus is cleared. Expressors clear it quickly and often need a higher starting dose."},
+ {key:"UGT1A1",label:"UGT1A1",n:4,x:255,y:250,tip:"Clears the chemotherapy drug irinotecan. Poor metabolisers clear it slowly, raising the risk of severe low white-cell counts."},{key:"HLA-B*58:01",label:"HLA-B*58:01",n:3,x:165,y:248,tip:"An immune marker. Carriers are at risk of severe skin reactions with the gout drug allopurinol."},
+ {key:"CYP2C9·VKORC1",label:"CYP2C9·VKORC1",n:2,x:70,y:205,tip:"Together these two genes predict warfarin dose — guiding genotype-based dosing instead of a one-size starting dose."}
 ];
 let activeGene=null,hoverGene=null,cv,ctx;
-function drawNet(){if(!ctx)return;ctx.clearRect(0,0,NW,NH);const cx=210,cy=135;
- genes.forEach(g=>{ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(g.x,g.y);ctx.strokeStyle='rgba(27,44,107,.09)';ctx.lineWidth=1;ctx.stroke();});
+function drawNet(){if(!ctx)return;ctx.clearRect(0,0,NW,NH);const cx=205,cy=150;
+ genes.forEach(g=>{ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(g.x,g.y);ctx.strokeStyle='rgba(27,44,107,.07)';ctx.lineWidth=1;ctx.stroke();});
  genes.forEach(g=>{const r=9+Math.sqrt(g.n)*2.3;const act=g.key===activeGene,hov=g.key===hoverGene;
   if(act||hov){ctx.shadowColor='#15AAE2';ctx.shadowBlur=act?18:10;}else ctx.shadowBlur=0;
   const grad=ctx.createRadialGradient(g.x-r/3,g.y-r/3,2,g.x,g.y,r);grad.addColorStop(0,'#3ec0ec');grad.addColorStop(1,'#0E7FB0');
   ctx.beginPath();ctx.arc(g.x,g.y,r,0,Math.PI*2);ctx.fillStyle=grad;ctx.globalAlpha=act?1:hov?.95:.82;ctx.fill();ctx.shadowBlur=0;
   ctx.strokeStyle='rgba(255,255,255,.9)';ctx.lineWidth=1.5;ctx.stroke();ctx.globalAlpha=1;
-  ctx.fillStyle=act?'#0B1F4D':'#16356B';ctx.font=`${act?'700':'600'} 10px "DM Sans",sans-serif`;ctx.textAlign='center';ctx.textBaseline='top';ctx.fillText(g.label,g.x,g.y+r+3);
-  ctx.fillStyle='#8A97B2';ctx.font='8px "DM Sans",sans-serif';ctx.fillText(g.n+' tested',g.x,g.y+r+15);});}
+  ctx.fillStyle=act?'#0B1F4D':'#16356B';ctx.font=`${act?'700':'600'} 11.5px "DM Sans",sans-serif`;ctx.textAlign='center';ctx.textBaseline='top';ctx.fillText(g.label,g.x,g.y+r+4);
+  ctx.fillStyle='#5A6884';ctx.font='600 9.5px "DM Sans",sans-serif';ctx.fillText(g.n+' tested',g.x,g.y+r+18);});}
 function geneHit(x,y){return genes.find(g=>Math.hypot(g.x-x,g.y-y)<(9+Math.sqrt(g.n)*2.3+4));}
-function spinGene(key){const pool=pairs.filter(p=>p.geneKey===key);if(pool.length)showPair(pool[Math.floor(Math.random()*pool.length)]);}
-function buildChips(){document.getElementById('chips').innerHTML=pairs.map(p=>`<span class="chip" style="--dot:${catCol(p.cat)}" onclick="showPair(pairs[${p.id}])">${p.drug}</span>`).join('');}
+function spinGene(key){const pool=pairs.filter(p=>p.geneKey===key);if(pool.length){curVariants=null;showPair(pool[Math.floor(Math.random()*pool.length)]);}}
+function buildChips(){
+ const byDrug={},order=[];
+ [...pairs].sort((a,b)=>a.drug.localeCompare(b.drug)).forEach(p=>{if(!byDrug[p.drug]){byDrug[p.drug]=[];order.push(p.drug);}byDrug[p.drug].push(p);});
+ document.getElementById('chips').innerHTML=order.map(d=>{const vs=byDrug[d],n=vs.length;
+  const badge=n>1?` <span class="qual">· ${n} alerts</span>`:'';
+  return `<span class="chip" title="${n>1?n+' alerts for '+d:vs[0].ph}" style="--dot:${catCol(vs[0].cat)}" onclick="selectDrug('${d}')">${d}${badge}</span>`;
+ }).join('');}
+function selectDrug(d){curVariants=pairs.filter(p=>p.drug===d);showPair(curVariants[0]);}
+function pickVariant(id){showPair(pairs[id]);}
 let labInit=false;
 function initLab(){initReels();buildChips();cv=document.getElementById('net');ctx=cv.getContext('2d');
- const dpr=window.devicePixelRatio||1;if(cv.width!==Math.round(NW*dpr)){cv.width=Math.round(NW*dpr);cv.height=Math.round(NH*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);
+ const dpr=Math.max(2,window.devicePixelRatio||1);if(cv.width!==Math.round(NW*dpr)){cv.width=Math.round(NW*dpr);cv.height=Math.round(NH*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);
  if(!labInit){const tip=document.getElementById('geneTip');
   const scale=e=>{const rc=cv.getBoundingClientRect();return{x:(e.clientX-rc.left)*(NW/rc.width),y:(e.clientY-rc.top)*(NH/rc.height)};};
   cv.addEventListener('mousemove',e=>{const{x,y}=scale(e);const g=geneHit(x,y);hoverGene=g?g.key:null;cv.style.cursor=g?'pointer':'default';
@@ -883,13 +1181,13 @@ function pickReq(id){const i=picks.indexOf(id);if(i>=0)picks.splice(i,1);else{if
 function s4vote(){picks.forEach(id=>pollVotes[id]++);pollTotal++;saveVotes();setStage(4,2);renderPoll();}
 function countUp(el,target,dur){if(!el)return;const t0=performance.now();function step(t){const p=Math.min(1,(t-t0)/dur);el.textContent=Math.round(p*target)+'%';if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
 const TROPHY=`<svg viewBox="0 0 100 120" width="54" height="65" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FDEEB6"/><stop offset=".4" stop-color="#F4C04A"/><stop offset="1" stop-color="#B47F12"/></linearGradient><linearGradient id="tg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4C04A"/><stop offset="1" stop-color="#A06E10"/></linearGradient></defs><path d="M26 26 C6 24 8 54 30 52" fill="none" stroke="#E0A82C" stroke-width="6" stroke-linecap="round"/><path d="M74 26 C94 24 92 54 70 52" fill="none" stroke="#E0A82C" stroke-width="6" stroke-linecap="round"/><path d="M24 18 H76 L74 34 C74 54 63 66 50 66 C37 66 26 54 26 34 Z" fill="url(#tg)" stroke="#8f6510" stroke-width="1.6"/><rect x="22" y="13" width="56" height="8" rx="4" fill="url(#tg2)" stroke="#8f6510" stroke-width="1"/><path d="M37 24 C35 38 40 52 50 60" fill="none" stroke="#fff6d8" stroke-width="3" opacity=".5" stroke-linecap="round"/><polygon points="50,28 53.4,38 64,38 55.3,44.2 58.6,54.2 50,48 41.4,54.2 44.7,44.2 36,38 46.6,38" fill="#fff8df" opacity=".95"/><rect x="45" y="66" width="10" height="9" fill="url(#tg2)"/><circle cx="50" cy="78" r="6" fill="url(#tg)" stroke="#8f6510" stroke-width="1"/><rect x="46" y="82" width="8" height="8" fill="url(#tg2)"/><path d="M34 90 H66 L70 99 H30 Z" fill="url(#tg)" stroke="#8f6510" stroke-width="1"/><rect x="27" y="99" width="46" height="9" rx="2.5" fill="url(#tg2)" stroke="#8f6510" stroke-width="1"/></svg>`;
-const BALL=`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><polygon id="rp" points="50,29 41.4,22.8 44.7,12.7 55.3,12.7 58.6,22.8"/></defs><circle cx="50" cy="50" r="46" fill="#fff" stroke="#1d2742" stroke-width="3"/><polygon points="50,35 64,45 59,62 41,62 36,45" fill="#16356B"/><use href="#rp" fill="#ED1C24"/><use href="#rp" fill="#15AAE2" transform="rotate(72 50 50)"/><use href="#rp" fill="#16B6A6" transform="rotate(144 50 50)"/><use href="#rp" fill="#F7941D" transform="rotate(216 50 50)"/><use href="#rp" fill="#5B2E63" transform="rotate(288 50 50)"/></svg>`;
+const BALL=`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><polygon id="pent" points="0,-12 11.4,-3.7 7,9.7 -7,9.7 -11.4,-3.7"/><clipPath id="bclip"><circle cx="50" cy="50" r="45"/></clipPath></defs><circle cx="50" cy="50" r="45" fill="#fff" stroke="#15233f" stroke-width="2.6"/><g clip-path="url(#bclip)"><polygon points="50,31 69,45 62,67 38,67 31,45" fill="none" stroke="#c7cdd8" stroke-width="1.3"/><g stroke="#c7cdd8" stroke-width="1.1"><line x1="50" y1="31" x2="50" y2="14"/><line x1="69" y1="45" x2="84" y2="40"/><line x1="62" y1="67" x2="71" y2="81"/><line x1="38" y1="67" x2="29" y2="81"/><line x1="31" y1="45" x2="16" y2="40"/></g><use href="#pent" transform="translate(50,12)" fill="#15233f"/><use href="#pent" transform="translate(85,38) rotate(72)" fill="#15233f"/><use href="#pent" transform="translate(71,81) rotate(144)" fill="#15233f"/><use href="#pent" transform="translate(29,81) rotate(216)" fill="#15233f"/><use href="#pent" transform="translate(15,38) rotate(288)" fill="#15233f"/></g></svg>`;
 function flap(el,target,delay){if(!el)return;setTimeout(()=>{let n=0;const total=14;const tick=()=>{n++;const p=n/total;const eased=1-Math.pow(1-p,2.2);const val=n>=total?target:Math.min(target,Math.round(eased*target)+(n%2?1:0));el.textContent=val+'%';el.classList.remove('flapd');void el.offsetWidth;el.classList.add('flapd');if(n<total)setTimeout(tick,45+p*95);else el.textContent=target+'%';};tick();},delay);}
 const CFCOLS=['#F4C04A','#ED1C24','#15AAE2','#16B6A6','#F7941D','#5B2E63','#ffffff'];
 function confettiBurst(){const c=document.getElementById('cft');if(!c)return;c.innerHTML='';for(let i=0;i<72;i++){const s=document.createElement('span');const w=6+Math.floor(Math.random()*4);s.style.cssText=`left:${(Math.random()*100).toFixed(1)}%;width:${w}px;background:${CFCOLS[i%CFCOLS.length]};animation-delay:${(Math.random()*.5).toFixed(2)}s;animation-duration:${(1+Math.random()*1.3).toFixed(2)}s`;c.appendChild(s);}}
 function buildBunting(){const b=document.getElementById('bunt');if(!b)return;b.innerHTML=Array.from({length:17},(_,i)=>`<i style="border-top-color:${CFCOLS[i%6]}"></i>`).join('');}
 const CUP=`<svg viewBox="0 0 100 120" width="42" height="50" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="cupg" cx="40%" cy="28%" r="80%"><stop offset="0" stop-color="#FFF6D6"/><stop offset=".45" stop-color="#F4C84E"/><stop offset="1" stop-color="#B07D12"/></radialGradient><linearGradient id="cupb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4C04A"/><stop offset="1" stop-color="#9c6c10"/></linearGradient></defs><path d="M26 26 C6 24 8 54 30 52" fill="none" stroke="#E2AB2E" stroke-width="6" stroke-linecap="round"/><path d="M74 26 C94 24 92 54 70 52" fill="none" stroke="#E2AB2E" stroke-width="6" stroke-linecap="round"/><path d="M24 18 H76 L74 34 C74 55 63 67 50 67 C37 67 26 55 26 34 Z" fill="url(#cupg)" stroke="#8a6210" stroke-width="1.6"/><rect x="22" y="12" width="56" height="9" rx="4.5" fill="url(#cupb)" stroke="#8a6210" stroke-width="1"/><path d="M34 24 C31 40 37 55 50 62" fill="none" stroke="#fff7da" stroke-width="3.5" opacity=".55" stroke-linecap="round"/><polygon points="50,30 53.5,40 64,40 55.5,46.3 58.8,56.3 50,50 41.2,56.3 44.5,46.3 36,40 46.5,40" fill="#fff8df" opacity=".95"/><rect x="45" y="67" width="10" height="9" fill="url(#cupb)"/><circle cx="50" cy="79" r="6" fill="url(#cupg)" stroke="#8a6210" stroke-width="1"/><rect x="46" y="83" width="8" height="8" fill="url(#cupb)"/><path d="M34 91 H66 L70 100 H30 Z" fill="url(#cupg)" stroke="#8a6210" stroke-width="1"/><rect x="27" y="100" width="46" height="9" rx="2.5" fill="url(#cupb)" stroke="#8a6210" stroke-width="1"/></svg>`;
-const MTONE={2:['#ffffff','#d4dbe4','#94a2b4','#7c8a9d','#33414f'],3:['#ffe6c2','#d79a55','#9c6427','#82531f','#4a2f12'],4:['#eef2f7','#b3bdca','#76859a','#5b6878','#2c3d57'],5:['#eef2f7','#b3bdca','#76859a','#5b6878','#2c3d57']};
+const MTONE={2:['#ffffff','#d4dbe4','#94a2b4','#7c8a9d','#33414f'],3:['#ffe6c2','#d79a55','#9c6427','#82531f','#4a2f12'],4:['#ffe6c2','#d79a55','#9c6427','#82531f','#4a2f12'],5:['#ffe6c2','#d79a55','#9c6427','#82531f','#4a2f12']};
 function medal(n,size){const t=MTONE[n];return `<svg viewBox="0 0 56 76" width="${size}" height="${Math.round(size*1.357)}" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="md${n}" cx="38%" cy="30%" r="78%"><stop offset="0" stop-color="${t[0]}"/><stop offset=".55" stop-color="${t[1]}"/><stop offset="1" stop-color="${t[2]}"/></radialGradient><linearGradient id="ra${n}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a31118"/><stop offset=".5" stop-color="#ED1C24"/><stop offset="1" stop-color="#7e0d12"/></linearGradient><linearGradient id="rb${n}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a5c82"/><stop offset=".5" stop-color="#15AAE2"/><stop offset="1" stop-color="#0a5063"/></linearGradient></defs><path d="M19 35 L12 5 L22 3 L27 33 Z" fill="url(#ra${n})"/><path d="M37 35 L44 5 L34 3 L29 33 Z" fill="url(#rb${n})"/><path d="M12 5 L22 3 L17.5 11 Z" fill="#5e0a0e"/><path d="M44 5 L34 3 L38.5 11 Z" fill="#073f59"/><path d="M16.5 9 L21 32" stroke="#fff" stroke-width="1" opacity=".22"/><path d="M39.5 9 L35 32" stroke="#fff" stroke-width="1" opacity=".22"/><circle cx="28" cy="50" r="23" fill="${t[3]}"/><circle cx="28" cy="50" r="20" fill="url(#md${n})"/><circle cx="28" cy="50" r="20" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/><circle cx="28" cy="50" r="15.5" fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1"/><text x="28" y="58" text-anchor="middle" font-size="23" font-weight="800" fill="${t[4]}" font-family="'DM Sans',sans-serif">${n}</text><ellipse cx="20" cy="42" rx="7" ry="4.5" fill="#fff" opacity=".25"/></svg>`;}
 function renderPoll(){
   document.getElementById('ballSpin').innerHTML=BALL;
