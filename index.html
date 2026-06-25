@@ -574,6 +574,19 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .bulb b{color:var(--navy)}
 .slice-feedback{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);font-size:5.2rem;animation:feedbackPop .72s ease forwards;pointer-events:none;z-index:20;filter:drop-shadow(0 12px 28px rgba(11,31,77,.38))}
 @keyframes feedbackPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.4) rotate(-14deg)}28%{opacity:1;transform:translate(-50%,-58%) scale(1.55) rotate(0)}100%{opacity:0;transform:translate(-50%,-84%) scale(1.1) rotate(0)}}
+.nwhy{display:flex;gap:1rem;align-items:center;background:#FFFBF2;border:1px solid #F0E4C8;border-radius:12px;padding:.8rem 1rem;margin:.9rem 0}
+.nwhy-t{flex:1}
+.nwhy-l{display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--orange);margin-bottom:.25rem}
+.nwhy-t p{font-size:.82rem;color:#4a566e;line-height:1.5}
+.nfire{flex:0 0 auto;text-align:center;padding-left:1rem;border-left:1px solid #F0E4C8;min-width:96px}
+.nfire b{display:block;font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy);line-height:1}
+.nfire span{font-size:10.5px;color:var(--slate)}
+.reveal .rbody{flex:1;min-width:0}
+.rstats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.75rem}
+.rstat{background:rgba(255,255,255,.65);border-radius:8px;padding:.5rem;text-align:center}
+.rstat b{display:block;font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--navy);line-height:1.1}
+.rstat span{font-size:9.5px;color:var(--slate);line-height:1.3;display:block;margin-top:.18rem}
+@media(max-width:560px){.rstats{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -582,10 +595,9 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 <section id="home" class="screen active brand-bg">
   <div class="home-top"><div class="logo on-dark" id="logoHome"></div><div class="gmio-tag">Group Medical Informatics Office</div></div>
   <div class="home-hero">
-    <div class="home-eyebrow">An interactive CDS experience</div>
-    <div class="home-script">Less noise, more signal, safer care.</div>
+    <div class="home-script">Smarter Alerts, Better Decisions, Improved Well-being.</div>
     <h1 class="home-title">Behind the <em>Alert</em></h1>
-    <div class="home-sub">A NUHS Clinical Decision Support journey · pick a game to begin</div>
+    <div class="home-sub">An Interactive NUHS Clinical Decision Support Experience.</div>
   </div>
   <div class="deck">
     <div class="flip" onclick="flipCard(this,event)">
@@ -634,7 +646,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
           <div class="order-note" id="orderNote">Tap an order — watch the alert fire.</div>
         </div>
         <div class="bpa" id="beforeBpa">
-          <div class="bpa-ttl"><span class="dot2"></span>BestPractice Advisory<span class="bpa-count" id="bpaCount">Alert #1</span></div>
+          <div class="bpa-ttl"><span class="dot2"></span>OurPractice Advisory<span class="bpa-count" id="bpaCount">Alert #1</span></div>
           <div class="bpa-banner">Allergies have not been verified during this encounter.</div>
           <div class="bpa-body"><span class="bpa-link">↗ Allergies Activity</span></div>
           <div class="bpa-foot"><span class="bpa-btn">Dismiss</span></div>
@@ -646,8 +658,6 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
         <div class="comments">
           <div class="cmt-row"><div class="cmt-av">😣</div><div class="cmt">I'm trying to focus on my sick patient, but these constant pop-ups are driving me crazy…<b>— Inpatient doctor</b></div></div>
           <div class="cmt-row"><div class="cmt-av">😩</div><div class="cmt">I've already documented the patient's allergy — why is this still warning me??<b>— Ward pharmacist</b></div></div>
-          <div class="cmt-row"><div class="cmt-av">😤</div><div class="cmt">These alerts are so annoying, I'm just going to ignore them…<b>— Senior resident</b></div></div>
-          <div class="cmt-row"><div class="cmt-av">😕</div><div class="cmt">Generic warnings are useless! I don't understand what I'm supposed to do.<b>— Medical officer</b></div></div>
           <div class="cmt-row"><div class="cmt-av">🙅</div><div class="cmt">I'm a physiotherapist — I can't verify allergies. Why am I seeing this, repeatedly?<b>— Allied health</b></div></div>
         </div>
       </div>
@@ -682,7 +692,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
         <div>
           <div class="ba-lab af">● After — what you're building</div>
           <div class="bpa" id="afterBpa">
-            <div class="bpa-ttl"><span class="dot2"></span>BestPractice Advisory</div>
+            <div class="bpa-ttl"><span class="dot2"></span>OurPractice Advisory</div>
             <div class="bpa-banner">Allergies have not been reviewed during this encounter.</div>
             <div class="bpa-body">
               <div class="aa-sec" id="aa-info">
@@ -731,7 +741,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
     </div>
     <p class="s-sub" style="margin:.2rem 0 0">Per patient, the alert dropped from <b>~5.1</b> firings to <b>~1.3</b> — across four PDSA cycles, with no loss of safety.</p>
     <div class="qi"><div class="qd">🔍</div><p>We didn't guess — we watched what clinicians did with every firing. The data showed who was getting the alert, who ignored it, and what to change. Without it, 141,000 alerts a month would still be firing, and we’d be calling it safety.</p></div>
-    <div class="src">Source: NUHS BPA optimisation programme · JAMIA Open 2023 (Ng et al.) · figures de-identified and aggregate.</div>
+    <div class="src">Source: NUHS OPA optimisation programme · JAMIA Open 2023 (Ng et al.) · figures de-identified and aggregate.</div>
     <div style="display:flex;gap:.7rem;justify-content:flex-end;margin-top:1.2rem">
       <button class="next" onclick="goHome()" style="margin:0;background:var(--slate)">← Home</button>
       <button class="next orange" onclick="go(4)" style="margin:0">Next: two make the cut →</button>
@@ -755,16 +765,10 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
   <div id="s2-stage2" class="stage scroll"><div class="scene">
     <h1 class="s-title">All four <em>were retired</em> — here's why.</h1>
     <p class="s-sub">None of these were wrong to build. They simply stopped earning their interruption — and the data is what let us prove it and act.</p>
-    <div class="reveal bad"><div class="ri">⚔️</div><div><h4>Retired · CAUTI urethral-catheter reminder</h4><p>Fired at the wrong point in the workflow, buried under truncated buttons, often when the clinician wasn't even with the patient — near-total override. Infection-control experts agreed clinical education was the better channel. <b>9,992 alerts &amp; 21.9 clinician-hours saved every month.</b></p></div></div>
-    <div class="reveal bad"><div class="ri">⚔️</div><div><h4>Retired · Order placed by Non-ED specialty</h4><p>Fired to the whole ED team — including nurses who couldn't act — with only "OK" to click. The same information already lived in the ED Trackboard and Narrator. <b>75,543 alerts &amp; 269.6 clinician-hours saved every month.</b></p></div></div>
-    <div class="reveal bad"><div class="ri">⚔️</div><div><h4>Retired · GTN dose warning (false positive)</h4><p>The rule enforced an international 0.4 mg maximum, but locally only 0.5 mg tablets exist — so <i>every</i> order tripped an inaccurate warning. The threshold was corrected and the warning cleared. <b>~4,200 needless warnings removed every month.</b></p></div></div>
-    <div class="reveal bad"><div class="ri">⚔️</div><div><h4>Loosened · Duplicate-therapy (artificial tears)</h4><p>A near-zero-risk pairing — day + night eye lubricants — firing a "High" duplicate warning. One of <b>22 duplicate classes</b> reviewed and suppressed or loosened. <b>~13,000 overridden warnings cut every month.</b></p></div></div>
-    <div class="stat-grid">
-      <div class="stat-card"><span class="stat-num orange">75,543</span><span class="stat-lbl">Largest single alert retired / month</span></div>
-      <div class="stat-card"><span class="stat-num green">269.6 hrs</span><span class="stat-lbl">Clinician time saved by that one / month</span></div>
-      <div class="stat-card"><span class="stat-num blue">~13,000</span><span class="stat-lbl">Duplicate overrides cut / month</span></div>
-      <div class="stat-card"><span class="stat-num">22</span><span class="stat-lbl">Duplicate classes reviewed</span></div>
-    </div>
+    <div class="reveal bad"><div class="ri">⚔️</div><div class="rbody"><h4>Retired · GTN dose warning</h4><p>A false positive: the rule enforced an international 0.4 mg maximum, but locally only 0.5 mg tablets exist, so every order tripped it. The threshold was realigned to the local formulary.</p><div class="rstats"><div class="rstat"><b>~4,200</b><span>false alerts / mo removed</span></div><div class="rstat"><b>0.4 → 0.5 mg</b><span>threshold corrected</span></div><div class="rstat"><b>~100%</b><span>were false positives</span></div></div></div></div>
+    <div class="reveal bad"><div class="ri">⚔️</div><div class="rbody"><h4>Loosened · Duplicate therapy (artificial tears)</h4><p>A near-zero-risk pairing — a daytime and a night-time eye lubricant — firing a High duplicate warning. One of 22 low-value duplicate classes reviewed and suppressed or loosened.</p><div class="rstats"><div class="rstat"><b>~13,000</b><span>overrides / mo removed</span></div><div class="rstat"><b>22</b><span>classes reviewed</span></div><div class="rstat"><b>very low</b><span>clinical risk</span></div></div></div></div>
+    <div class="reveal bad"><div class="ri">⚔️</div><div class="rbody"><h4>Retired · CAUTI catheter reminder</h4><p>Fired at the wrong point in the workflow, buried under truncated buttons, often when the clinician wasn't even with the patient. Infection-control experts agreed clinical education was the better channel; CAUTI rates were monitored after removal.</p><div class="rstats"><div class="rstat"><b>9,992</b><span>alerts / mo eliminated</span></div><div class="rstat"><b>21.9 hrs</b><span>clinician time / mo</span></div><div class="rstat"><b>↔</b><span>CAUTI rates unchanged</span></div></div></div></div>
+    <div class="reveal bad"><div class="ri">⚔️</div><div class="rbody"><h4>Retired · Order placed by Non-ED specialty</h4><p>Fired to the whole ED team — including nurses who couldn't act — with only "OK" to click. The same information already lived in the ED tracking board and chart summary.</p><div class="rstats"><div class="rstat"><b>75,543</b><span>alerts / mo eliminated</span></div><div class="rstat"><b>269.6 hrs</b><span>clinician time / mo</span></div><div class="rstat"><b>0</b><span>safety events after</span></div></div></div></div>
     <div class="qi"><div class="qd">🔍</div><p>The job is never done. Alerts that were right once drift out of date as guidelines, formularies and tools change — so you keep reviewing the data and retire what no longer fits, or replace it with something better.</p></div>
     <div style="display:flex;gap:.7rem;justify-content:flex-end;margin-top:1.2rem">
       <button class="next" onclick="goHome()" style="margin:0;background:var(--slate)">← Home</button>
@@ -774,15 +778,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 
   <div id="s2-stage3" class="stage scroll"><div class="scene">
     <h1 class="s-title">One alert at a time, <em>cluster-wide.</em></h1>
-    <p class="s-sub">Retiring and tuning alerts like these, month after month, bends the whole curve — both for interruptive pop-ups and for medication warnings.</p>
-    <div class="chartcard">
-      <h4>Interruptive OPAs per user · per month (NUHS)</h4>
-      <div class="csub">Mar 2022 – Dec 2024 · the same per-user metric the live dashboard tracks</div>
-      <div class="chartwrap"><svg viewBox="0 0 360 176" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gF7941D" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7941D" stop-opacity=".18"/><stop offset="1" stop-color="#F7941D" stop-opacity="0"/></linearGradient></defs><line x1="30" y1="14.0" x2="348" y2="14.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="60.0" x2="348" y2="60.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="106.0" x2="348" y2="106.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="152.0" x2="348" y2="152.0" stroke="#eef1f7" stroke-width="1"/><path d="M30.0,152.0 L30.0,24.3 L41.0,41.6 L51.9,27.8 L62.9,24.3 L73.9,45.0 L84.8,69.2 L95.8,72.7 L106.8,86.5 L117.7,93.3 L128.7,96.8 L139.7,86.5 L150.6,103.7 L161.6,96.8 L172.6,100.2 L183.5,110.6 L194.5,107.2 L205.4,100.2 L216.4,107.2 L227.4,117.5 L238.3,110.6 L249.3,114.0 L260.3,107.2 L271.2,117.5 L282.2,121.0 L293.2,114.0 L304.1,117.5 L315.1,121.0 L326.1,124.4 L337.0,117.5 L348.0,121.0 L348.0,152.0 Z" fill="url(#gF7941D)"/><polyline points="30.0,24.3 41.0,41.6 51.9,27.8 62.9,24.3 73.9,45.0 84.8,69.2 95.8,72.7 106.8,86.5 117.7,93.3 128.7,96.8 139.7,86.5 150.6,103.7 161.6,96.8 172.6,100.2 183.5,110.6 194.5,107.2 205.4,100.2 216.4,107.2 227.4,117.5 238.3,110.6 249.3,114.0 260.3,107.2 271.2,117.5 282.2,121.0 293.2,114.0 304.1,117.5 315.1,121.0 326.1,124.4 337.0,117.5 348.0,121.0" class="cline" stroke="#F7941D"/><circle cx="30.0" cy="24.3" r="3.5" fill="#F7941D"/><circle cx="348.0" cy="121.0" r="3.5" fill="#F7941D"/></svg>
-        <div class="callout"><div class="bigpct">↓43%</div><div class="cl-l">fewer interruptive OPAs per user, every month</div></div>
-      </div>
-      <div class="cendpts"><span>~67 / user / month</span><span>~38 / user / month</span></div>
-    </div>
+    <p class="s-sub">Retiring and tuning alerts like these, month after month, bends the whole curve — both for medication warnings and for interruptive pop-ups.</p>
     <div class="chartcard">
       <h4>Medication warnings per 100 orders (normalised)</h4>
       <div class="csub">Dec 2022 vs Dec 2024 · adjusted for order volume</div>
@@ -796,6 +792,14 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
         <tr><td>Override rate</td><td>89.1%</td><td>76.9%</td><td class="dn">↓ 12.2pp</td></tr>
       </table>
       <div class="rhead">≈ 1.0 – 1.4 million medication warnings removed per year</div>
+    </div>
+    <div class="chartcard">
+      <h4>Interruptive OPAs per user · per month (NUHS)</h4>
+      <div class="csub">Mar 2022 – Dec 2024 · the same per-user metric the live dashboard tracks</div>
+      <div class="chartwrap"><svg viewBox="0 0 360 176" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gF7941D" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7941D" stop-opacity=".18"/><stop offset="1" stop-color="#F7941D" stop-opacity="0"/></linearGradient></defs><line x1="30" y1="14.0" x2="348" y2="14.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="60.0" x2="348" y2="60.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="106.0" x2="348" y2="106.0" stroke="#eef1f7" stroke-width="1"/><line x1="30" y1="152.0" x2="348" y2="152.0" stroke="#eef1f7" stroke-width="1"/><path d="M30.0,152.0 L30.0,24.3 L41.0,41.6 L51.9,27.8 L62.9,24.3 L73.9,45.0 L84.8,69.2 L95.8,72.7 L106.8,86.5 L117.7,93.3 L128.7,96.8 L139.7,86.5 L150.6,103.7 L161.6,96.8 L172.6,100.2 L183.5,110.6 L194.5,107.2 L205.4,100.2 L216.4,107.2 L227.4,117.5 L238.3,110.6 L249.3,114.0 L260.3,107.2 L271.2,117.5 L282.2,121.0 L293.2,114.0 L304.1,117.5 L315.1,121.0 L326.1,124.4 L337.0,117.5 L348.0,121.0 L348.0,152.0 Z" fill="url(#gF7941D)"/><polyline points="30.0,24.3 41.0,41.6 51.9,27.8 62.9,24.3 73.9,45.0 84.8,69.2 95.8,72.7 106.8,86.5 117.7,93.3 128.7,96.8 139.7,86.5 150.6,103.7 161.6,96.8 172.6,100.2 183.5,110.6 194.5,107.2 205.4,100.2 216.4,107.2 227.4,117.5 238.3,110.6 249.3,114.0 260.3,107.2 271.2,117.5 282.2,121.0 293.2,114.0 304.1,117.5 315.1,121.0 326.1,124.4 337.0,117.5 348.0,121.0" class="cline" stroke="#F7941D"/><circle cx="30.0" cy="24.3" r="3.5" fill="#F7941D"/><circle cx="348.0" cy="121.0" r="3.5" fill="#F7941D"/></svg>
+        <div class="callout"><div class="bigpct">↓43%</div><div class="cl-l">fewer interruptive OPAs per user, every month</div></div>
+      </div>
+      <div class="cendpts"><span>~67 / user / month</span><span>~38 / user / month</span></div>
     </div>
     <div class="bulb"><span class="bulb-i">💡</span><div><b>An alert is never &ldquo;finished.&rdquo;</b> Guidelines move, formularies change, tools improve. The Five Rights aren&rsquo;t a launch checklist — they&rsquo;re a test every alert must keep passing.</div></div>
     <p class="s-sub" style="font-size:.78rem;color:var(--slate)">Results sit alongside external factors — vendor database updates, fluctuating patient volumes, and changing prescribing habits.</p>
@@ -839,7 +843,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
       <div class="lesson"><h5>You can't govern what you can't see.</h5><p>A dashboard turns thousands of invisible firings into something you can question. Without it, every alert feels necessary and none can be challenged; with it, the noise takes shape and you can tell which alerts earn their interruption.</p></div>
       <div class="lesson"><h5>Sometimes the safest intervention is silence.</h5><p>Turning an alert off is a clinical decision, and the data is what makes it defensible. The goal was never more alerts; it was safer care with less friction. Often the most protective thing a CDS team can do is take an alert away.</p></div>
     </div>
-    <div class="src">Source: NUHS BPA optimisation programme &amp; live OPA dashboard · JAMIA Open 2023 (Ng et al.) · figures de-identified and aggregate.</div>
+    <div class="src">Source: NUHS OPA optimisation programme &amp; live OPA dashboard · JAMIA Open 2023 (Ng et al.) · figures de-identified and aggregate.</div>
     <div style="display:flex;gap:.7rem;justify-content:flex-end;margin-top:1.2rem">
       <button class="next" onclick="goHome()" style="margin:0;background:var(--slate)">← Home</button>
       <button class="next orange" onclick="go(1)" style="margin:0">Next: rescue the alert →</button>
@@ -1008,10 +1012,10 @@ function updateMeter(){const pct=Math.round(f1done/6*100);const col=f1done<=2?'v
 
 /* ════ CARD 2 ════ */
 const ninja=[
- {tag:"Interruptive OPA · Inpatient",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>BestPractice Advisory</div><div class="bpa-banner">UTI cause 30% of all healthcare-associated infections, and approximately 75% are related to urinary catheters.</div><div class="bpa-body"><p class="aw-body">My patient has an indwelling urinary catheter for the following indication(s), which are appropriate based on accepted international guidelines (SHEA Guidelines – May 2014).</p><p class="aw-warn">Please specify in comments if &gt;1 indications are present.</p><div class="ack-lbl">Acknowledge Reason</div><div class="ack-row"><span class="ack-btn">Management of acute urinary retention an…</span><span class="ack-btn">Urinary output monitoring in critically …</span><span class="ack-btn">Assistance in pressure ulcer healing for…</span><span class="ack-btn">To improve comfort for end of life care …</span><span class="ack-btn">Strictly prolonged immobilisation (eg. s…</span><span class="ack-btn">Perioperative use of selected surgical p…</span><span class="ack-btn">Bladder Washout</span><span class="ack-btn">Long term catheter</span><span class="ack-btn">Indication is not guideline appropriate</span><span class="ack-btn">Patient does not need a urinary catheter</span></div></div></div>`,stats:[["9,992","fires / month"],["21.9 hrs","dwell time / mo"],["high","override rate"]],why:"<b>Slice — retired.</b> Fired at the wrong point in the workflow and buried under truncated buttons, often when the clinician was not even with the patient. Infection-control experts agreed clinical education was the better channel."},
- {tag:"Interruptive OPA · Emergency Dept",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Important (1)</div><div class="bpa-banner">There is/are new order(s) placed by Non-ED users.</div><div class="bpa-body"><div class="opa-tbl"><div class="opa-h"><span>Order(s)</span><span>Status</span><span>Ordering Clinician</span></div><div class="opa-r"><span><b>Paracetamol Tablet</b> STAT</span><span>Ordered</span><span>QUAH, TEIK JOO</span></div></div></div><div class="bpa-foot"><span class="bpa-btn primary2">✓ OK</span></div></div>`,stats:[["75,543","fires / month"],["269.6 hrs","dwell time / mo"],["whole ED team","recipients"]],why:"<b>Slice — retired.</b> Fired to the entire ED team, including nurses who could not act, with only OK to click. The same information already lived in the ED Trackboard and Narrator."},
- {tag:"Medication Warning · Dosing",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Medication Warning</div><div class="bpa-body"><div class="mw-drug">Glyceryl Trinitrate Tablet · Sublingual · 0.5 mg</div><div class="mw-warn"><span class="mw-up">↑</span> Single dose of <b>0.5 mg</b> exceeds recommended maximum of <b>0.4 mg</b> by <b>25%</b></div><div class="ack-lbl">Override Reason / Comment</div><div class="ack-row"><span class="ack-btn">Benefit outweighs risk</span><span class="ack-btn">Per protocol</span><span class="ack-btn">Inaccurate warning</span><span class="ack-btn">Override Reason ▾</span></div></div><div class="bpa-foot"><span class="bpa-btn">✗ Cancel</span><span class="bpa-btn primary2">✓ Accept</span></div></div>`,stats:[["~4,200","fires / month"],["false +ve","accuracy"],["0.5 mg only","local formulary"]],why:"<b>Slice — retired.</b> A false positive: the rule followed an international 0.4 mg maximum, but locally only 0.5 mg tablets exist, so every order tripped it. The threshold was corrected."},
- {tag:"Medication Warning · Duplicate",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Medication Warnings · New Warnings (1)</div><div class="bpa-body"><div class="mw-dup"><span class="sev-high">High</span><div class="mw-dup-txt"><b>Duplicate Therapy:</b> Carbomer (VIDISIC), TEARS NATURALE FREE — ARTIFICIAL TEAR SOLUTION. <span class="muted">No Abuse/Dependency Potential.</span></div></div><div class="mw-meds"><div class="mw-med"><div><b>Carbomer (VIDISIC) 2mg/g Eye Gel</b><br><span class="muted">At bedtime · Hospital medication. New.</span></div><span class="ack-btn">Remove</span></div><div class="mw-med"><div><b>TEARS NATURALE FREE Eye Drop</b><br><span class="muted">4 times a day · Hospital medication. New.</span></div><span class="ack-btn">Remove</span></div></div><div class="ovr-field">Override reason…</div></div></div>`,stats:[["~13,000","overrides / mo"],["very low","clinical risk"],["22 classes","reviewed"]],why:"<b>Slice — loosened.</b> A near-zero-risk pairing (day + night eye lubricants) firing a High duplicate warning. One of 22 duplicate classes reviewed and suppressed or loosened."}
+ {tag:"Medication Warning · Dosing",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Medication Warning</div><div class="bpa-body"><div class="mw-drug">Glyceryl Trinitrate Tablet · Sublingual · 0.5 mg</div><div class="mw-warn"><span class="mw-up">↑</span> Single dose of <b>0.5 mg</b> exceeds recommended maximum of <b>0.4 mg</b> by <b>25%</b></div><div class="ack-lbl">Override Reason / Comment</div><div class="ack-row"><span class="ack-btn">Benefit outweighs risk</span><span class="ack-btn">Per protocol</span><span class="ack-btn">Inaccurate warning</span><span class="ack-btn">Override Reason ▾</span></div></div><div class="bpa-foot"><span class="bpa-btn">✗ Cancel</span><span class="bpa-btn primary2">✓ Accept</span></div></div>`,annoy:"A false positive. The rule used an international 0.4 mg maximum, but locally only 0.5 mg tablets exist — so every single order tripped it.",fires:"~4,200",why:"<b>Slice — retired.</b> A false positive: the rule followed an international 0.4 mg maximum, but locally only 0.5 mg tablets exist, so every order tripped it. The threshold was corrected."},
+ {tag:"Medication Warning · Duplicate",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Medication Warnings · New Warnings (1)</div><div class="bpa-body"><div class="mw-dup"><span class="sev-high">High</span><div class="mw-dup-txt"><b>Duplicate Therapy:</b> Carbomer (VIDISIC), TEARS NATURALE FREE — ARTIFICIAL TEAR SOLUTION. <span class="muted">No Abuse/Dependency Potential.</span></div></div><div class="mw-meds"><div class="mw-med"><div><b>Carbomer (VIDISIC) 2mg/g Eye Gel</b><br><span class="muted">At bedtime · Hospital medication. New.</span></div><span class="ack-btn">Remove</span></div><div class="mw-med"><div><b>TEARS NATURALE FREE Eye Drop</b><br><span class="muted">4 times a day · Hospital medication. New.</span></div><span class="ack-btn">Remove</span></div></div><div class="ovr-field">Override reason…</div></div></div>`,annoy:"A near-zero-risk pairing — a daytime and a night-time eye lubricant — firing a High duplicate-therapy warning every time.",fires:"~13,000",why:"<b>Slice — loosened.</b> A near-zero-risk pairing (day + night eye lubricants) firing a High duplicate warning. One of 22 duplicate classes reviewed and suppressed or loosened."},
+ {tag:"Interruptive OPA · Inpatient",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>OurPractice Advisory</div><div class="bpa-banner">UTI cause 30% of all healthcare-associated infections, and approximately 75% are related to urinary catheters.</div><div class="bpa-body"><p class="aw-body">My patient has an indwelling urinary catheter for the following indication(s), which are appropriate based on accepted international guidelines (SHEA Guidelines – May 2014).</p><p class="aw-warn">Please specify in comments if &gt;1 indications are present.</p><div class="ack-lbl">Acknowledge Reason</div><div class="ack-row"><span class="ack-btn">Management of acute urinary retention an…</span><span class="ack-btn">Urinary output monitoring in critically …</span><span class="ack-btn">Assistance in pressure ulcer healing for…</span><span class="ack-btn">To improve comfort for end of life care …</span><span class="ack-btn">Strictly prolonged immobilisation (eg. s…</span><span class="ack-btn">Perioperative use of selected surgical p…</span><span class="ack-btn">Bladder Washout</span><span class="ack-btn">Long term catheter</span><span class="ack-btn">Indication is not guideline appropriate</span><span class="ack-btn">Patient does not need a urinary catheter</span></div></div></div>`,annoy:"Fired at the wrong point in the workflow — often when the clinician wasn't even with the patient — and buried the response under ten truncated buttons.",fires:"9,992",why:"<b>Slice — retired.</b> Fired at the wrong point in the workflow and buried under truncated buttons, often when the clinician was not even with the patient. Infection-control experts agreed clinical education was the better channel."},
+ {tag:"Interruptive OPA · Emergency Dept",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Important (1)</div><div class="bpa-banner">There is/are new order(s) placed by Non-ED users.</div><div class="bpa-body"><div class="opa-tbl"><div class="opa-h"><span>Order(s)</span><span>Status</span><span>Ordering Clinician</span></div><div class="opa-r"><span><b>Paracetamol Tablet</b> STAT</span><span>Ordered</span><span>QUAH, TEIK JOO</span></div></div></div><div class="bpa-foot"><span class="bpa-btn primary2">✓ OK</span></div></div>`,annoy:"Fired to the entire ED team, including nurses who couldn't act on it, with only 'OK' to click. The same information already sat elsewhere in the chart.",fires:"75,543",why:"<b>Slice — retired.</b> Fired to the entire ED team, including nurses who could not act, with only OK to click. The same information already lived in the ED tracking board and chart summary."}
 ];
 let ninjaIdx=0,ninjaAnim=false;
 function initNinja(){setStage(2,1);ninjaIdx=0;ninjaAnim=false;document.getElementById("ninjaFb").classList.remove("show");renderNinja();}
@@ -1020,7 +1024,7 @@ function renderNinja(){
   const a=document.getElementById("ninjaArena");
   if(ninjaIdx>=ninja.length){setTimeout(()=>setStage(2,2),300);return;}
   const n=ninja[ninjaIdx];
-  a.innerHTML=`<div class="nwrap" id="fruit"><div class="ncat">${n.tag}<span>${ninjaIdx+1} of ${ninja.length}</span></div><div class="slicebox" id="slicebox">${n.al}</div><div class="nstats">${n.stats.map(x=>`<div class="nstat"><b>${x[0]}</b>${x[1]}</div>`).join("")}</div><div class="slicekeep"><button class="skbtn slice" onclick="ninjaPick('slice')">⚔️ Slice it</button><button class="skbtn keep" onclick="ninjaPick('keep')">🛡️ Keep it</button></div></div>`;
+  a.innerHTML=`<div class="nwrap" id="fruit"><div class="ncat">${n.tag}<span>${ninjaIdx+1} of ${ninja.length}</span></div><div class="slicebox" id="slicebox">${n.al}</div><div class="nwhy"><div class="nwhy-t"><span class="nwhy-l">Why it interrupts</span><p>${n.annoy}</p></div><div class="nfire"><b>${n.fires}</b><span>prompts / month</span></div></div><div class="slicekeep"><button class="skbtn slice" onclick="ninjaPick('slice')">⚔️ Slice it</button><button class="skbtn keep" onclick="ninjaPick('keep')">🛡️ Keep it</button></div></div>`;
 }
 function ninjaPick(choice){
   if(ninjaAnim)return;ninjaAnim=true;
