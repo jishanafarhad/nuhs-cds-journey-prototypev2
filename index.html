@@ -1179,9 +1179,9 @@ const requests=[
  {id:4,cue:"💊",title:"Duplicate acid-suppressant",desc:"Flag when two proton-pump inhibitors are prescribed together. Infrequent. Pharmacy-driven.",tags:['<span class="rtag build">New build</span>','<span class="rtag" style="background:var(--paper);color:var(--slate)">Low frequency</span>']},
  {id:5,cue:"🤰",title:"Valproate in women of childbearing age",desc:"A national directive requires an active alert. Significant risk of harm to a developing baby. Not yet implemented.",tags:['<span class="rtag build">New build</span>','<span class="rtag reg">Regulatory</span>','<span class="rtag sev">Teratogenic risk</span>']}
 ];
-const defaultVotes={1:14,2:4,3:9,4:5,5:12};
+const defaultVotes={1:0,2:0,3:0,4:0,5:0}; /* live count starts at zero — put seed numbers here for a warm start */
 let pollVotes,pollTotal,picks=[];
-function loadVotes(){try{const sv=localStorage.getItem('nuhs_poll_v2');const st=localStorage.getItem('nuhs_poll_t2');pollVotes=sv?JSON.parse(sv):{...defaultVotes};pollTotal=st?+st:44;}catch(e){pollVotes={...defaultVotes};pollTotal=44;}}
+function loadVotes(){try{const sv=localStorage.getItem('nuhs_poll_v2');const st=localStorage.getItem('nuhs_poll_t2');pollVotes=sv?JSON.parse(sv):{...defaultVotes};pollTotal=st?+st:0;}catch(e){pollVotes={...defaultVotes};pollTotal=0;}}
 function saveVotes(){try{localStorage.setItem('nuhs_poll_v2',JSON.stringify(pollVotes));localStorage.setItem('nuhs_poll_t2',pollTotal);}catch(e){}}
 function initPoll(){setStage(4,1);picks=[];loadVotes();
  document.getElementById('reqList').innerHTML=requests.map(r=>`<div class="req" id="req${r.id}" onclick="pickReq(${r.id})"><div class="rnum"><span class="rfb">${BALL}</span><span class="rno">${String(r.id).padStart(2,'0')}</span></div><div><div class="rtitle"><span class="rcue">${r.cue}</span>${r.title}</div><div class="rdesc">${r.desc}</div><div class="rtags">${r.tags.join('')}</div></div></div>`).join('');
@@ -1203,17 +1203,17 @@ function medal(n,size){const t=MTONE[n];return `<svg viewBox="0 0 56 76" width="
 function renderPoll(){
   document.getElementById('ballSpin').innerHTML=BALL;
   buildBunting();
-  const pct=id=>Math.round(pollVotes[id]/pollTotal*100);
+  const pct=id=>pollTotal?Math.round(pollVotes[id]/pollTotal*100):0;
   const sorted=[...requests].sort((a,b)=>pollVotes[b.id]-pollVotes[a.id]);
   document.getElementById('sbRows').innerHTML=sorted.map((req,i)=>{const r=i+1;const built=i<2;const mine=picks.includes(req.id);const icon=r===1?CUP:medal(r,34);
     return `<div class="sb-row ${r===1?'win':''}"><span class="ic">${icon}</span><div class="sb-nm">${req.title}${mine?'<span class="ypk">YOUR PICK</span>':''}</div><span class="tag ${built?'build':'bench'}">${built?'BUILD':'BENCHED'}</span><div class="pct" id="pct${req.id}">0%</div></div>`;}).join('');
-  document.getElementById('lbMeta').textContent=`${pollTotal} players have voted at this booth · only two make the cut`;
+  document.getElementById('lbMeta').textContent=`${pollTotal===1?'1 player has':pollTotal+' players have'} voted at this booth · only two make the cut`;
   const cft=document.getElementById('cft');if(cft)cft.innerHTML='';
   sorted.forEach((req,i)=>flap(document.getElementById('pct'+req.id),pct(req.id),400+i*150));
   setTimeout(()=>{confettiBurst();},400+(sorted.length-1)*150+1450);
 }
 function s4again(){initPoll();}
-function resetPoll(){try{localStorage.removeItem('nuhs_poll_v2');localStorage.removeItem('nuhs_poll_t2');}catch(e){}alert('Booth poll reset.');}
+function resetPoll(){if(!confirm('Reset the booth poll to zero? This clears every vote collected today.'))return;try{localStorage.removeItem('nuhs_poll_v2');localStorage.removeItem('nuhs_poll_t2');}catch(e){}location.reload();}
 
 /* keyboard lever */
 document.addEventListener('keydown',e=>{if(e.code==='Space'&&document.getElementById('s3').classList.contains('active')){e.preventDefault();doSpin();}});
