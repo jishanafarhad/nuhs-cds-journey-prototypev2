@@ -35,8 +35,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .logo.on-dark .wm{color:#fff}.logo.on-light .wm{color:var(--navy)}
 
 /* ───── HOME ───── */
-#home{justify-content:space-between}
-.home-top{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2.6rem .5rem;position:relative;z-index:2}
+#home{justify-content:center}
+.home-top{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2.6rem .5rem;position:absolute;top:0;left:0;right:0;z-index:3}
 .gmio-tag{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 .home-hero{text-align:center;padding:.8rem 2rem .4rem;position:relative;z-index:2}
 .home-eyebrow{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem}
@@ -44,7 +44,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .home-title{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,4vw,3.1rem);color:#fff;line-height:1.08}
 .home-title em{color:var(--orange);font-style:italic}
 .home-sub{font-size:.9rem;color:rgba(255,255,255,.55);margin-top:.7rem}
-.deck{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;max-width:1200px;margin:1.8rem auto 0;padding:0 2rem;position:relative;z-index:2}
+.deck{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;max-width:1200px;margin:2rem auto 0;padding:0 2rem;position:relative;z-index:2}
+.deck-cta{text-align:center;font-size:.95rem;color:rgba(255,255,255,.78);margin:.55rem auto 0;position:relative;z-index:2;letter-spacing:.01em}
 .flip{flex:1 1 235px;min-width:235px;max-width:275px;height:304px;perspective:1400px;cursor:pointer}
 .flip-in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
 .flip:hover .flip-in,.flip.flipped .flip-in{transform:rotateY(180deg)}
@@ -90,6 +91,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .s-title{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--navy);line-height:1.12}
 .s-title em{color:var(--orange);font-style:italic}
 .s-sub{font-size:.92rem;color:var(--slate);line-height:1.6;margin:.35rem 0 1.3rem;max-width:840px}
+.s-activity{font-size:1rem;color:var(--orange-deep,#E07A0C);font-weight:700;margin:.2rem 0 1.3rem;max-width:840px;line-height:1.5}
 .next{background:var(--navy);color:#fff;border:none;padding:.8rem 1.8rem;border-radius:11px;font-family:'DM Sans';font-size:.93rem;font-weight:600;cursor:pointer;transition:all .2s;margin-top:1.2rem;align-self:flex-end}
 .next:hover{background:var(--indigo);transform:translateY(-2px)}
 .next.orange{background:var(--orange)}.next.orange:hover{background:var(--orange-deep)}
@@ -134,12 +136,18 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .builder{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;align-items:start;margin-bottom:.5rem}
 @media(max-width:760px){.builder{grid-template-columns:1fr}}
 .meter-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;box-shadow:0 4px 16px rgba(11,31,77,.05);margin-bottom:1rem}
-.meter-tier{font-family:'DM Serif Display',serif;font-size:1.35rem;color:var(--red);margin-bottom:.55rem;transition:color .3s}
 .meter-bar{height:16px;background:var(--paper);border-radius:9px;overflow:hidden;border:1px solid var(--line)}
 .meter-fill{height:100%;width:0;background:var(--red);border-radius:9px;transition:width .55s cubic-bezier(.2,.9,.3,1),background .4s}
-.stars{margin-top:.7rem;display:flex;gap:5px;font-size:1.35rem}
-.star{color:var(--line);transition:color .3s,transform .3s}
-.star.on{color:var(--gold);transform:scale(1.12)}
+.aq-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.55rem;gap:1rem}
+.aq-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate)}
+.aq-score{font-family:'DM Serif Display',serif;line-height:1;transition:transform .3s}
+.aq-score b{font-size:2.7rem;color:var(--red);transition:color .4s}
+.aq-score i{font-size:1.1rem;font-style:normal;color:var(--slate);opacity:.55}
+.aq-score.maxed{animation:aqpop .55s ease}
+@keyframes aqpop{0%{transform:scale(1)}40%{transform:scale(1.16)}100%{transform:scale(1)}}
+.aq-badge{margin-top:.7rem;display:none;background:linear-gradient(135deg,#16B6A6,#0e8478);color:#fff;font-weight:800;font-size:.85rem;letter-spacing:.06em;text-align:center;padding:.5rem;border-radius:9px;box-shadow:0 4px 14px rgba(22,182,166,.3)}
+.aq-badge.show{display:block;animation:aqbadge .5s ease}
+@keyframes aqbadge{0%{opacity:0;transform:translateY(6px) scale(.96)}100%{opacity:1;transform:none}}
 .alert-preview{background:#FFF8EC;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;padding:1.1rem 1.2rem;transition:all .4s}
 .alert-preview.fixed{background:#EDFAF4;border-left-color:var(--success)}
 .apre-h{font-weight:700;font-size:.92rem;margin-bottom:.3rem}
@@ -204,6 +212,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .fruit .fstat{background:var(--paper);border-radius:9px;padding:.4rem .7rem;font-size:11px;color:var(--slate);flex:1;min-width:90px;text-align:center}
 .fruit .fstat b{display:block;font-size:1.05rem;color:var(--navy);font-family:'DM Serif Display',serif}
 .slicekeep{display:flex;gap:.8rem;padding:0 1.1rem 1.1rem}
+.nprompt{text-align:center;font-family:'DM Serif Display',serif;font-size:1.1rem;color:#fff7e8;padding:.2rem 1.1rem .7rem;text-shadow:0 1px 4px rgba(0,0,0,.55);letter-spacing:.01em}
 .skbtn{flex:1;padding:.85rem;border-radius:12px;border:2px solid;font-family:'DM Sans';font-weight:700;font-size:.95rem;cursor:pointer;transition:all .15s;background:#fff}
 .skbtn.slice{border-color:var(--red);color:var(--red)}.skbtn.slice:hover{background:var(--red);color:#fff}
 .skbtn.keep{border-color:var(--success);color:var(--success)}.skbtn.keep:hover{background:var(--success);color:#fff}
@@ -220,7 +229,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .np.done{background:var(--orange)}
 
 /* ───── GAME 3 CASINO SLOT ───── */
-.lab-head{margin-bottom:1.3rem}
+.lab-head{display:grid;grid-template-columns:1.5fr 1fr;gap:1.7rem;align-items:center;margin-bottom:1.3rem}
+@media(max-width:980px){.lab-head{grid-template-columns:1fr;gap:.6rem}}
 .lab-grid{display:grid;grid-template-columns:420px 1fr;gap:1.8rem;align-items:start}
 @media(max-width:980px){.lab-grid{grid-template-columns:1fr}}
 .lab-left{position:sticky;top:16px;display:flex;flex-direction:column;gap:1.2rem;align-self:start}
@@ -228,7 +238,13 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .lab-right{min-width:0}
 .machine-wrap{display:flex;gap:1.4rem;align-items:flex-start;flex-wrap:wrap;justify-content:center;margin-bottom:1.4rem}
 .machine{position:relative;width:360px;max-width:100%;background:linear-gradient(160deg,#1d3f7d,#0B1F4D);border-radius:26px 26px 18px 18px;padding:0 0 1.3rem;box-shadow:0 22px 50px rgba(11,31,77,.4),inset 0 2px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.08)}
-.marquee{background:linear-gradient(90deg,var(--red),var(--orange),var(--blue));color:#fff;font-family:'DM Serif Display',serif;font-size:1.2rem;letter-spacing:.14em;text-align:center;padding:.78rem;border-radius:25px 25px 0 0;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.marquee{background:linear-gradient(90deg,var(--red),var(--orange),var(--blue));color:#fff;font-family:'DM Serif Display',serif;font-size:1.2rem;letter-spacing:.14em;text-align:center;padding:.78rem;border-radius:25px 25px 0 0;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 3px rgba(0,0,0,.3);position:relative;overflow:hidden}
+.marquee::before,.marquee::after{content:'';position:absolute;left:20px;right:20px;height:6px;background:radial-gradient(circle,#fff7d4 0 1.7px,transparent 2.3px) left center/17px 6px repeat-x;filter:drop-shadow(0 0 3px rgba(255,222,140,.85));opacity:.92;animation:bulbchase 1.25s linear infinite;pointer-events:none}
+.marquee::before{top:5px}.marquee::after{bottom:4px}
+@keyframes bulbchase{to{background-position-x:17px}}
+.mled{display:inline-block;width:8px;height:8px;border-radius:50%;background:#fff7d4;margin:0 .75rem;box-shadow:0 0 6px 1px rgba(255,224,140,.95);animation:ledpulse 1.25s ease-in-out infinite}
+.mled.r{animation-delay:.62s}
+@keyframes ledpulse{0%,100%{opacity:.42;box-shadow:0 0 3px rgba(255,224,140,.55)}50%{opacity:1;box-shadow:0 0 9px 2px rgba(255,224,140,1)}}
 
 .window{margin:1.1rem 1.1rem 0;background:#0a1428;border-radius:14px;padding:.7rem;box-shadow:inset 0 4px 14px rgba(0,0,0,.6);position:relative;border:2px solid #2a4a86}
 .win-reels{display:grid;grid-template-columns:1fr 1.46fr 1fr;gap:.45rem;position:relative}
@@ -291,7 +307,10 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .story{display:flex;gap:1rem;padding:1.1rem 1.2rem;align-items:center}
 .story .nm{font-size:14px;font-weight:700}.story .wd{font-size:11.5px;color:var(--slate);margin-top:1px}.story .bd{font-size:13px;color:#3c485f;line-height:1.6;margin-top:.5rem}
 .alert{padding:1.1rem 1.2rem;background:#fff}
-.alert-frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;max-width:720px}
+.alert-frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;max-width:720px;position:relative}
+.sample-badge{position:absolute;top:8px;right:8px;z-index:6;background:rgba(27,44,107,.92);color:#fff;font-size:.58rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:.24rem .55rem;border-radius:6px;pointer-events:none;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.ack,.ack-btn,.bpa-btn,.btn-accept{pointer-events:none;opacity:.58}
+.ack.chosen{opacity:.85}
 .alert-amber{background:var(--amber-bg);padding:1.05rem 1.15rem;font-size:13px;color:#2a2300;line-height:1.6}
 .alert-amber .warn{font-weight:800;text-decoration:underline;text-underline-offset:2px}
 .alert-amber .status{font-weight:700}.alert-amber .status em{font-style:italic}
@@ -332,7 +351,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .fun .ico{font-size:1.3rem}.fun .t{font-size:13px;color:#39455c;line-height:1.55}.fun .t b{color:var(--navy)}
 .pullq{margin:.9rem 0 0;padding:.85rem 1.1rem;border-left:4px solid var(--orange);background:linear-gradient(135deg,rgba(247,148,29,.08),rgba(21,170,226,.06));border-radius:0 10px 10px 0;font-family:'DM Serif Display',serif;font-size:1.02rem;line-height:1.45;color:var(--navy);max-width:880px}
 .pullq cite{display:block;margin-top:.45rem;font-family:'DM Sans',sans-serif;font-style:normal;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);font-weight:700}
-.pilot-stat{margin:.1rem 0 0;padding:.8rem 1.05rem;border-radius:12px;background:linear-gradient(135deg,rgba(27,44,107,.05),rgba(21,170,226,.07));border:1px solid var(--line);font-size:.84rem;line-height:1.55;color:#39455c}
+.pilot-stat{margin:.1rem 0 0;max-width:840px;padding:.8rem 1.05rem;border-radius:12px;background:linear-gradient(135deg,rgba(27,44,107,.05),rgba(21,170,226,.07));border:1px solid var(--line);font-size:.84rem;line-height:1.55;color:#39455c}
 .pilot-stat b{color:var(--navy)}.pilot-stat .big{font-family:'DM Serif Display',serif;color:var(--orange);font-size:1.05rem}
 
 /* ───── CARD 4 POLL ───── */
@@ -537,6 +556,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .lesson p{font-size:.81rem;color:#4a566e;line-height:1.55}
 @media(max-width:760px){.lessons{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.dash-grid{grid-template-columns:1fr}}
 .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1.5rem;align-items:start}
+.s1-intro{max-width:880px;margin:0 auto 1.5rem;text-align:center}
+.s1-intro .s-sub,.s1-intro .s-activity{max-width:none;margin-left:0;margin-right:0}
+.s1-bottom{max-width:900px;margin:1.6rem auto 0;text-align:center}
+.s1-bottom .bulb{max-width:720px;margin-left:auto;margin-right:auto;text-align:left}
+.s1-bottom .s-sub{max-width:760px;text-align:center}
 @media(max-width:880px){.story-grid{grid-template-columns:1fr}}
 .story-main{display:flex;flex-direction:column;gap:1rem}
 .order-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;padding:.7rem .9rem 0}
@@ -561,12 +585,28 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .fbcard.right .fbh{color:var(--success)}.fbcard.wrong .fbh{color:var(--orange-deep)}
 .fbcard p{font-size:.88rem;color:#48566e;line-height:1.6}
 .fbcard .fbnext{margin-top:1.1rem;background:var(--navy);color:#fff;border:none;padding:.7rem 1.5rem;border-radius:10px;font-family:"DM Sans";font-weight:600;font-size:.92rem;cursor:pointer}
-.bulb{display:flex;gap:.7rem;align-items:flex-start;background:linear-gradient(135deg,#FFFBEC,#FFF4D2);border:1px solid #f0e0a8;border-radius:12px;padding:.85rem 1.05rem;margin:1.1rem 0}
+.bulb{display:flex;gap:.7rem;align-items:flex-start;background:linear-gradient(135deg,#FFFBEC,#FFF4D2);border:1px solid #f0e0a8;border-radius:12px;padding:.85rem 1.05rem;margin:1.1rem 0;max-width:940px;line-height:1.62}
 .bulb-i{font-size:1.25rem;flex:0 0 auto;line-height:1.3}
 .bulb div{font-size:.85rem;color:#5f5526;line-height:1.55}
 .bulb b{color:var(--navy)}
 .slice-feedback{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);font-size:5.2rem;animation:feedbackPop .72s ease forwards;pointer-events:none;z-index:20;filter:drop-shadow(0 12px 28px rgba(11,31,77,.38))}
 @keyframes feedbackPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.4) rotate(-14deg)}28%{opacity:1;transform:translate(-50%,-58%) scale(1.55) rotate(0)}100%{opacity:0;transform:translate(-50%,-84%) scale(1.1) rotate(0)}}
+.nwrap.exploded{animation:explodeAway .55s cubic-bezier(.3,.7,.4,1) forwards}
+@keyframes explodeAway{0%{transform:scale(1);opacity:1}35%{transform:scale(1.1)}100%{transform:scale(.55) rotate(5deg);opacity:0;filter:blur(4px)}}
+.nparticle{position:absolute;top:42%;left:50%;width:11px;height:11px;border-radius:2px;z-index:22;pointer-events:none;transform:translate(-50%,-50%)}
+@keyframes nburst{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.2)}}
+.ncft{position:absolute;top:-12px;width:9px;height:14px;z-index:21;pointer-events:none;border-radius:1px}
+@keyframes ncfall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(660px) rotate(540deg);opacity:0}}
+.slice-num{position:absolute;top:42%;left:50%;text-align:center;z-index:25;pointer-events:none;animation:sliceNumPop 1.05s cubic-bezier(.2,.9,.3,1) forwards}
+.slice-num b{display:block;font-family:'DM Serif Display',serif;font-size:3.7rem;color:#fff;line-height:1;text-shadow:0 4px 18px rgba(0,0,0,.55),0 0 26px rgba(247,148,29,.7)}
+.slice-num span{display:block;margin-top:.35rem;font-size:1rem;font-weight:700;color:#ffe7b8;letter-spacing:.05em;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.slice-num.juice-num b{font-size:2.5rem;color:#fff}
+.slice-num.kept-num b{font-size:2.9rem;color:#fff;line-height:1.08}
+.nwrap.juiced{animation:juiceSquish .55s ease forwards}
+@keyframes juiceSquish{0%{transform:scaleY(1)}45%{transform:scale(1.03,.9)}100%{transform:scale(1.02,.93);opacity:.82}}
+.njuice{position:absolute;top:100%;width:7px;height:0;border-radius:0 0 6px 6px;z-index:7;pointer-events:none;box-shadow:0 1px 5px rgba(0,0,0,.18)}
+@keyframes njdrip{0%{height:0;opacity:0}15%{opacity:.95}100%{height:var(--h);opacity:.82}}
+@keyframes sliceNumPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}22%{opacity:1;transform:translate(-50%,-54%) scale(1.14)}72%{opacity:1;transform:translate(-50%,-56%) scale(1)}100%{opacity:0;transform:translate(-50%,-68%) scale(1)}}
 .nwhy{display:flex;gap:1rem;align-items:center;background:#FFFBF2;border:1px solid #F0E4C8;border-radius:12px;padding:.8rem 1rem;margin:.9rem 0}
 .nwhy-t{flex:1}
 .nwhy-l{display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--orange);margin-bottom:.25rem}
@@ -588,7 +628,6 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .balist{margin:.85rem 1.1rem 1rem;padding-left:1.05rem;font-size:.83rem;color:#48566e;line-height:1.65}
 .balist li{margin-bottom:.28rem}
 .after-band{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--success);text-align:center;margin:1.1rem 0 .55rem}
-.home-hook{max-width:620px;margin:.9rem auto 0;font-family:"DM Serif Display";font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.45}
 .ninja-arena .ncat{color:rgba(255,255,255,.92)}
 .ninja-arena .ncat span{color:rgba(255,255,255,.62)}
 </style>
@@ -599,11 +638,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 <section id="home" class="screen active brand-bg">
   <div class="home-top"><div class="logo on-dark" id="logoHome"></div><div class="gmio-tag">Group Medical Informatics Office</div></div>
   <div class="home-hero">
-    <div class="home-script">Smarter Alerts, Better Decisions, Improved Well-Being.</div>
+    <div class="home-script">Smarter Alerts, Better Decisions, Safer Care.</div>
     <h1 class="home-title">Behind the <em>Alert</em></h1>
     <div class="home-sub">An Interactive NUHS Clinical Decision Support Experience.</div>
-    <div class="home-hook">Every organisation has alerts. The harder question is knowing which ones are truly worth interrupting care for.</div>
   </div>
+  <div class="deck-cta">Choose any experience below — each takes about a minute.</div>
   <div class="deck">
     <div class="flip">
       <div class="flip-in">
@@ -638,8 +677,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
   <div class="nav"><button class="back" onclick="goHome()">← Home</button><span class="navlbl">Rescue the Alert</span><div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div></div>
 
   <div id="s1-stage1" class="stage active scroll"><div class="scene">
-    <h1 class="s-title">An order. <em>An alert. Again.</em></h1>
-    <p class="s-sub" style="max-width:none">Built to help clinicians — but today it fires on every order, again and again, even for those who cannot act on it. Can you make it smarter?</p>
+    <div class="s1-intro">
+      <h1 class="s-title">An order. <em>An alert. Again.</em></h1>
+      <p class="s-sub">Every day, clinicians are interrupted by hundreds of electronic alerts. While some improve patient safety, many are poorly timed, poorly targeted or no longer useful. NUHS uses data and human-centred design to redesign alerts that truly influence clinical decisions.</p>
+      <div class="s-activity">Can you rescue this alert? Improve its design and watch its Alert Quality Score rise.</div>
+    </div>
     <div class="story-grid">
       <div class="story-main">
         <div class="pcard">
@@ -669,9 +711,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
         </div>
       </div>
     </div>
-    <div class="bulb"><span class="bulb-i">💡</span><div><b>Every alert spends attention.</b> Clinician attention is finite and shared — an alert that fires without changing a decision borrows credibility from every alert that follows.</div></div>
-    <p class="s-sub" style="margin:1.1rem 0 0"><b>This alert is broken.</b> The way NUHS fixes it is by running it through our <b>7 Clinical Decision Support principles</b> — let's diagnose it.</p>
-    <div style="text-align:right;margin-top:.6rem"><button class="next orange" onclick="setStage(1,2)" style="margin:0">Diagnose this alert →</button></div>
+    <div class="s1-bottom">
+      <div class="bulb"><span class="bulb-i">💡</span><div><b>Every alert spends attention.</b> Clinician attention is finite and shared — an alert that fires without changing a decision borrows credibility from every alert that follows.</div></div>
+      <p class="s-sub" style="margin:1.1rem auto 0"><b>This alert is broken.</b> The way NUHS fixes it is by running it through our <b>7 Clinical Decision Support principles</b> — let's diagnose it.</p>
+      <div style="margin-top:.9rem;display:flex;justify-content:center"><button class="next orange" onclick="setStage(1,2)" style="margin:0">Diagnose this alert →</button></div>
+    </div>
   </div></div>
 
   <div id="s1-stage2" class="stage scroll"><div class="scene">
@@ -679,15 +723,15 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
     <p class="s-sub" style="max-width:none">This is how NUHS optimises an alert: run it through our <b>7 Clinical Decision Support principles</b>. Tap each to diagnose it — the detail appears, and the <i>after</i> alert rebuilds with the fix.</p>
     <div class="diag">
       <div>
+        <div class="meter-card">
+          <div class="aq-top"><span class="aq-label">Alert Quality Score</span><span class="aq-score"><b id="aqScore">0</b><i>/100</i></span></div>
+          <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
+          <div class="aq-badge" id="aqBadge">★ HIGH-VALUE ALERT</div>
+        </div>
         <div class="tray-h" style="margin-bottom:.6rem">The 7 principles — tap to install the fix</div>
         <div id="factorList"></div>
       </div>
       <div class="ba-stack">
-        <div class="meter-card">
-          <div class="meter-tier" id="meterTier">Pure noise</div>
-          <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
-          <div class="stars" id="stars"></div>
-        </div>
         <div>
           <div class="ba-lab bf">● Before — what fired</div>
           <div class="bpa">
@@ -752,7 +796,6 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
     <div class="src">Source: NUHS OPA optimisation programme · JAMIA Open 2023 (Ng et al.) · figures de-identified and aggregate.</div>
     <div style="display:flex;gap:.7rem;justify-content:flex-end;margin-top:1.2rem">
       <button class="next" onclick="goHome()" style="margin:0;background:var(--slate)">← Home</button>
-      
     </div>
   </div></div>
 </section>
@@ -762,8 +805,9 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
   <div class="nav"><button class="back" onclick="goHome()">← Home</button><span class="navlbl">Kill It or Keep It</span><div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
 
   <div id="s2-stage1" class="stage active scroll"><div class="scene">
-    <h1 class="s-title">Four alerts. <em>Which ones should go?</em></h1>
-    <p class="s-sub">Real NUHS alerts. Real data. One alert at a time — decide whether each <b>earns its interruption</b> or <b>deserves retirement</b>. Make your call, then uncover the story behind each one.</p>
+    <h1 class="s-title">Too many alerts. <em>Too little attention.</em></h1>
+    <p class="s-sub">Not every alert deserves to interrupt a clinician. NUHS analyses firing rates, override behaviour and clinical outcomes to identify low-value alerts that can be safely retired.</p>
+    <div class="s-activity">Should this alert stay — or should it go?</div>
     <div class="ninja-prog" id="ninjaProg"></div>
     <div class="ninja-arena" id="ninjaArena"></div>
     <div class="feedback" id="ninjaFb"></div>
@@ -859,18 +903,20 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 
 <!-- ════ CARD 3 ════ -->
 <section id="s3" class="screen scene-screen">
-    <p>One gene, one drug, one decision.</p>
   <div class="nav"><button class="back" onclick="goHome()">← Home</button><span class="navlbl">Gene–Drug Jackpot</span><div class="logo on-dark" id="logoNav" style="transform:scale(.78);transform-origin:right"></div></div>
   <div class="scroll"><div class="scene">
     <div class="lab-head">
+      <div class="lab-head-txt">
       <h1 class="s-title">Your genome. <em>Your dose.</em></h1>
-      <p class="s-sub">NUHS runs live pharmacogenomic alerts that match a patient's genes to the drug being ordered — before it's signed. An alert only fires when three things line up: the <b>gene</b>, the patient's <b>result</b> for it, and the <b>drug</b>. Pull the lever to land on a <b>real NUHS advisory</b> (a different one each spin), or hover a gene in the map.</p>
+      <p class="s-sub">Pharmacogenomics uses a person's genes to guide medication selection and dosing for safer, more effective treatment. NUHS has implemented live pharmacogenomic CDS that matches a patient's genes, genomic result and prescribed medication before an order is signed.</p>
+      <div class="s-activity">Pull the lever to discover a real NUHS pharmacogenomic advisory — or explore the gene map to see how genetics changes prescribing.</div>
+      </div>
       <div class="pilot-stat">In the NUHS Clinical Implementation Pilot, pre-emptive PGx panels were ordered for <b>3,523 patients</b>. Of the interruptive advisories that fired, <span class="big">19.7%</span> led to a prescription change — comparable to University of Florida (~20%). <b>Pre-emptive PGx as routine care is feasible locally.</b></div>
     </div>
     <div class="lab-grid">
       <div class="lab-left">
         <div class="machine">
-        <div class="marquee">PHARMACOGENOMICS</div>
+        <div class="marquee"><span class="mled"></span>PHARMACOGENOMICS<span class="mled r"></span></div>
         <div class="window">
           <div class="win-reels">
             <div class="reel"><div class="reel-inner" id="reelG"></div></div>
@@ -925,8 +971,9 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 <div class="nav"><button class="back" onclick="goHome()">← Home</button><span class="navlbl">Two Make the Cut</span><div class="dots"><span class="dot on"></span><span class="dot"></span></div></div>
 
   <div id="s4-stage1" class="stage active scroll"><div class="scene">
-    <h1 class="s-title">Five requests landed. <em>You can only build two.</em></h1>
-    <p class="s-sub">Five CDS requests have landed on your desk. Resources are limited, and you can only move <b>two</b> forward this cycle. You're on the governance committee — which ones get your vote?</p>
+    <h1 class="s-title">Five requests. <em>Two decisions.</em></h1>
+    <p class="s-sub">Every CDS request competes for limited development time. NUHS uses governance, evidence and data to prioritise the interventions that deliver the greatest clinical impact.</p>
+    <div class="s-activity">Choose the two requests you would build, and compare your choices with other clinicians.</div>
     <div class="poll-legend" style="display:none">
     </div>
     <div id="reqList"></div>
@@ -993,9 +1040,8 @@ const F1=[
  {t:'Actionable',d:'Tell the clinician what to do',detail:'A clear \u201CMark as Reviewed\u201D action added \u2014 filed directly, no leaving the workflow.',reveal:['aa-action','aa-mark']},
  {t:'As Little Clicks As Possible',d:'Minimal effort to respond',detail:'One-click acknowledge (including \u201CNo Known Drug Allergies\u201D) \u2014 about 432,232 clicks saved every month.',reveal:['aa-action','aa-nkda','aa-clicks']}
 ];
-let f1done=0;
-const tiers=['Pure noise','Still noisy','Getting there','Halfway there','Almost there','Nearly strong','Strong alert \u2713'];
-function resetCard1(){setStage(1,1);f1done=0;bpaN=1;document.querySelectorAll('#bpaStack .bpa.stacked').forEach(e=>e.remove());
+let f1done=0,aqShown=0;
+function resetCard1(){setStage(1,1);f1done=0;aqShown=0;bpaN=1;document.querySelectorAll('#bpaStack .bpa.stacked').forEach(e=>e.remove());
   document.getElementById('bpaCount').textContent='Alert #1';
   document.getElementById('orderNote').textContent='Tap an order \u2014 watch the alert fire.';
   buildFactors();document.getElementById('afterBpa').classList.remove('pulse');renderAfter();
@@ -1015,8 +1061,13 @@ function renderAfter(){
   f1done=fixes;document.getElementById('afterBpa').classList.toggle('fixed',fixes===6);updateMeter();}
 function updateMeter(){const pct=Math.round(f1done/6*100);const col=f1done<=2?'var(--red)':f1done<=4?'var(--orange)':'var(--success)';
   const f=document.getElementById('meterFill');f.style.width=pct+'%';f.style.background=col;
-  const t=document.getElementById('meterTier');t.textContent=tiers[f1done];t.style.color=col;
-  document.getElementById('stars').innerHTML=Array.from({length:6},(_,i)=>`<span class="star ${i<f1done?'on':''}">\u2605</span>`).join('');}
+  const sc=document.getElementById('aqScore');if(sc)sc.style.color=col;
+  animateScore(aqShown,pct);aqShown=pct;
+  const badge=document.getElementById('aqBadge');const max=pct===100;
+  if(badge)badge.classList.toggle('show',max);
+  const card=document.querySelector('.aq-score');if(card)card.classList.toggle('maxed',max);}
+function animateScore(from,to){const sc=document.getElementById('aqScore');if(!sc)return;const dur=520,t0=performance.now();
+  requestAnimationFrame(function step(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);sc.textContent=Math.round(from+(to-from)*e);if(p<1)requestAnimationFrame(step);else sc.textContent=to;});}
 
 /* ════ CARD 2 ════ */
 const ninja=[
@@ -1032,18 +1083,58 @@ function renderNinja(){
   const a=document.getElementById("ninjaArena");
   if(ninjaIdx>=ninja.length){setTimeout(()=>setStage(2,2),300);return;}
   const n=ninja[ninjaIdx];
-  a.innerHTML=`<div class="nwrap" id="fruit"><div class="ncat">${n.tag}<span>${ninjaIdx+1} of ${ninja.length}</span></div><div class="slicebox" id="slicebox">${n.al}</div><div class="nwhy"><div class="nwhy-t"><span class="nwhy-l">Why it interrupts</span><p>${n.annoy}</p></div><div class="nfire"><b>${n.fires}</b><span>prompts / month</span></div></div><div class="slicekeep"><button class="skbtn slice" onclick="ninjaPick('slice')">⚔️ Slice it</button><button class="skbtn keep" onclick="ninjaPick('keep')">🛡️ Keep it</button></div></div>`;
+  a.innerHTML=`<div class="nwrap" id="fruit"><div class="ncat">${n.tag}<span>${ninjaIdx+1} of ${ninja.length}</span></div><div class="slicebox" id="slicebox"><span class="sample-badge">Real NUHS Example</span>${n.al}</div><div class="nwhy"><div class="nwhy-t"><span class="nwhy-l">Why it interrupts</span><p>${n.annoy}</p></div><div class="nfire"><b>${n.fires}</b><span>prompts / month</span></div></div><div class="nprompt">What would you do?</div><div class="slicekeep"><button class="skbtn slice" onclick="ninjaPick('slice')">⚔️ Slice it</button><button class="skbtn keep" onclick="ninjaPick('keep')">🛡️ Keep it</button></div></div>`;
 }
 function ninjaPick(choice){
   if(ninjaAnim)return;ninjaAnim=true;
-  const n=ninja[ninjaIdx];const right=choice==="slice";const last=ninjaIdx>=ninja.length-1;
-  document.querySelectorAll(".nstats,.slicekeep").forEach(e=>e.style.opacity="0");
+  const n=ninja[ninjaIdx];const right=choice==="slice";
+  const arena=document.getElementById("ninjaArena");
+  const sk=document.querySelector(".slicekeep");if(sk)sk.style.opacity="0";
+  const np=document.querySelector(".nprompt");if(np)np.style.opacity="0";
   const fruit=document.getElementById("fruit");
-  if(choice==="slice"){showSliceFeedback("⚔️");const sl=document.createElement("div");sl.className="swordslash";fruit.appendChild(sl);setTimeout(()=>fruit.classList.add("sliced"),110);}
-  else{showSliceFeedback("🛡️");fruit.classList.add("kept");}
-  setTimeout(()=>{
-    document.getElementById("ninjaArena").innerHTML=`<div class="fbcard ${right?"right":"wrong"}"><div class="fbh">${right?"✓ Right call":"↻ This one was retired too"}</div><p>${n.why}</p><button class="fbnext" onclick="ninjaNext()">${last?"See what NUHS did →":"Next alert →"}</button></div>`;
-  },760);
+  if(right){
+    showSliceFeedback("⚔️");
+    const sl=document.createElement("div");sl.className="swordslash";fruit.appendChild(sl);
+    setTimeout(()=>{fruit.classList.add("exploded");ninjaBurst(arena);ninjaConfetti(arena);},150);
+    setTimeout(()=>{const big=document.createElement("div");big.className="slice-num";big.innerHTML=`<b>${n.fires}</b><span>interruptions removed</span>`;arena.appendChild(big);},300);
+    setTimeout(()=>ninjaNext(),1350);
+  } else {
+    showSliceFeedback("🛡️");fruit.classList.add("kept");
+    setTimeout(()=>{const big=document.createElement("div");big.className="slice-num kept-num";big.innerHTML=`<b>This warning was<br>retired too</b>`;arena.appendChild(big);},300);
+    setTimeout(()=>ninjaNext(),1150);
+  }
+}
+function ninjaJuice(fruit){
+  const box=fruit.querySelector('.slicebox')||fruit;
+  const cols=['#ED1C24','#F7941D','#F4C04A','#16B6A6','#E0457B'];
+  for(let i=0;i<13;i++){
+    const d=document.createElement('span');d.className='njuice';
+    d.style.left=(6+Math.random()*88).toFixed(1)+'%';
+    d.style.background=`linear-gradient(${cols[i%cols.length]},${cols[(i+2)%cols.length]})`;
+    d.style.setProperty('--h',(70+Math.random()*150).toFixed(0)+'px');
+    d.style.animation=`njdrip ${(.6+Math.random()*.5).toFixed(2)}s ${(Math.random()*.3).toFixed(2)}s ease-out forwards`;
+    box.appendChild(d);setTimeout(()=>{if(d.parentNode)d.remove();},1700);
+  }
+}
+function ninjaBurst(arena){
+  const cols=['#F4C04A','#ED1C24','#15AAE2','#16B6A6','#F7941D','#ffffff'];
+  for(let i=0;i<26;i++){
+    const p=document.createElement('span');p.className='nparticle';p.style.background=cols[i%cols.length];
+    const ang=(Math.PI*2*i)/26+Math.random()*.4,dist=120+Math.random()*170;
+    p.style.setProperty('--dx',(Math.cos(ang)*dist).toFixed(0)+'px');
+    p.style.setProperty('--dy',(Math.sin(ang)*dist).toFixed(0)+'px');
+    p.style.animation=`nburst ${(.55+Math.random()*.35).toFixed(2)}s ease-out forwards`;
+    arena.appendChild(p);setTimeout(()=>{if(p.parentNode)p.remove();},1000);
+  }
+}
+function ninjaConfetti(arena){
+  const cols=['#F4C04A','#ED1C24','#15AAE2','#16B6A6','#F7941D','#ffffff'];
+  for(let i=0;i<46;i++){
+    const c=document.createElement('span');c.className='ncft';c.style.left=(Math.random()*100).toFixed(1)+'%';
+    c.style.background=cols[i%cols.length];
+    c.style.animation=`ncfall ${(1+Math.random()*1.1).toFixed(2)}s ${(Math.random()*.3).toFixed(2)}s ease-in forwards`;
+    arena.appendChild(c);setTimeout(()=>{if(c.parentNode)c.remove();},2500);
+  }
 }
 function showSliceFeedback(emoji){const el=document.createElement("div");el.className="slice-feedback";el.textContent=emoji;document.getElementById("ninjaArena").appendChild(el);setTimeout(()=>{if(el.parentNode)el.remove();},780);}
 function ninjaNext(){document.getElementById("ninjaFb").classList.remove("show");ninjaIdx++;ninjaAnim=false;renderNinja();}
@@ -1102,7 +1193,7 @@ function fillColor(c){return CAT[c].col;}
 function avatarColor(c){return CAT[c].col;}
 function ackPick(el){[...el.parentNode.children].forEach(b=>b.classList.remove('chosen'));el.classList.add('chosen');}
 function buildAlert(p){const a=p.al;const recLis=a.rec.map(r=>`<li>${r}</li>`).join('');const recBlock=a.rec.length?`<div class="rec">${a.recTitle?`<span class="rl">${a.recTitle}</span>`:''}<ul>${recLis}</ul></div>`:'';const moreBlock=a.link?`<div class="more">For more information: <a>${a.link}</a></div>`:'';const ackBtns=a.ack.map((t,i)=>`<button class="ack${i===0?' chosen':''}" onclick="ackPick(this)">${t}</button>`).join('');
- return `<div class="alert-frame"><div class="alert-amber"><span class="warn">Pharmacogenomics Warning:</span> ${a.status}<p>${a.risk}</p>${recBlock}<p><b>${a.cont}</b></p>${moreBlock}</div><div class="alert-lower"><span class="lab-link">↗ Review Lab Results</span><div class="ack-lbl"><span class="bang">!</span> Acknowledge Reason</div><div class="ack-row">${ackBtns}</div><div class="alert-actions"><button class="btn-accept" onclick="this.blur()">✓ Accept</button></div></div></div><div class="alert-note">Recreated in NUHS booth styling — wording and acknowledge buttons taken directly from the live ${p.drug} advisory.</div>`;}
+ return `<div class="alert-frame"><span class="sample-badge">Real NUHS Example</span><div class="alert-amber"><span class="warn">Pharmacogenomics Warning:</span> ${a.status}<p>${a.risk}</p>${recBlock}<p><b>${a.cont}</b></p>${moreBlock}</div><div class="alert-lower"><span class="lab-link">↗ Review Lab Results</span><div class="ack-lbl"><span class="bang">!</span> Acknowledge Reason</div><div class="ack-row">${ackBtns}</div><div class="alert-actions"><button class="btn-accept" onclick="this.blur()">✓ Accept</button></div></div></div><div class="alert-note">Recreated in NUHS booth styling — wording and acknowledge buttons taken directly from the live ${p.drug} advisory.</div>`;}
 function setReelFace(p){[['reelG',reelG,false],['reelD',reelD,false],['reelR',reelP,true]].forEach(([id,items,isR])=>{const el=document.getElementById(id);el.style.transition='none';el.style.top='0px';el.innerHTML=reelItem(items[p.id],isR);});}
 function showPair(p){
   document.getElementById('empty').style.display='none';
@@ -1159,7 +1250,11 @@ function buildChips(){
 function selectDrug(d){curVariants=pairs.filter(p=>p.drug===d);showPair(curVariants[0]);}
 function pickVariant(id){showPair(pairs[id]);}
 let labInit=false;
-function initLab(){initReels();buildChips();cv=document.getElementById('net');ctx=cv.getContext('2d');
+function initLab(){initReels();buildChips();
+ document.getElementById('result').classList.remove('show');
+ document.getElementById('empty').style.display='';
+ activeGene=null;curVariants=null;
+ cv=document.getElementById('net');ctx=cv.getContext('2d');
  const dpr=Math.max(2,window.devicePixelRatio||1);if(cv.width!==Math.round(NW*dpr)){cv.width=Math.round(NW*dpr);cv.height=Math.round(NH*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);
  if(!labInit){const tip=document.getElementById('geneTip');
   const scale=e=>{const rc=cv.getBoundingClientRect();return{x:(e.clientX-rc.left)*(NW/rc.width),y:(e.clientY-rc.top)*(NH/rc.height)};};
@@ -1173,18 +1268,18 @@ function initLab(){initReels();buildChips();cv=document.getElementById('net');ct
 
 /* ════ CARD 4 POLL ════ */
 const requests=[
- {id:1,cue:"💓",title:"Ciprofloxacin + Amiodarone",desc:"Risk of fatal cardiac arrhythmia (QT prolongation). <b>A near-miss in the Emergency Dept last month.</b> No alert currently exists.",tags:['<span class="rtag build">New build</span>','<span class="rtag sev">Fatal cardiac risk</span>']},
- {id:2,cue:"☀️",title:"Vitamin D screening reminder",desc:"Outpatient reminder to screen for vitamin D in patients over 65. A geriatrics request. No safety risk.",tags:['<span class="rtag build">New build</span>','<span class="rtag" style="background:var(--paper);color:var(--slate)">Low urgency</span>']},
- {id:3,cue:"💧",title:"Fix: ACE-inhibitor + Diuretic + NSAID",desc:"An existing alert is misfiring — triggering for patients already being monitored. Clinicians now ignore it entirely.",tags:['<span class="rtag fix">Fix existing</span>','<span class="rtag sev">Kidney-injury risk</span>']},
- {id:4,cue:"💊",title:"Duplicate acid-suppressant",desc:"Flag when two proton-pump inhibitors are prescribed together. Infrequent. Pharmacy-driven.",tags:['<span class="rtag build">New build</span>','<span class="rtag" style="background:var(--paper);color:var(--slate)">Low frequency</span>']},
- {id:5,cue:"🤰",title:"Valproate in women of childbearing age",desc:"A national directive requires an active alert. Significant risk of harm to a developing baby. Not yet implemented.",tags:['<span class="rtag build">New build</span>','<span class="rtag reg">Regulatory</span>','<span class="rtag sev">Teratogenic risk</span>']}
+ {id:1,cue:"💓",title:"Ciprofloxacin + Amiodarone",desc:"Both prolong the <b>QTc interval</b> — together they can trigger <b>torsades de pointes</b>, a dangerous heart rhythm. <b>A near-miss in the Emergency Dept last month.</b> No alert currently exists.",tags:['<span class="rtag build">New build</span>','<span class="rtag sev">Fatal cardiac risk</span>']},
+ {id:2,cue:"☀️",title:"Vitamin D screening reminder",desc:"Outpatient reminder to check <b>25-hydroxyvitamin D</b> in patients over 65. A geriatrics request. No safety risk.",tags:['<span class="rtag build">New build</span>','<span class="rtag" style="background:var(--paper);color:var(--slate)">Low urgency</span>']},
+ {id:3,cue:"💧",title:"Fix: ACE-inhibitor + Diuretic + NSAID",desc:"The <b>&lsquo;triple whammy&rsquo;</b> (ACE-inhibitor + diuretic + NSAID) raises <b>acute kidney injury (AKI)</b> risk — but the alert misfires on patients already being monitored, so clinicians now ignore it entirely.",tags:['<span class="rtag fix">Fix existing</span>','<span class="rtag sev">Kidney-injury risk</span>']},
+ {id:4,cue:"💊",title:"Duplicate acid-suppressant",desc:"Flag duplicate <b>proton pump inhibitors (PPIs)</b> — two stomach acid-reducing drugs prescribed together. Infrequent. Pharmacy-driven.",tags:['<span class="rtag build">New build</span>','<span class="rtag" style="background:var(--paper);color:var(--slate)">Low frequency</span>']},
+ {id:5,cue:"🤰",title:"Valproate in women of childbearing age",desc:"A national directive requires an active alert. Valproate is <b>teratogenic</b> — a significant risk of birth defects and harm to a developing baby. Not yet implemented.",tags:['<span class="rtag build">New build</span>','<span class="rtag reg">Regulatory</span>','<span class="rtag sev">Teratogenic risk</span>']}
 ];
 const defaultVotes={1:0,2:0,3:0,4:0,5:0}; /* live count starts at zero — put seed numbers here for a warm start */
 let pollVotes,pollTotal,picks=[];
 function loadVotes(){try{const sv=localStorage.getItem('nuhs_poll_v2');const st=localStorage.getItem('nuhs_poll_t2');pollVotes=sv?JSON.parse(sv):{...defaultVotes};pollTotal=st?+st:0;}catch(e){pollVotes={...defaultVotes};pollTotal=0;}}
 function saveVotes(){try{localStorage.setItem('nuhs_poll_v2',JSON.stringify(pollVotes));localStorage.setItem('nuhs_poll_t2',pollTotal);}catch(e){}}
 function initPoll(){setStage(4,1);picks=[];loadVotes();
- document.getElementById('reqList').innerHTML=requests.map(r=>`<div class="req" id="req${r.id}" onclick="pickReq(${r.id})"><div class="rnum"><span class="rfb">${BALL}</span><span class="rno">${String(r.id).padStart(2,'0')}</span></div><div><div class="rtitle"><span class="rcue">${r.cue}</span>${r.title}</div><div class="rdesc">${r.desc}</div><div class="rtags">${r.tags.join('')}</div></div></div>`).join('');
+ document.getElementById('reqList').innerHTML=requests.map(r=>`<div class="req" id="req${r.id}" onclick="pickReq(${r.id})"><div class="rnum"><span class="rfb">${BALL}</span><span class="rno">${String(r.id).padStart(2,'0')}</span></div><div><div class="rtitle">${r.title}</div><div class="rdesc">${r.desc}</div><div class="rtags">${r.tags.join('')}</div></div></div>`).join('');
  document.getElementById('pickN').textContent='0';document.getElementById('voteBtn').disabled=true;}
 function pickReq(id){const i=picks.indexOf(id);if(i>=0)picks.splice(i,1);else{if(picks.length>=2)return;picks.push(id);}
  requests.forEach(r=>document.getElementById('req'+r.id).classList.toggle('sel',picks.includes(r.id)));
