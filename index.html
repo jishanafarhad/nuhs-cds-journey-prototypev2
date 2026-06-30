@@ -92,6 +92,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .s-title em{color:var(--orange);font-style:italic}
 .s-sub{font-size:.92rem;color:var(--slate);line-height:1.6;margin:.35rem 0 1.3rem;max-width:840px}
 .s-activity{font-size:1rem;color:var(--orange-deep,#E07A0C);font-weight:700;margin:.2rem 0 1.3rem;max-width:840px;line-height:1.5}
+.poll-date{font-size:.82rem;font-weight:600;color:var(--slate);letter-spacing:.02em;margin:-.7rem 0 1.3rem}
 .next{background:var(--navy);color:#fff;border:none;padding:.8rem 1.8rem;border-radius:11px;font-family:'DM Sans';font-size:.93rem;font-weight:600;cursor:pointer;transition:all .2s;margin-top:1.2rem;align-self:flex-end}
 .next:hover{background:var(--indigo);transform:translateY(-2px)}
 .next.orange{background:var(--orange)}.next.orange:hover{background:var(--orange-deep)}
@@ -433,6 +434,15 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .bpa-ttl .dot2{width:16px;height:16px;border-radius:5px;background:#F7941D;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800}
 .bpa-ttl .dot2::before{content:'!'}
 .bpa-banner{background:#FCD850;color:#5a4a00;font-weight:600;font-size:.9rem;padding:.7rem .9rem;display:flex;align-items:flex-start;gap:.5rem;line-height:1.4}
+.bpa-caution{background:#FCD850;color:#5a4a00;font-size:.84rem;line-height:1.42;padding:.65rem .9rem;display:flex;gap:.55rem;align-items:flex-start}
+.bpa-caution b{font-size:.92rem}
+.bpa-caution .cw-ic{flex-shrink:0;width:17px;height:17px;border-radius:50%;background:#5a4a00;color:#FCD850;font-weight:800;font-size:.78rem;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.rk-q{font-size:.9rem;color:var(--ink);margin-bottom:.55rem}
+.rk-toggle{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem}
+.rk-seg{display:flex;border:1px solid #cfe0f3;border-radius:7px;overflow:hidden;pointer-events:none}
+.rk-btn{padding:.34rem .95rem;font-size:.8rem;font-weight:700;color:var(--navy);background:#eef4fb}
+.rk-btn.on{background:#2563b8;color:#fff}
+.rk-drug{font-size:.8rem;color:var(--ink);line-height:1.35}
 .bpa-body{padding:.6rem .9rem .7rem}
 .bpa-link{color:#1f7fd0;font-weight:600;font-size:.84rem;display:inline-flex;gap:.35rem;margin:.15rem 0;cursor:default}
 .bpa-foot{display:flex;justify-content:flex-end;gap:.5rem;padding:.55rem .9rem;border-top:1px solid #E6D9A8;background:#FFFDF5}
@@ -602,6 +612,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
 .slice-num span{display:block;margin-top:.35rem;font-size:1rem;font-weight:700;color:#ffe7b8;letter-spacing:.05em;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.5)}
 .slice-num.juice-num b{font-size:2.5rem;color:#fff}
 .slice-num.kept-num b{font-size:2.9rem;color:#fff;line-height:1.08}
+.slice-num.good-num b{font-size:2.5rem;color:#fff;line-height:1.1;text-shadow:0 4px 18px rgba(0,0,0,.55),0 0 26px rgba(30,180,120,.85)}
+.slice-num.good-num span{color:#c7f3dd}
+.slice-num.miss-num b{font-size:2.5rem;color:#fff;line-height:1.1;text-shadow:0 4px 18px rgba(0,0,0,.55),0 0 24px rgba(245,170,40,.8)}
+.slice-num.miss-num span{color:#ffe1b0}
+.nwrap.kept-good{animation:keepfade .5s forwards}
 .nwrap.juiced{animation:juiceSquish .55s ease forwards}
 @keyframes juiceSquish{0%{transform:scaleY(1)}45%{transform:scale(1.03,.9)}100%{transform:scale(1.02,.93);opacity:.82}}
 .njuice{position:absolute;top:100%;width:7px;height:0;border-radius:0 0 6px 6px;z-index:7;pointer-events:none;box-shadow:0 1px 5px rgba(0,0,0,.18)}
@@ -814,11 +829,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
   </div></div>
 
   <div id="s2-stage2" class="stage scroll"><div class="scene">
-    <h1 class="s-title">All four <em>were retired</em> — here's why.</h1>
-    <p class="s-sub">None of these were wrong to build. They simply stopped earning their interruption — and the data is what let us prove it and act.</p>
+    <h1 class="s-title">Three retired. <em>One earns its place.</em></h1>
+    <p class="s-sub">Most of these stopped earning their interruption — but the same review proves which ones to protect. The data is what tells noise and signal apart.</p>
     <div class="reveal bad"><div class="ri">⚔️</div><div class="rbody"><h4>Retired · GTN dose warning</h4><p>The rule enforced an international 0.4 mg maximum, but locally only 0.5 mg tablets exist, so every order tripped it. The threshold was realigned to the local formulary.</p><div class="rstats"><div class="rstat"><b>~4,200</b><span>false alerts / month removed</span></div><div class="rstat"><b>0.4 → 0.5 mg</b><span>threshold corrected</span></div><div class="rstat"><b>~100%</b><span>were false positives</span></div></div></div></div>
     <div class="reveal bad"><div class="ri">⚔️</div><div class="rbody"><h4>Loosened · Duplicate therapy (artificial tears)</h4><p>A near-zero-risk pairing — a daytime and a night-time eye lubricant — firing a High duplicate warning. One of 22 low-value duplicate classes reviewed and suppressed or loosened.</p><div class="rstats"><div class="rstat"><b>~13,000</b><span>overrides / month removed</span></div><div class="rstat"><b>22</b><span>classes reviewed</span></div><div class="rstat"><b>very low</b><span>clinical risk</span></div></div></div></div>
-    <div class="reveal bad"><div class="ri">⚔️</div><div class="rbody"><h4>Retired · CAUTI catheter reminder</h4><p>Often prompted when the chart was opened — before the clinician was with the patient — so no action could be taken, and the response was buried under truncated buttons. Infection-control experts agreed clinical education was the better channel; catheter-infection rates were monitored after removal.</p><div class="rstats"><div class="rstat"><b>9,992</b><span>alerts / month eliminated</span></div><div class="rstat"><b>21.9 hrs</b><span>clinician time / month</span></div><div class="rstat"><b>↔</b><span>CAUTI rates unchanged</span></div></div></div></div>
+    <div class="reveal good"><div class="ri">🛡️</div><div class="rbody"><h4>Kept · NSAID-in-asthma caution</h4><p>This one is different — it changes prescribing. It fires when an NSAID is ordered for a patient with asthma, where it can precipitate bronchospasm, and clinicians act on it far more often than they dismiss the noise. High value, so it stays.</p><div class="rstats"><div class="rstat"><b>42%</b><span>led to the NSAID being removed</span></div><div class="rstat"><b>2,484</b><span>potential asthma attacks averted / yr</span></div><div class="rstat"><b>~5%</b><span>action rate on the retired alerts</span></div></div></div></div>
     <div class="reveal bad"><div class="ri">⚔️</div><div class="rbody"><h4>Retired · Order placed by Non-ED specialty</h4><p>Fired to the whole ED team — including nurses who could not act — with only "OK" to click. The same information already lived in the ED tracking board and chart summary.</p><div class="rstats"><div class="rstat"><b>75,543</b><span>alerts / month eliminated</span></div><div class="rstat"><b>269.6 hrs</b><span>clinician time / month</span></div><div class="rstat"><b>0</b><span>safety events after</span></div></div></div></div>
     <div class="qi"><div class="qd">🔍</div><p>The job is never done. Alerts that were right once drift out of date as guidelines, formularies and tools change — so you keep reviewing the data and retire what no longer fits, or replace it with something better.</p></div>
     <div style="display:flex;gap:.7rem;justify-content:flex-end;margin-top:1.2rem">
@@ -974,6 +989,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(
     <h1 class="s-title">Five requests. <em>Two decisions.</em></h1>
     <p class="s-sub">Every CDS request competes for limited development time. NUHS uses governance, evidence and data to prioritise the interventions that deliver the greatest clinical impact.</p>
     <div class="s-activity">Choose the two requests you would build, and compare your choices with other clinicians.</div>
+    <div class="poll-date">Live booth poll · 1–2 July 2026 · votes from every device count together.</div>
     <div class="poll-legend" style="display:none">
     </div>
     <div id="reqList"></div>
@@ -1073,8 +1089,8 @@ function animateScore(from,to){const sc=document.getElementById('aqScore');if(!s
 const ninja=[
  {tag:"Dosing · sublingual GTN",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Medication Warning</div><div class="bpa-body"><div class="mw-drug">Glyceryl Trinitrate Tablet · Sublingual · 0.5 mg</div><div class="mw-warn"><span class="mw-up">↑</span> Single dose of <b>0.5 mg</b> exceeds recommended maximum of <b>0.4 mg</b> by <b>25%</b></div><div class="ack-lbl">Override Reason / Comment</div><div class="ack-row"><span class="ack-btn">Benefit outweighs risk</span><span class="ack-btn">Per protocol</span><span class="ack-btn">Inaccurate warning</span><span class="ack-btn">Override Reason ▾</span></div></div><div class="bpa-foot"><span class="bpa-btn">✗ Cancel</span><span class="bpa-btn ghost2">✓ Accept</span></div></div>`,annoy:"Flags every order, because the only local tablet (0.5 mg) sits just above an international 0.4 mg maximum.",fires:"~4,200",why:"<b>Retired.</b> The threshold was realigned to the local formulary, so the warning now fires only on genuine overdoses."},
  {tag:"Duplicate therapy · artificial tears",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Medication Warning</div><div class="bpa-body"><div class="mw-dup"><span class="sev-high">High</span><div class="mw-dup-txt"><b>Duplicate Therapy:</b> Carbomer (VIDISIC), TEARS NATURALE FREE — ARTIFICIAL TEAR SOLUTION. <span class="muted">No Abuse/Dependency Potential.</span></div></div><div class="mw-meds"><div class="mw-med"><div><b>Carbomer (VIDISIC) 2mg/g Eye Gel</b><br><span class="muted">At bedtime · Hospital medication. New.</span></div><span class="ack-btn">Remove</span></div><div class="mw-med"><div><b>TEARS NATURALE FREE Eye Drop</b><br><span class="muted">4 times a day · Hospital medication. New.</span></div><span class="ack-btn">Remove</span></div></div><div class="ack-lbl">Override Reason / Comment</div><div class="ack-row"><span class="ack-btn">Benefit outweighs risk</span><span class="ack-btn">Per protocol</span><span class="ack-btn">Inaccurate warning</span><span class="ack-btn">Override Reason ▾</span></div></div></div>`,annoy:"Flags two low-risk eye lubricants as a duplicate each time they are prescribed together.",fires:"~13,000",why:"<b>Loosened.</b> Reviewed as one of 22 low-value duplicate classes and relaxed where the clinical risk was negligible."},
- {tag:"Inpatient · urinary catheter",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>OurPractice Advisory</div><div class="bpa-banner">UTI cause 30% of all healthcare-associated infections, and approximately 75% are related to urinary catheters.</div><div class="bpa-body"><p class="aw-body">My patient has an indwelling urinary catheter for the following indication(s), which are appropriate based on accepted international guidelines (SHEA Guidelines – May 2014).</p><p class="aw-warn">Please specify in comments if &gt;1 indications are present.</p><div class="ack-lbl">Acknowledge Reason</div><div class="ack-row"><span class="ack-btn">Management of acute urinary retention an…</span><span class="ack-btn">Urinary output monitoring in critically …</span><span class="ack-btn">Assistance in pressure ulcer healing for…</span><span class="ack-btn">To improve comfort for end of life care …</span><span class="ack-btn">Strictly prolonged immobilisation (eg. s…</span><span class="ack-btn">Perioperative use of selected surgical p…</span><span class="ack-btn">Bladder Washout</span><span class="ack-btn">Long term catheter</span><span class="ack-btn">Indication is not guideline appropriate</span><span class="ack-btn">Patient does not need a urinary catheter</span></div></div></div>`,annoy:"Often fired when the clinician was not yet with the patient, so no action could be taken at that moment.",fires:"9,992",why:"<b>Retired.</b> Infection-control experts agreed clinical education was the better channel; catheter-infection rates were monitored after removal."},
- {tag:"Emergency · non-ED order",al:`<div class="bpa"><div class="bpa-ttl"><span class="dot2"></span>Important</div><div class="bpa-banner">There is/are new order(s) placed by Non-ED users.</div><div class="bpa-body"><div class="opa-tbl"><div class="opa-h"><span>Order(s)</span><span>Status</span><span>Ordering Clinician</span></div><div class="opa-r"><span><b>Paracetamol Tablet</b> STAT</span><span>Ordered</span><span>LIM, ER LUEN</span></div></div></div><div class="bpa-foot"><span class="bpa-btn ghost2">✓ OK</span></div></div>`,annoy:"Fired to the whole emergency team, including staff who could not act on it.",fires:"75,543",why:"<b>Retired.</b> Removed from staff who could not act on it; the same information already appeared elsewhere in the chart."}
+ {keep:true,tag:"Prescribing · NSAID in asthma",al:`<div class="bpa"><div class="bpa-caution"><span class="cw-ic">!</span><div><b>Use With Caution</b><br>Use NSAIDs with caution as it may precipitate bronchospasm in patients who suffer from or have a history of asthma. Monitor patient for respiratory symptoms.</div></div><div class="bpa-body"><div class="rk-q"><b>Remove</b> the following orders?</div><div class="rk-toggle"><div class="rk-seg"><span class="rk-btn on">Remove</span><span class="rk-btn">Keep</span></div><div class="rk-drug"><b>&#8962; Etoricoxib Tablet</b></div></div><div class="ack-lbl">Acknowledge Reason</div><div class="ack-row"><span class="ack-btn">Benefits of use outweigh risks</span><span class="ack-btn">Patient has taken this drug without issu&hellip;</span><span class="ack-btn">No reasonable alternative(s) available</span><span class="ack-btn">Others (add comments)</span></div></div><div class="bpa-foot"><span class="bpa-btn ghost2">&#10003; Accept</span></div></div>`,annoy:"Fires when an NSAID is ordered for a patient with a history of asthma — a combination that can precipitate bronchospasm.",fires:"~493",prevented:"2,484",why:"<b>Kept.</b> This one earns its interruption."},
+ {tag:"Emergency · non-ED order",al:`<div class="bpa"><div class="bpa-banner">There is/are new order(s) placed by Non-ED users.</div><div class="bpa-body"><div class="opa-tbl"><div class="opa-h"><span>Order(s)</span><span>Status</span><span>Ordering Clinician</span></div><div class="opa-r"><span><b>Paracetamol Tablet</b> STAT</span><span>Ordered</span><span>LIM, ER LUEN</span></div></div></div><div class="bpa-foot"><span class="bpa-btn ghost2">✓ OK</span></div></div>`,annoy:"Fired to the whole emergency team, including staff who could not act on it.",fires:"75,543",why:"<b>Retired.</b> Removed from staff who could not act on it; the same information already appeared elsewhere in the chart."}
 ];
 let ninjaIdx=0,ninjaAnim=false;
 function initNinja(){setStage(2,1);ninjaIdx=0;ninjaAnim=false;document.getElementById("ninjaFb").classList.remove("show");renderNinja();}
@@ -1087,21 +1103,37 @@ function renderNinja(){
 }
 function ninjaPick(choice){
   if(ninjaAnim)return;ninjaAnim=true;
-  const n=ninja[ninjaIdx];const right=choice==="slice";
+  const n=ninja[ninjaIdx];const sliced=choice==="slice";const isKeep=!!n.keep;
   const arena=document.getElementById("ninjaArena");
   const sk=document.querySelector(".slicekeep");if(sk)sk.style.opacity="0";
   const np=document.querySelector(".nprompt");if(np)np.style.opacity="0";
   const fruit=document.getElementById("fruit");
-  if(right){
-    showSliceFeedback("⚔️");
-    const sl=document.createElement("div");sl.className="swordslash";fruit.appendChild(sl);
-    setTimeout(()=>{fruit.classList.add("exploded");ninjaBurst(arena);ninjaConfetti(arena);},150);
-    setTimeout(()=>{const big=document.createElement("div");big.className="slice-num";big.innerHTML=`<b>${n.fires}</b><span>interruptions removed</span>`;arena.appendChild(big);},300);
-    setTimeout(()=>ninjaNext(),1350);
-  } else {
-    showSliceFeedback("🛡️");fruit.classList.add("kept");
-    setTimeout(()=>{const big=document.createElement("div");big.className="slice-num kept-num";big.innerHTML=`<b>This warning was<br>retired too</b>`;arena.appendChild(big);},300);
-    setTimeout(()=>ninjaNext(),1150);
+  if(isKeep){
+    if(!sliced){
+      // KEEP a genuine safety alert — correct, affirming
+      showSliceFeedback("🛡️");fruit.classList.add("kept-good");
+      setTimeout(()=>{const big=document.createElement("div");big.className="slice-num good-num";big.innerHTML=`<b>This one earns<br>its interruption</b><span>${n.prevented} potential asthma attacks averted a year</span>`;arena.appendChild(big);},300);
+      setTimeout(()=>ninjaNext(),1850);
+    }else{
+      // SLICED a keeper — wrong, corrective (no confetti, no explosion)
+      showSliceFeedback("⚠️");fruit.classList.add("kept");
+      setTimeout(()=>{const big=document.createElement("div");big.className="slice-num miss-num";big.innerHTML=`<b>This one was<br>worth keeping</b><span>it prevents real harm</span>`;arena.appendChild(big);},300);
+      setTimeout(()=>ninjaNext(),1850);
+    }
+  }else{
+    if(sliced){
+      // SLICE a low-value alert — correct, celebrate
+      showSliceFeedback("⚔️");
+      const sl=document.createElement("div");sl.className="swordslash";fruit.appendChild(sl);
+      setTimeout(()=>{fruit.classList.add("exploded");ninjaBurst(arena);ninjaConfetti(arena);},150);
+      setTimeout(()=>{const big=document.createElement("div");big.className="slice-num";big.innerHTML=`<b>${n.fires}</b><span>interruptions removed</span>`;arena.appendChild(big);},300);
+      setTimeout(()=>ninjaNext(),1350);
+    }else{
+      // KEPT a low-value alert — it was retired anyway
+      showSliceFeedback("🛡️");fruit.classList.add("kept");
+      setTimeout(()=>{const big=document.createElement("div");big.className="slice-num kept-num";big.innerHTML=`<b>This warning was<br>retired too</b>`;arena.appendChild(big);},300);
+      setTimeout(()=>ninjaNext(),1150);
+    }
   }
 }
 function ninjaJuice(fruit){
@@ -1274,17 +1306,36 @@ const requests=[
  {id:4,cue:"💊",title:"Duplicate acid-suppressant",desc:"Flag duplicate <b>proton pump inhibitors (PPIs)</b> — two stomach acid-reducing drugs prescribed together. Infrequent. Pharmacy-driven.",tags:['<span class="rtag build">New build</span>','<span class="rtag" style="background:var(--paper);color:var(--slate)">Low frequency</span>']},
  {id:5,cue:"🤰",title:"Valproate in women of childbearing age",desc:"A national directive requires an active alert. Valproate is <b>teratogenic</b> — a significant risk of birth defects and harm to a developing baby. Not yet implemented.",tags:['<span class="rtag build">New build</span>','<span class="rtag reg">Regulatory</span>','<span class="rtag sev">Teratogenic risk</span>']}
 ];
-const defaultVotes={1:0,2:0,3:0,4:0,5:0}; /* live count starts at zero — put seed numbers here for a warm start */
-let pollVotes,pollTotal,picks=[];
+/* ===== LIVE MULTI-DEVICE POLL =====
+   To share votes across every device over wifi, paste your Firebase Realtime Database URL below.
+   One-time setup (~3 min): console.firebase.google.com → add project →
+   Build → Realtime Database → Create database → start in TEST MODE → copy the URL
+   (looks like https://YOURPROJECT-default-rtdb.REGION.firebasedatabase.app ).
+   Leave it as "" to fall back to single-device local counting (booth still works offline). */
+const POLL_DB_URL = "";
+const POLL_REMOTE = !!POLL_DB_URL;
+const defaultVotes={1:0,2:0,3:0,4:0,5:0};
+let pollVotes={...defaultVotes},pollTotal=0,picks=[],pollTimer=null;
 function loadVotes(){try{const sv=localStorage.getItem('nuhs_poll_v2');const st=localStorage.getItem('nuhs_poll_t2');pollVotes=sv?JSON.parse(sv):{...defaultVotes};pollTotal=st?+st:0;}catch(e){pollVotes={...defaultVotes};pollTotal=0;}}
 function saveVotes(){try{localStorage.setItem('nuhs_poll_v2',JSON.stringify(pollVotes));localStorage.setItem('nuhs_poll_t2',pollTotal);}catch(e){}}
-function initPoll(){setStage(4,1);picks=[];loadVotes();
+function fetchRemote(){return fetch(POLL_DB_URL+'/poll.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{d=d||{};pollVotes={1:+d[1]||0,2:+d[2]||0,3:+d[3]||0,4:+d[4]||0,5:+d[5]||0};pollTotal=+d.t||0;return true;}).catch(()=>false);}
+function pushRemote(){const body={t:{'.sv':{increment:1}}};picks.forEach(id=>body[id]={'.sv':{increment:1}});return fetch(POLL_DB_URL+'/poll.json',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});}
+function startPollLive(){if(!POLL_REMOTE)return;if(pollTimer)clearInterval(pollTimer);pollTimer=setInterval(()=>{const s=document.getElementById('s4-stage2');if(s&&s.classList.contains('active'))fetchRemote().then(ok=>{if(ok)renderPoll(true);});},5000);}
+function initPoll(){setStage(4,1);picks=[];if(POLL_REMOTE){fetchRemote();}else{loadVotes();}
  document.getElementById('reqList').innerHTML=requests.map(r=>`<div class="req" id="req${r.id}" onclick="pickReq(${r.id})"><div class="rnum"><span class="rfb">${BALL}</span><span class="rno">${String(r.id).padStart(2,'0')}</span></div><div><div class="rtitle">${r.title}</div><div class="rdesc">${r.desc}</div><div class="rtags">${r.tags.join('')}</div></div></div>`).join('');
  document.getElementById('pickN').textContent='0';document.getElementById('voteBtn').disabled=true;}
 function pickReq(id){const i=picks.indexOf(id);if(i>=0)picks.splice(i,1);else{if(picks.length>=2)return;picks.push(id);}
  requests.forEach(r=>document.getElementById('req'+r.id).classList.toggle('sel',picks.includes(r.id)));
  document.getElementById('pickN').textContent=picks.length;document.getElementById('voteBtn').disabled=picks.length!==2;}
-function s4vote(){picks.forEach(id=>pollVotes[id]++);pollTotal++;saveVotes();setStage(4,2);renderPoll();}
+function s4vote(){
+  if(POLL_REMOTE){
+    picks.forEach(id=>pollVotes[id]=(pollVotes[id]||0)+1);pollTotal++;
+    setStage(4,2);renderPoll();
+    pushRemote().then(()=>fetchRemote()).then(ok=>{if(ok)renderPoll(true);}).catch(()=>{});
+  }else{
+    picks.forEach(id=>pollVotes[id]++);pollTotal++;saveVotes();setStage(4,2);renderPoll();
+  }
+}
 function countUp(el,target,dur){if(!el)return;const t0=performance.now();function step(t){const p=Math.min(1,(t-t0)/dur);el.textContent=Math.round(p*target)+'%';if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
 const TROPHY=`<svg viewBox="0 0 100 120" width="54" height="65" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FDEEB6"/><stop offset=".4" stop-color="#F4C04A"/><stop offset="1" stop-color="#B47F12"/></linearGradient><linearGradient id="tg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4C04A"/><stop offset="1" stop-color="#A06E10"/></linearGradient></defs><path d="M26 26 C6 24 8 54 30 52" fill="none" stroke="#E0A82C" stroke-width="6" stroke-linecap="round"/><path d="M74 26 C94 24 92 54 70 52" fill="none" stroke="#E0A82C" stroke-width="6" stroke-linecap="round"/><path d="M24 18 H76 L74 34 C74 54 63 66 50 66 C37 66 26 54 26 34 Z" fill="url(#tg)" stroke="#8f6510" stroke-width="1.6"/><rect x="22" y="13" width="56" height="8" rx="4" fill="url(#tg2)" stroke="#8f6510" stroke-width="1"/><path d="M37 24 C35 38 40 52 50 60" fill="none" stroke="#fff6d8" stroke-width="3" opacity=".5" stroke-linecap="round"/><polygon points="50,28 53.4,38 64,38 55.3,44.2 58.6,54.2 50,48 41.4,54.2 44.7,44.2 36,38 46.6,38" fill="#fff8df" opacity=".95"/><rect x="45" y="66" width="10" height="9" fill="url(#tg2)"/><circle cx="50" cy="78" r="6" fill="url(#tg)" stroke="#8f6510" stroke-width="1"/><rect x="46" y="82" width="8" height="8" fill="url(#tg2)"/><path d="M34 90 H66 L70 99 H30 Z" fill="url(#tg)" stroke="#8f6510" stroke-width="1"/><rect x="27" y="99" width="46" height="9" rx="2.5" fill="url(#tg2)" stroke="#8f6510" stroke-width="1"/></svg>`;
 const BALL=`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><polygon id="pent" points="0,-12 11.4,-3.7 7,9.7 -7,9.7 -11.4,-3.7"/><clipPath id="bclip"><circle cx="50" cy="50" r="45"/></clipPath></defs><circle cx="50" cy="50" r="45" fill="#fff" stroke="#15233f" stroke-width="2.6"/><g clip-path="url(#bclip)"><polygon points="50,31 69,45 62,67 38,67 31,45" fill="none" stroke="#c7cdd8" stroke-width="1.3"/><g stroke="#c7cdd8" stroke-width="1.1"><line x1="50" y1="31" x2="50" y2="14"/><line x1="69" y1="45" x2="84" y2="40"/><line x1="62" y1="67" x2="71" y2="81"/><line x1="38" y1="67" x2="29" y2="81"/><line x1="31" y1="45" x2="16" y2="40"/></g><use href="#pent" transform="translate(50,12)" fill="#15233f"/><use href="#pent" transform="translate(85,38) rotate(72)" fill="#15233f"/><use href="#pent" transform="translate(71,81) rotate(144)" fill="#15233f"/><use href="#pent" transform="translate(29,81) rotate(216)" fill="#15233f"/><use href="#pent" transform="translate(15,38) rotate(288)" fill="#15233f"/></g></svg>`;
@@ -1295,7 +1346,7 @@ function buildBunting(){const b=document.getElementById('bunt');if(!b)return;b.i
 const CUP=`<svg viewBox="0 0 100 120" width="42" height="50" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="cupg" cx="40%" cy="28%" r="80%"><stop offset="0" stop-color="#FFF6D6"/><stop offset=".45" stop-color="#F4C84E"/><stop offset="1" stop-color="#B07D12"/></radialGradient><linearGradient id="cupb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4C04A"/><stop offset="1" stop-color="#9c6c10"/></linearGradient></defs><path d="M26 26 C6 24 8 54 30 52" fill="none" stroke="#E2AB2E" stroke-width="6" stroke-linecap="round"/><path d="M74 26 C94 24 92 54 70 52" fill="none" stroke="#E2AB2E" stroke-width="6" stroke-linecap="round"/><path d="M24 18 H76 L74 34 C74 55 63 67 50 67 C37 67 26 55 26 34 Z" fill="url(#cupg)" stroke="#8a6210" stroke-width="1.6"/><rect x="22" y="12" width="56" height="9" rx="4.5" fill="url(#cupb)" stroke="#8a6210" stroke-width="1"/><path d="M34 24 C31 40 37 55 50 62" fill="none" stroke="#fff7da" stroke-width="3.5" opacity=".55" stroke-linecap="round"/><polygon points="50,30 53.5,40 64,40 55.5,46.3 58.8,56.3 50,50 41.2,56.3 44.5,46.3 36,40 46.5,40" fill="#fff8df" opacity=".95"/><rect x="45" y="67" width="10" height="9" fill="url(#cupb)"/><circle cx="50" cy="79" r="6" fill="url(#cupg)" stroke="#8a6210" stroke-width="1"/><rect x="46" y="83" width="8" height="8" fill="url(#cupb)"/><path d="M34 91 H66 L70 100 H30 Z" fill="url(#cupg)" stroke="#8a6210" stroke-width="1"/><rect x="27" y="100" width="46" height="9" rx="2.5" fill="url(#cupb)" stroke="#8a6210" stroke-width="1"/></svg>`;
 const MTONE={2:['#ffffff','#d4dbe4','#94a2b4','#7c8a9d','#33414f'],3:['#ffe6c2','#d79a55','#9c6427','#82531f','#4a2f12'],4:['#ffe6c2','#d79a55','#9c6427','#82531f','#4a2f12'],5:['#ffe6c2','#d79a55','#9c6427','#82531f','#4a2f12']};
 function medal(n,size){const t=MTONE[n];return `<svg viewBox="0 0 56 76" width="${size}" height="${Math.round(size*1.357)}" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="md${n}" cx="38%" cy="30%" r="78%"><stop offset="0" stop-color="${t[0]}"/><stop offset=".55" stop-color="${t[1]}"/><stop offset="1" stop-color="${t[2]}"/></radialGradient><linearGradient id="ra${n}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a31118"/><stop offset=".5" stop-color="#ED1C24"/><stop offset="1" stop-color="#7e0d12"/></linearGradient><linearGradient id="rb${n}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a5c82"/><stop offset=".5" stop-color="#15AAE2"/><stop offset="1" stop-color="#0a5063"/></linearGradient></defs><path d="M19 35 L12 5 L22 3 L27 33 Z" fill="url(#ra${n})"/><path d="M37 35 L44 5 L34 3 L29 33 Z" fill="url(#rb${n})"/><path d="M12 5 L22 3 L17.5 11 Z" fill="#5e0a0e"/><path d="M44 5 L34 3 L38.5 11 Z" fill="#073f59"/><path d="M16.5 9 L21 32" stroke="#fff" stroke-width="1" opacity=".22"/><path d="M39.5 9 L35 32" stroke="#fff" stroke-width="1" opacity=".22"/><circle cx="28" cy="50" r="23" fill="${t[3]}"/><circle cx="28" cy="50" r="20" fill="url(#md${n})"/><circle cx="28" cy="50" r="20" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/><circle cx="28" cy="50" r="15.5" fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1"/><text x="28" y="58" text-anchor="middle" font-size="23" font-weight="800" fill="${t[4]}" font-family="'DM Sans',sans-serif">${n}</text><ellipse cx="20" cy="42" rx="7" ry="4.5" fill="#fff" opacity=".25"/></svg>`;}
-function renderPoll(){
+function renderPoll(quiet){
   document.getElementById('ballSpin').innerHTML=BALL;
   buildBunting();
   const pct=id=>pollTotal?Math.round(pollVotes[id]/pollTotal*100):0;
@@ -1303,16 +1354,22 @@ function renderPoll(){
   document.getElementById('sbRows').innerHTML=sorted.map((req,i)=>{const r=i+1;const built=i<2;const mine=picks.includes(req.id);const icon=r===1?CUP:medal(r,34);
     return `<div class="sb-row ${r===1?'win':''}"><span class="ic">${icon}</span><div class="sb-nm">${req.title}${mine?'<span class="ypk">YOUR PICK</span>':''}</div><span class="tag ${built?'build':'bench'}">${built?'BUILD':'BENCHED'}</span><div class="pct" id="pct${req.id}">0%</div></div>`;}).join('');
   document.getElementById('lbMeta').textContent=`${pollTotal===1?'1 player has':pollTotal+' players have'} voted at this booth · only two make the cut`;
-  const cft=document.getElementById('cft');if(cft)cft.innerHTML='';
-  sorted.forEach((req,i)=>flap(document.getElementById('pct'+req.id),pct(req.id),400+i*150));
-  setTimeout(()=>{confettiBurst();},400+(sorted.length-1)*150+1450);
+  const cft=document.getElementById('cft');if(cft&&!quiet)cft.innerHTML='';
+  if(quiet){sorted.forEach(req=>{const el=document.getElementById('pct'+req.id);if(el)el.textContent=pct(req.id)+'%';});}
+  else{
+    sorted.forEach((req,i)=>flap(document.getElementById('pct'+req.id),pct(req.id),400+i*150));
+    setTimeout(()=>{confettiBurst();},400+(sorted.length-1)*150+1450);
+  }
 }
 function s4again(){initPoll();}
-function resetPoll(){if(!confirm('Reset the booth poll to zero? This clears every vote collected today.'))return;try{localStorage.removeItem('nuhs_poll_v2');localStorage.removeItem('nuhs_poll_t2');}catch(e){}location.reload();}
+function resetPoll(){if(!confirm('Reset the booth poll to zero? This clears every vote collected so far'+(POLL_REMOTE?' across ALL devices.':'.')))return;
+  if(POLL_REMOTE){fetch(POLL_DB_URL+'/poll.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({1:0,2:0,3:0,4:0,5:0,t:0})}).then(()=>location.reload()).catch(()=>location.reload());}
+  else{try{localStorage.removeItem('nuhs_poll_v2');localStorage.removeItem('nuhs_poll_t2');}catch(e){}location.reload();}}
 
 /* keyboard lever */
 document.addEventListener('keydown',e=>{if(e.code==='Space'&&document.getElementById('s3').classList.contains('active')){e.preventDefault();doSpin();}});
 initReels();
+startPollLive();
 
 
 </script>
